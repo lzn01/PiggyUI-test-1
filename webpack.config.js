@@ -1,17 +1,26 @@
-// 1. 导出一个对象
+// 4.2 导入path模块
+const path = require('path')
+// 1.1 导出一个对象
 module.exports = {
     // 2.1 程序的入口
     entry: {
         // 2.2. 入口名字: index，入口路径：'...'
         index: './lib/index.tsx'
     },
+    // 4.1 程序的出口 输出的目录位置
+    output: {
+        path: path.resolve(__dirname, 'dist/lib'), // 当前目录__dirname 因为操作系统不同 所以需要配置path
+        library: 'PiggyUI', // 4.3 库的名字
+        libraryTarget: 'umd',
+    },
+
     // 3.1 配置module 以解释tsx文件
     module: {
         rules: [
             {
                 // 3.2 命中 .tsx 文件
                 test: /\.tsx?$/, // 如何知道一个文件是tsx？
-                loader: "awesome-typescript-loader" // yarn add awesome-typescript-loader --dev
+                loader: 'awesome-typescript-loader' // yarn add awesome-typescript-loader --dev
             },
         ]
     }
