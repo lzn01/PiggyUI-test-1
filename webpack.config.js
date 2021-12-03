@@ -1,9 +1,9 @@
 // 4.2 导入path模块
 const path = require('path')
-// 1.1 导出一个对象
+// 1.1 导出一个对象 nodejs的模块定义
 module.exports = {
     // 5.1 配置mode
-    mode: 'production', // production/development
+    mode: 'production', // production/development 模式
     // 2.1 程序的入口
     entry: {
         // 2.2. 入口名字: index，入口路径：'...'
