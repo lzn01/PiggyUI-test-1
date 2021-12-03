@@ -1,5 +1,7 @@
 // 4.2 导入path模块
 const path = require('path')
+// 6.1 导入 html-webpack-plugin
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 // 1.1 导出一个对象 nodejs的模块定义
 module.exports = {
     // 5.1 配置mode
@@ -25,5 +27,12 @@ module.exports = {
                 loader: 'awesome-typescript-loader' // yarn add awesome-typescript-loader --dev
             },
         ]
-    }
+    },
+    // 6.2 配置plugins
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: 'PiggyUI',
+            template: 'index.html'
+        })
+    ]
 }
