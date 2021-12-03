@@ -2,6 +2,8 @@
 const path = require('path')
 // 1.1 导出一个对象
 module.exports = {
+    // 5.1 配置mode
+    mode: 'production', // production/development
     // 2.1 程序的入口
     entry: {
         // 2.2. 入口名字: index，入口路径：'...'
