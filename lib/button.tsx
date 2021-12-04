@@ -1,6 +1,10 @@
+import * as React from "react";
+
 const Button = () => {
     return (
-        <div/>
+        <div>
+            按钮
+        </div>
     );
 };
 
