@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 // 1.1 导出一个对象 nodejs的模块定义
 module.exports = {
     // 5.1 配置mode
-    mode: "production", // production/development 模式
+    // mode: "production", // production/development 模式
 
     // 2.1 程序的入口
     entry: {
@@ -35,26 +35,26 @@ module.exports = {
         ]
     },
     // 6.2 配置plugins
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: "PiggyUI",
-            template: "index.html"
-        })
-    ],
+    // plugins: [
+    //     new HtmlWebpackPlugin({
+    //         title: "PiggyUI",
+    //         template: "index.html"
+    //     })
+    // ],
 
     // 8.1 配置external 排除react
-    externals: {
-        react: {
-            commonjs: "react",
-            commonjs2: "react",
-            amd: "react",
-            root: "React"
-        },
-        "react-dom": {
-            commonjs: "react-dom",
-            commonjs2: "react-dom",
-            amd: "react-dom",
-            root: "ReactDOM"
-        }
-    }
+    // externals: {
+    //     react: {
+    //         commonjs: "react",
+    //         commonjs2: "react",
+    //         amd: "react",
+    //         root: "React"
+    //     },
+    //     "react-dom": {
+    //         commonjs: "react-dom",
+    //         commonjs2: "react-dom",
+    //         amd: "react-dom",
+    //         root: "ReactDOM"
+    //     }
+    // }
 };
