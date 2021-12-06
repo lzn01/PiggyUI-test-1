@@ -1,6 +1,7 @@
 import * as React from "react";
 import {FC} from "react";
 import "./methods/importAll";
+import "./index.scss";
 
 interface IconProps {
     name: string;
@@ -9,11 +10,9 @@ interface IconProps {
 const Icon: FC<IconProps> = (props) => {
     const {name} = props;
     return (
-        <span>
-            <svg>
-                <use xlinkHref={`#${name}`}/>
-            </svg>
-        </span>
+        <svg className={"piggyui-icon"}>
+            <use xlinkHref={`#${name}`}/>
+        </svg>
     );
 };
 
