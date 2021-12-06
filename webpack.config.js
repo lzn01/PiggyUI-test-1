@@ -31,9 +31,14 @@ module.exports = {
                 // 3.2 命中 .tsx 文件
                 test: /\.tsx?$/, // 如何知道一个文件是tsx？
                 loader: "awesome-typescript-loader" // yarn add awesome-typescript-loader --dev
+            },
+            {
+                // 命中svg文件
+                test: /\.svg?$/,
+                loader: "svg-sprite-loader"
             }
         ]
-    },
+    }
     // 6.2 配置plugins
     // plugins: [
     //     new HtmlWebpackPlugin({
