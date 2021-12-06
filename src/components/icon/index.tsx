@@ -1,5 +1,6 @@
 import * as React from "react";
 import {FC} from "react";
+import "../../assets/iconfont/wechat.svg";
 
 interface IconProps {
     name: string;
@@ -8,7 +9,11 @@ interface IconProps {
 const Icon: FC<IconProps> = (props) => {
     const {name} = props;
     return (
-        <span>{name}</span>
+        <span>
+            <svg>
+                <use xlinkHref={`#${name}`}/>
+            </svg>
+        </span>
     );
 };
 
