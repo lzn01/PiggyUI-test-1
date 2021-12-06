@@ -1,6 +1,6 @@
 import * as React from "react";
 import {FC} from "react";
-import "./method/importAll";
+import "./methods/importAll";
 
 interface IconProps {
     name: string;
