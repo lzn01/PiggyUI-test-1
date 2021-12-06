@@ -36,9 +36,13 @@ module.exports = {
                 // 命中svg文件
                 test: /\.svg?$/,
                 loader: "svg-sprite-loader"
+            },
+            {   // 命中scss文件
+                test: /\.scss$/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
             }
         ]
-    }
+    },
     // 6.2 配置plugins
     // plugins: [
     //     new HtmlWebpackPlugin({
@@ -62,4 +66,5 @@ module.exports = {
     //         root: "ReactDOM"
     //     }
     // }
+    devtool: "inline-source-map"
 };
