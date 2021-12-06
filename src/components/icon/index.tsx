@@ -1,6 +1,6 @@
 import * as React from "react";
 import {FC} from "react";
-import "../../assets/iconfont/wechat.svg";
+import "./method/importAll";
 
 interface IconProps {
     name: string;
