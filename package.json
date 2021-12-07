@@ -2,8 +2,8 @@
   "name": "piggyui",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/lib/index.js",
-  "types": "dist/lib/index",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index",
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --config=jest.config.js --runInBand",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
