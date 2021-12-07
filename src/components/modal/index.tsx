@@ -7,9 +7,9 @@ interface DialogProps {
     visible: boolean;
 }
 
-const componentName = "dialog";
+const componentName = "modal";
 
-const Dialog: FC<DialogProps> =
+const Modal: FC<DialogProps> =
     ({
          visible
      }) => {
@@ -20,4 +20,4 @@ const Dialog: FC<DialogProps> =
         );
     };
 
-export default Dialog;
+export default Modal;

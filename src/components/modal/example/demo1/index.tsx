@@ -1,13 +1,13 @@
 import * as React from "react";
-import Dialog from "../index";
 import {useState} from "react";
+import Modal from "../../index";
 
 export default () => {
     const [visible, setVisible] = useState(false);
     return (
         <div>
             <button onClick={() => setVisible(!visible)}/>
-            <Dialog visible={visible}/>
+            <Modal visible={visible}/>
         </div>
     );
 }
