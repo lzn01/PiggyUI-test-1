@@ -3,7 +3,7 @@ import Icon from "../../../components/icon";
 
 const IconDemo1 = () => {
     return (
-        <Icon name={"wechat"}/>
+        <Icon name={"wechat"} size={50}/>
     );
 };
 
