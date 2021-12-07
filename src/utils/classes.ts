@@ -1,4 +1,4 @@
-const prefix = "piggyui";
+const prefix = "p";
 
 const classes = (componentName: string, ...args: any): string => {
     const className = new Array<string>();

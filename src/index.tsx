@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {HashRouter as Router, Route, NavLink} from "react-router-dom";
-import IconExample from "./components/icon/example";
+import IconExample from "./examples/icon";
 
 ReactDOM.render(
     <Router>

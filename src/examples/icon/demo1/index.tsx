@@ -1,5 +1,5 @@
 import * as React from "react";
-import Icon from "../../index";
+import Icon from "../../../components/icon";
 
 const IconDemo1 = () => {
     return (
