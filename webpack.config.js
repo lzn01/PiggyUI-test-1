@@ -10,7 +10,7 @@ module.exports = {
     // 2.1 程序的入口
     entry: {
         // 2.2. 入口名字: index，入口路径：'...'
-        index: "./lib/index.tsx"
+        index: "./src/index.tsx"
     },
     // 7.1 配置resolve
     resolve: {
@@ -19,7 +19,7 @@ module.exports = {
 
     // 4.1 程序的出口 输出的目录位置
     output: {
-        path: path.resolve(__dirname, "dist/lib"), // 当前目录__dirname 因为操作系统不同 所以需要配置path
+        path: path.resolve(__dirname, "dist/src"), // 当前目录__dirname 因为操作系统不同 所以需要配置path
         library: "PiggyUI", // 4.3 库的名字
         libraryTarget: "umd"
     },
