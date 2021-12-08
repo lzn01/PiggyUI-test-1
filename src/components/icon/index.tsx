@@ -13,10 +13,10 @@ const componentName = "icon";
 
 const Icon: FC<IconProps> =
     ({
+         className,
          name,
          size,
          style,
-         className,
          ...rest
      }) => {
         return (

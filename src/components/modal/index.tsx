@@ -14,16 +14,15 @@ const componentName = "modal";
 const Modal: FC<DialogProps> =
     ({
          children,
+         className,
          visible,
-         className
      }) => {
         return (
             visible
                 ?
                 <>
-                    <div className={classes(componentName, "mask")}>
+                    <div className={classes(componentName, "mask")}/>
 
-                    </div>
                     <div className={classes(componentName, "", [className])}>
                         <div className={classes(componentName, "close")}>
                             <Icon name={"wechat"}/>
