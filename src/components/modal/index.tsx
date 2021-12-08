@@ -1,7 +1,7 @@
 import * as React from "react";
 import {FC} from "react";
 import "./index.scss";
-import classes from "../../utils/classes";
+import classes from "../../utils/methods/classes";
 import Icon from "../icon";
 
 interface DialogProps {
@@ -26,7 +26,7 @@ const Modal: FC<DialogProps> =
                     </div>
                     <div className={classes(componentName, "", [className])}>
                         <div className={classes(componentName, "close")}>
-                            <Icon name={"close"}/>
+                            <Icon name={"wechat"}/>
                         </div>
                         <header className={classes(componentName, "header")}>
                             提示
@@ -39,7 +39,8 @@ const Modal: FC<DialogProps> =
                         </footer>
                     </div>
                 </>
-                : null
+                :
+                null
         );
     };
 

@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {HashRouter as Router, Route, NavLink} from "react-router-dom";
+import "./index.scss";
 import IconExample from "./examples/icon";
 import ModalExample from "./examples/modal";
 
