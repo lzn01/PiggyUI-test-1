@@ -2,6 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {HashRouter as Router, Route, NavLink} from "react-router-dom";
 import IconExample from "./examples/icon";
+import ModalExample from "./examples/modal";
 
 ReactDOM.render(
     <Router>
@@ -23,7 +24,7 @@ ReactDOM.render(
                             <NavLink to="/button">Button</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/dialog">对话框</NavLink>
+                            <NavLink to="/modal">对话框</NavLink>
                         </li>
                         <li>
                             <NavLink to="/layout">布局</NavLink>
@@ -32,6 +33,7 @@ ReactDOM.render(
                 </aside>
                 <main>
                     <Route path="/icon" component={IconExample}/>
+                    <Route path="/modal" component={ModalExample}/>
                 </main>
             </div>
         </div>

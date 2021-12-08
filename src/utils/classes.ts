@@ -1,4 +1,4 @@
-const prefix = "p";
+const prefix = "pui";
 
 const classes = (componentName: string, ...args: any): string => {
     const className = new Array<string>();
