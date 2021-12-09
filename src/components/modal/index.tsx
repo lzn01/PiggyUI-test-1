@@ -1,7 +1,7 @@
 import * as React from "react";
 import {FC} from "react";
 import "./index.scss";
-import classes from "../../utils/methods/classes";
+import classes from "../../common/methods/classes";
 import Icon from "../icon";
 
 interface DialogProps {

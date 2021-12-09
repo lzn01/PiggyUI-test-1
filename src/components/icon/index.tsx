@@ -2,7 +2,7 @@ import * as React from "react";
 import type {FC} from "react";
 import "./methods/importAll";
 import "./index.scss";
-import classes from "../../utils/methods/classes";
+import classes from "../../common/methods/classes";
 
 interface IconProps extends React.SVGAttributes<SVGElement> {
     name: string;
