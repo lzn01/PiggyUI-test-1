@@ -15,7 +15,7 @@ const Modal: FC<DialogProps> =
     ({
          children,
          className,
-         visible,
+         visible
      }) => {
         return (
             visible

@@ -1,17 +1,58 @@
 import * as React from "react";
 import "./index.scss";
-import {FC} from "react";
+import type {ButtonHTMLAttributes, FC} from "react";
+import classes from "../../common/methods/classes";
+import Icon from "../icon";
 
-interface ButtonProps {
-
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+    ghost?: boolean;
+    icon?: string;
+    loading?: boolean;
+    kind?: "default" | "dashed" | "primary" | "success" | "warning" | "danger";
+    position?: "left" | "right";
+    size?: "small" | "medium" | "large";
 }
 
-const Button: FC<ButtonProps> = () => {
-    return (
-        <div>
+const componentName = "Button";
 
-        </div>
-    );
-};
+const Button: FC<ButtonProps> =
+    ({
+         children,
+         className,
+         disabled,
+         ghost,
+         icon,
+         loading,
+         kind,
+         position,
+         size,
+         style,
+         type,
+         ...rest
+     }) => {
+        const buttonClassName = classes(componentName, [className, kind, position, size], {ghost, disabled});
+
+        const iconRenderHandler = () => {
+            const className = classes(componentName, "icon", [size], {loading});
+            return loading
+                ? <Icon name={"loading"} className={className}/>
+                : icon && <Icon name={icon} className={className}/>;
+        };
+
+        return (
+            <button
+                className={buttonClassName}
+                disabled={disabled}
+                type={type}
+                style={style}
+                {...rest}
+            >
+                {iconRenderHandler}
+                <span className={classes(componentName, "inner")}>
+                    {children}
+                </span>
+            </button>
+        );
+    };
 
 export default Button;

@@ -1,0 +1,16 @@
+@import "../../common/styles/themeColors";
+
+.pui-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  line-height: 22px;
+  padding: 4px 15px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: $theme-color;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all .3s cubic-bezier(.645, .045, .355, 1);
+}
