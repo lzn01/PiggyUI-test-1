@@ -8,5 +8,4 @@ const ModalExample = () => {
         </>
     );
 };
-
 export default ModalExample;

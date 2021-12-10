@@ -10,5 +10,4 @@ const IconExample = () => {
         </>
     );
 };
-
 export default IconExample;

@@ -42,5 +42,4 @@ const Modal: FC<DialogProps> =
                 null
         );
     };
-
 export default Modal;

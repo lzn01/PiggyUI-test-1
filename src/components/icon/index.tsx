@@ -32,5 +32,4 @@ const Icon: FC<IconProps> =
             </svg>
         );
     };
-
 export default Icon;

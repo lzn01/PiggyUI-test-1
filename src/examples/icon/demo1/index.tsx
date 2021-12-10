@@ -6,5 +6,4 @@ const IconDemo1 = () => {
         <Icon name={"wechat"} size={50}/>
     );
 };
-
 export default IconDemo1;

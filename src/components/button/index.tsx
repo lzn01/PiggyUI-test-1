@@ -53,11 +53,11 @@ const Button: FC<ButtonProps> =
                 {...rest}
             >
                 {iconRenderHandler()}
-                <span className={classes(componentName, "inner")}>
+                <span className={classes(componentName, "text")}>
                     {children}
                 </span>
+                <span className={classes(componentName,"ripple")}/>
             </button>
         );
     };
-
 export default Button;

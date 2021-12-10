@@ -8,5 +8,4 @@ const ButtonExample = () => {
         </>
     );
 };
-
 export default ButtonExample;

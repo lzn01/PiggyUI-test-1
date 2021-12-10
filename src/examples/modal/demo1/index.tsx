@@ -15,5 +15,4 @@ const ModalDemo1 = () => {
         </div>
     );
 };
-
 export default ModalDemo1;

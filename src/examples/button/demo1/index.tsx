@@ -19,9 +19,6 @@ const ButtonDemo1 = () => {
             </div>
 
         </>
-
-
     );
 };
-
 export default ButtonDemo1;

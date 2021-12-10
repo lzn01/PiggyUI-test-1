@@ -6,5 +6,4 @@ const IconDemo2 = () => {
         <Icon name={"twitter"}/>
     );
 };
-
 export default IconDemo2;

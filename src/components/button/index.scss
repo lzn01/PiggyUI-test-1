@@ -1,15 +1,31 @@
 @import "../../common/styles/themeColors";
 
 @keyframes button-loading-spin {
-  0% {
+  from {
     transform: rotateZ(0);
   }
-  100% {
+  to {
     transform: rotateZ(360deg);
   }
 }
 
+@keyframes button-hover-animation {
+  from {
+    width: 1px;
+    height: 1px;
+    transform: scale(0);
+    opacity: 1;
+  }
+  to {
+    width: 1px;
+    height: 1px;
+    transform: scale(50);
+    opacity: 0;
+  }
+}
+
 .pui-button {
+  position: relative;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -19,16 +35,27 @@
   border: 1px solid rgba(0, 0, 0, 0.15);
   color: $theme-color;
   border-radius: 4px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: $white;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(.645, .045, .355, 1); // 从开始到结束的不同速度过渡效果
   .loading {
     animation: button-loading-spin 1s linear infinite;
   }
 
-  &-inner {
+  &-text {
     font-size: inherit;
     line-height: inherit;
+  }
+
+  &-ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: $white;
+    opacity: 1;
   }
 
   &-icon {
@@ -48,6 +75,28 @@
     }
   }
 
+  &.left {
+    .pui-button-icon {
+      margin-right: 2px;
+      order: 1;
+    }
+
+    .pui-button-text {
+      order: 2;
+    }
+  }
+
+  &.right {
+    .pui-button-icon {
+      margin-left: 2px;
+      order: 2;
+    }
+
+    .pui-button-text {
+      order: 1;
+    }
+  }
+
   &.small {
     font-size: 12px;
     line-height: 20px;
@@ -60,5 +109,21 @@
     padding: 6px 15px;
   }
 
+  &.dashed {
+    border-style: dashed;
+  }
 
+  &.ghost {
+    color: $white;
+    border-color: $white;
+    background-color: transparent;
+  }
+
+  &.primary {
+    color: $theme-color;
+  }
+
+  &:hover &-ripple {
+    animation: button-hover-animation 1s
+  }
 }
