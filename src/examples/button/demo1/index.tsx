@@ -14,8 +14,14 @@ const ButtonDemo1 = () => {
                 >
                     小小
                 </Button>
-                <Button loading>中中</Button>
-                <Button size={"large"} icon={'twitter'}>大大</Button>
+                <Button loading kind={"primary"}>中中</Button>
+                <Button size={"large"} icon={'twitter'} kind={'primary'} disabled>大大</Button>
+
+                <Button kind={'success'}>成功</Button>
+                <Button kind={'warning'}>警告</Button>
+                {/*<Button kind={'dashed'}>失败</Button>*/}
+                <Button>默认</Button>
+
             </div>
 
         </>

@@ -56,7 +56,7 @@ const Button: FC<ButtonProps> =
                 <span className={classes(componentName, "text")}>
                     {children}
                 </span>
-                <span className={classes(componentName,"ripple")}/>
+                {!disabled && <span className={classes(componentName, "ripple")}/>}
             </button>
         );
     };
