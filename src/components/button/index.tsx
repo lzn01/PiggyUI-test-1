@@ -13,7 +13,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     size?: "small" | "medium" | "large";
 }
 
-const componentName = "Button";
+const componentName = "button";
 
 const Button: FC<ButtonProps> =
     ({
@@ -30,12 +30,17 @@ const Button: FC<ButtonProps> =
          type,
          ...rest
      }) => {
-        const buttonClassName = classes(componentName, [className, kind, position, size], {ghost, disabled});
+        const buttonClassName = classes(
+            componentName,
+            "",
+            [className, kind ?? "default", position ?? "left", size ?? "medium"],
+            {ghost, disabled}
+        );
 
         const iconRenderHandler = () => {
-            const className = classes(componentName, "icon", [size], {loading});
+            const className = classes(componentName, "icon", [size ?? "medium"], {loading});
             return loading
-                ? <Icon name={"loading"} className={className}/>
+                ? <Icon name={"wechat"} className={className}/>
                 : icon && <Icon name={icon} className={className}/>;
         };
 

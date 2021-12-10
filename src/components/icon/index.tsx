@@ -22,8 +22,8 @@ const Icon: FC<IconProps> =
         return (
             <svg className={classes(componentName, "", [className])}
                  style={{
-                     width: `${size ?? 16}px`,
-                     height: `${size ?? 16}px`,
+                     width: size && `${size}px`,
+                     height: size && `${size}px`,
                      ...style
                  }}
                  {...rest}
