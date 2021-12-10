@@ -47,7 +47,7 @@ const Button: FC<ButtonProps> =
                 style={style}
                 {...rest}
             >
-                {iconRenderHandler}
+                {iconRenderHandler()}
                 <span className={classes(componentName, "inner")}>
                     {children}
                 </span>

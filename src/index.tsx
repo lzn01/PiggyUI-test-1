@@ -4,6 +4,7 @@ import {HashRouter as Router, Route, NavLink} from "react-router-dom";
 import "./index.scss";
 import IconExample from "./examples/icon";
 import ModalExample from "./examples/modal";
+import ButtonExample from "./examples/button";
 
 ReactDOM.render(
     <Router>
@@ -34,6 +35,7 @@ ReactDOM.render(
                 </aside>
                 <main>
                     <Route path="/icon" component={IconExample}/>
+                    <Route path="/button" component={ButtonExample}/>
                     <Route path="/modal" component={ModalExample}/>
                 </main>
             </div>
