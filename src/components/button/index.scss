@@ -114,8 +114,33 @@
     border-color: rgba(0, 0, 0, 0.15);
 
     &:hover {
-      background-color: $white;
-      border-color: $theme-color-hover;
+      color: $theme-color-emphasize;
+      border-color: $theme-color-emphasize;
+    }
+
+    &:focus {
+      outline: none;
+      color: $theme-color-emphasize;
+      border-color: $theme-color-emphasize;
+      z-index: 1;
+    }
+
+    &.ghost {
+      color: $white;
+      border-color: $white;
+      background-color: transparent;
+
+      &:hover {
+        color: $theme-color-emphasize;
+        border-color: $theme-color-emphasize;
+      }
+
+      &:focus {
+        outline: none;
+        color: $theme-color-emphasize;
+        border-color: $theme-color-emphasize;
+        z-index: 1;
+      }
     }
   }
 
@@ -125,8 +150,21 @@
     border-color: $theme-color;
 
     &:hover {
-      background-color: $theme-color-hover;
-      border-color: $theme-color-hover;
+      background-color: $theme-color-emphasize;
+      border-color: $theme-color-emphasize;
+    }
+
+    &:focus {
+      outline: none;
+      background-color: $theme-color-emphasize;
+      border-color: $theme-color-emphasize;
+      z-index: 1;
+    }
+
+    &.ghost {
+      color: $theme-color;
+      border-color: $theme-color;
+      background-color: transparent;
     }
   }
 
@@ -136,8 +174,21 @@
     border-color: $success;
 
     &:hover {
-      background-color: $success-hover;
-      border-color: $success-hover;
+      background-color: $success-emphasize;
+      border-color: $success-emphasize;
+    }
+
+    &:focus {
+      outline: none;
+      background-color: $success-emphasize;
+      border-color: $success-emphasize;
+      z-index: 1;
+    }
+
+    &.ghost {
+      color: $success;
+      border-color: $success;
+      background-color: transparent;
     }
   }
 
@@ -147,8 +198,21 @@
     border-color: $warning;
 
     &:hover {
-      background-color: $warning-hover;
-      border-color: $warning-hover;
+      background-color: $warning-emphasize;
+      border-color: $warning-emphasize;
+    }
+
+    &:focus {
+      outline: none;
+      background-color: $warning-emphasize;
+      border-color: $warning-emphasize;
+      z-index: 1;
+    }
+
+    &.ghost {
+      color: $warning;
+      border-color: $warning;
+      background-color: transparent;
     }
   }
 
@@ -158,8 +222,21 @@
     border-color: $danger;
 
     &:hover {
-      background-color: $danger-hover;
-      border-color: $danger-hover;
+      background-color: $danger-emphasize;
+      border-color: $danger-emphasize;
+    }
+
+    &:focus {
+      outline: none;
+      background-color: $danger-emphasize;
+      border-color: $danger-emphasize;
+      z-index: 1;
+    }
+
+    &.ghost {
+      color: $danger;
+      border-color: $danger;
+      background-color: transparent;
     }
   }
 
@@ -178,12 +255,6 @@
 
   &.dashed {
     border-style: dashed;
-  }
-
-  &.ghost {
-    color: $white;
-    border-color: $white;
-    background-color: transparent;
   }
 
   &:hover &-ripple {

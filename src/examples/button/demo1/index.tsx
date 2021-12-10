@@ -4,7 +4,7 @@ import Button from "../../../components/button";
 const ButtonDemo1 = () => {
     return (
         <>
-            <div style={{height:'50px',borderColor:"red",borderStyle:'solid'}}>
+            <div style={{height:'50px',borderColor:"red",borderStyle:'solid',backgroundColor:'#e3ecd9'}}>
                 <Button
                     disabled={false}
                     ghost={true}
@@ -21,7 +21,8 @@ const ButtonDemo1 = () => {
                 <Button kind={'warning'}>警告</Button>
                 {/*<Button kind={'dashed'}>失败</Button>*/}
                 <Button>默认</Button>
-
+                <Button ghost>鬼鬼</Button>
+                <Button kind={'danger'}>大的</Button>
             </div>
 
         </>
