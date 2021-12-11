@@ -1,5 +1,5 @@
 import * as React from "react";
-import {FC, HTMLAttributes} from "react";
+import type {FC, HTMLAttributes} from "react";
 import "./index.scss";
 import classes from "../../../common/methods/classes";
 

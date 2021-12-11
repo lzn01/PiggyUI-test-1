@@ -35,10 +35,10 @@
   cursor: pointer;
   transition: all 0.3s cubic-bezier(.645, .045, .355, 1); // 从开始到结束的不同速度过渡效果
   &:hover &-ripple {
-    animation: button-hover-animation 1s
+    animation: button-hover-animation 1s;
   }
 
-  &:focus {
+  &:focus, &:hover {
     outline: none;
     z-index: 1;
   }
@@ -130,8 +130,8 @@
     border-color: rgba(0, 0, 0, 0.15);
 
     &:hover, &:focus {
-      color: $theme-color-emphasize;
-      border-color: $theme-color-emphasize;
+      color: lighten($theme-color, 10%);
+      border-color: lighten($theme-color, 10%);
     }
 
     &.ghost {
@@ -140,8 +140,8 @@
       border-color: $white;
 
       &:hover, &:focus {
-        color: $theme-color-emphasize;
-        border-color: $theme-color-emphasize;
+        color: lighten($theme-color, 10%);
+        border-color: lighten($theme-color, 10%);
       }
     }
   }
@@ -151,8 +151,8 @@
     border-color: $theme-color;
 
     &:hover, &:focus {
-      background-color: $theme-color-emphasize;
-      border-color: $theme-color-emphasize;
+      background-color: lighten($theme-color, 10%);
+      border-color: lighten($theme-color, 10%);
     }
 
     &.ghost {
@@ -160,8 +160,8 @@
       background-color: transparent;
 
       &:hover, &:focus {
-        color: $theme-color-emphasize;
-        border-color: $theme-color-emphasize;
+        color: lighten($theme-color, 10%);
+        border-color: lighten($theme-color, 10%);
       }
     }
   }
@@ -171,8 +171,8 @@
     border-color: $success;
 
     &:hover, &:focus {
-      background-color: $success-emphasize;
-      border-color: $success-emphasize;
+      background-color: lighten($success, 10%);
+      border-color: lighten($success, 10%);
     }
 
     &.ghost {
@@ -180,8 +180,8 @@
       background-color: transparent;
 
       &:hover, &:focus {
-        color: $success-emphasize;
-        border-color: $success-emphasize;
+        color: lighten($success, 10%);
+        border-color: lighten($success, 10%);
       }
     }
   }
@@ -191,8 +191,8 @@
     border-color: $warning;
 
     &:hover, &:focus {
-      background-color: $warning-emphasize;
-      border-color: $warning-emphasize;
+      background-color: lighten($warning, 10%);
+      border-color: lighten($warning, 10%);
     }
 
     &.ghost {
@@ -200,8 +200,8 @@
       background-color: transparent;
 
       &:hover, &:focus {
-        color: $warning-emphasize;
-        border-color: $warning-emphasize;
+        color: lighten($warning, 10%);
+        border-color: lighten($warning, 10%);
       }
     }
   }
@@ -211,8 +211,8 @@
     border-color: $danger;
 
     &:hover, &:focus {
-      background-color: $danger-emphasize;
-      border-color: $danger-emphasize;
+      background-color: lighten($danger, 10%);
+      border-color: lighten($danger, 10%);
     }
 
     &.ghost {
@@ -220,8 +220,8 @@
       background-color: transparent;
 
       &:hover, &:focus {
-        color: $danger-emphasize;
-        border-color: $danger-emphasize;
+        color: lighten($danger, 10%);
+        border-color: lighten($danger, 10%);
       }
     }
   }

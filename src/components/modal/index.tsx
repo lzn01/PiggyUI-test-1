@@ -1,5 +1,5 @@
 import * as React from "react";
-import {FC} from "react";
+import type {FC} from "react";
 import "./index.scss";
 import classes from "../../common/methods/classes";
 import Icon from "../icon";
