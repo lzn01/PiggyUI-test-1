@@ -25,6 +25,21 @@ const ButtonDemo1 = () => {
                 <Button kind={'danger'}>大的</Button>
             </div>
 
+            <div style={{height:'50px',borderColor:"red",borderStyle:'solid',backgroundColor:'#e3ecd9'}}>
+                <Button kind={"primary"} className={'success'}>按钮</Button>
+                <Button kind={"primary"} ghost>按钮</Button>
+                <Button kind={"success"}>按钮</Button>
+                <Button kind={"success"} ghost>按钮</Button>
+                <Button kind={"warning"}>按钮</Button>
+                <Button kind={"warning"} ghost>按钮</Button>
+                <Button kind={"danger"}>按钮</Button>
+                <Button kind={"danger"} ghost>按钮</Button>
+                <Button kind={"dashed"}>按钮</Button>
+                <Button kind={"dashed"} ghost>按钮</Button>
+                <Button kind={"default"}>按钮</Button>
+                <Button kind={"default"} ghost>按钮</Button>
+            </div>
+
         </>
     );
 };

@@ -38,10 +38,10 @@ const Button: FC<ButtonProps> =
         );
 
         const iconRenderHandler = () => {
-            const className = classes(componentName, "icon", [size ?? "medium"], {loading});
+            const iconClassName = classes(componentName, "icon", [size ?? "medium"], {loading});
             return loading
-                ? <Icon name={"wechat"} className={className}/>
-                : icon && <Icon name={icon} className={className}/>;
+                ? <Icon name={"wechat"} className={iconClassName}/>
+                : icon && <Icon name={icon} className={iconClassName}/>;
         };
 
         return (

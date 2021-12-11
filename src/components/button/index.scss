@@ -108,135 +108,109 @@
     padding: 6px 15px;
   }
 
+  &.primary, &.success, &.warning, &.danger {
+    color: $white;
+  }
+
   &.default {
     color: rgba(0, 0, 0, 0.65);
     background-color: $white;
     border-color: rgba(0, 0, 0, 0.15);
 
-    &:hover {
+    &:hover, &:focus {
       color: $theme-color-emphasize;
       border-color: $theme-color-emphasize;
-    }
-
-    &:focus {
-      outline: none;
-      color: $theme-color-emphasize;
-      border-color: $theme-color-emphasize;
-      z-index: 1;
     }
 
     &.ghost {
       color: $white;
-      border-color: $white;
       background-color: transparent;
+      border-color: $white;
 
-      &:hover {
+      &:hover, &:focus {
         color: $theme-color-emphasize;
         border-color: $theme-color-emphasize;
-      }
-
-      &:focus {
-        outline: none;
-        color: $theme-color-emphasize;
-        border-color: $theme-color-emphasize;
-        z-index: 1;
       }
     }
   }
 
   &.primary {
-    color: $white;
     background-color: $theme-color;
     border-color: $theme-color;
 
-    &:hover {
+    &:hover, &:focus {
       background-color: $theme-color-emphasize;
       border-color: $theme-color-emphasize;
-    }
-
-    &:focus {
-      outline: none;
-      background-color: $theme-color-emphasize;
-      border-color: $theme-color-emphasize;
-      z-index: 1;
     }
 
     &.ghost {
       color: $theme-color;
-      border-color: $theme-color;
       background-color: transparent;
+
+      &:hover, &:focus {
+        color: $theme-color-emphasize;
+        border-color: $theme-color-emphasize;
+      }
     }
   }
 
   &.success {
-    color: $white;
     background-color: $success;
     border-color: $success;
 
-    &:hover {
+    &:hover, &:focus {
       background-color: $success-emphasize;
       border-color: $success-emphasize;
-    }
-
-    &:focus {
-      outline: none;
-      background-color: $success-emphasize;
-      border-color: $success-emphasize;
-      z-index: 1;
     }
 
     &.ghost {
       color: $success;
-      border-color: $success;
       background-color: transparent;
+
+      &:hover, &:focus {
+        color: $success-emphasize;
+        border-color: $success-emphasize;
+      }
     }
   }
 
   &.warning {
-    color: $white;
     background-color: $warning;
     border-color: $warning;
 
-    &:hover {
+    &:hover, &:focus {
       background-color: $warning-emphasize;
       border-color: $warning-emphasize;
-    }
-
-    &:focus {
-      outline: none;
-      background-color: $warning-emphasize;
-      border-color: $warning-emphasize;
-      z-index: 1;
     }
 
     &.ghost {
       color: $warning;
-      border-color: $warning;
       background-color: transparent;
+
+      &:hover, &:focus {
+        color: $warning-emphasize;
+        border-color: $warning-emphasize;
+      }
     }
   }
 
   &.danger {
-    color: $white;
     background-color: $danger;
     border-color: $danger;
 
-    &:hover {
+    &:hover, &:focus {
       background-color: $danger-emphasize;
       border-color: $danger-emphasize;
-    }
-
-    &:focus {
-      outline: none;
-      background-color: $danger-emphasize;
-      border-color: $danger-emphasize;
-      z-index: 1;
     }
 
     &.ghost {
       color: $danger;
-      border-color: $danger;
       background-color: transparent;
+
+      &:hover, &:focus {
+        color: $danger-emphasize;
+        border-color: $danger-emphasize;
+      }
     }
   }
 
@@ -259,6 +233,11 @@
 
   &:hover &-ripple {
     animation: button-hover-animation 1s
+  }
+
+  &:focus {
+    outline: none;
+    z-index: 1;
   }
 
   .loading {
