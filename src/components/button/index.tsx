@@ -33,7 +33,7 @@ const Button: FC<ButtonProps> =
         const buttonClassName = classes(
             componentName,
             "",
-            [className, kind ?? "default", position ?? "left", size ?? "medium"],
+            [className, `p-${kind ?? "default"}`, `p-${position ?? "left"}`, `p-${size ?? "medium"}`],
             {ghost, disabled}
         );
 

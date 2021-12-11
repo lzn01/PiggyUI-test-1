@@ -1,4 +1,4 @@
-@import "../../common/styles/themeColors";
+@import "../../common/styles/mixins";
 
 @keyframes button-loading-spin {
   from {
@@ -34,6 +34,14 @@
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(.645, .045, .355, 1); // 从开始到结束的不同速度过渡效果
+  &:hover &-ripple {
+    animation: button-hover-animation 1s
+  }
+
+  &:focus {
+    outline: none;
+    z-index: 1;
+  }
 
   &-text {
     font-size: inherit;
@@ -68,7 +76,7 @@
     }
   }
 
-  &.left {
+  &.p-left {
     .pui-button-icon {
       margin-right: 2px;
       order: 1;
@@ -79,7 +87,7 @@
     }
   }
 
-  &.right {
+  &.p-right {
     .pui-button-icon {
       margin-left: 2px;
       order: 2;
@@ -90,29 +98,33 @@
     }
   }
 
-  &.small {
+  &.p-small {
     font-size: 12px;
     line-height: 20px;
     padding: 2px 10px;
   }
 
-  &.medium {
+  &.p-medium {
     font-size: 14px;
     line-height: 22px;
     padding: 4px 15px;
   }
 
-  &.large {
+  &.p-large {
     font-size: 16px;
     line-height: 24px;
     padding: 6px 15px;
   }
 
-  &.primary, &.success, &.warning, &.danger {
+  &.p-dashed {
+    border-style: dashed;
+  }
+
+  &.p-primary, &.p-success, &.p-warning, &.p-danger {
     color: $white;
   }
 
-  &.default {
+  &.p-default, &.p-dashed {
     color: rgba(0, 0, 0, 0.65);
     background-color: $white;
     border-color: rgba(0, 0, 0, 0.15);
@@ -134,7 +146,7 @@
     }
   }
 
-  &.primary {
+  &.p-primary {
     background-color: $theme-color;
     border-color: $theme-color;
 
@@ -154,7 +166,7 @@
     }
   }
 
-  &.success {
+  &.p-success {
     background-color: $success;
     border-color: $success;
 
@@ -174,7 +186,7 @@
     }
   }
 
-  &.warning {
+  &.p-warning {
     background-color: $warning;
     border-color: $warning;
 
@@ -194,7 +206,7 @@
     }
   }
 
-  &.danger {
+  &.p-danger {
     background-color: $danger;
     border-color: $danger;
 
@@ -225,19 +237,6 @@
       background-color: $disable;
       border-color: rgba(217, 217, 217, 1);
     }
-  }
-
-  &.dashed {
-    border-style: dashed;
-  }
-
-  &:hover &-ripple {
-    animation: button-hover-animation 1s
-  }
-
-  &:focus {
-    outline: none;
-    z-index: 1;
   }
 
   .loading {
