@@ -3,6 +3,8 @@ import "./index.scss";
 import type {ButtonHTMLAttributes, FC} from "react";
 import classes from "../../common/methods/classes";
 import Icon from "../icon";
+import Wave from "../../common/component/Wave";
+import {useRef} from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     ghost?: boolean;
@@ -30,6 +32,7 @@ const Button: FC<ButtonProps> =
          type,
          ...rest
      }) => {
+        const buttonRef = useRef<HTMLButtonElement | null>(null);
         const buttonClassName = classes(
             componentName,
             "",
@@ -45,19 +48,22 @@ const Button: FC<ButtonProps> =
         };
 
         return (
-            <button
-                className={buttonClassName}
-                disabled={disabled}
-                type={type}
-                style={style}
-                {...rest}
-            >
-                {iconRenderHandler()}
-                <span className={classes(componentName, "text")}>
+            <Wave>
+                <button
+                    className={buttonClassName}
+                    disabled={disabled}
+                    type={type}
+                    style={style}
+                    ref={buttonRef}
+                    {...rest}
+                >
+                    {iconRenderHandler()}
+                    <span className={classes(componentName, "text")}>
                     {children}
                 </span>
-                {!disabled && <span className={classes(componentName, "ripple")}/>}
-            </button>
+                    {!disabled && <span className={classes(componentName, "ripple")}/>}
+                </button>
+            </Wave>
         );
     };
 export default Button;
