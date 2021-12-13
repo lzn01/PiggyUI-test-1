@@ -32,7 +32,7 @@ const Wave: FC = ({children}) => {
     }, [animationOnStart, animationToEnd, children]);
 
     return (
-        <>{children}</>
+        <> {children} </>
     );
 };
 
