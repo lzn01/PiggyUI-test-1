@@ -5,21 +5,22 @@ import {useCallback, useEffect, useRef} from "react";
 import classes from "../../methods/classes";
 
 const Wave: FC = ({children}) => {
-    const animating = useRef<boolean | null>(null);
-    const originClassName = useRef<string>("");
+    const active = useRef<boolean>(false);
+    const originCN = useRef<string>("");
 
     const animationToEnd = useCallback((node: HTMLElement) => {
-        animating.current = false;
-        node.className = classes("", [originClassName]);
+        active.current = false;
+        node.className = classes("", [originCN.current]);
         node.removeEventListener("animationend", () => animationToEnd(node));
     }, []);
 
     const animationOnStart = useCallback((node: HTMLElement) => {
-        if (animating.current) return;
-        animating.current = true;
-        originClassName.current = node.className;
-        node.className = classes("", [originClassName, "pui-wave-animation-animating"]);
-        node.addEventListener("animationend", () => animationToEnd(node));
+        if (!active.current) {
+            active.current = true;
+            originCN.current = node.className;
+            node.className = classes("", [originCN.current, "pui-wave-animation-animating"]);
+            node.addEventListener("animationend", () => animationToEnd(node));
+        }
     }, [animationToEnd]);
 
     useEffect(() => {
@@ -31,9 +32,7 @@ const Wave: FC = ({children}) => {
         };
     }, [animationOnStart, animationToEnd, children]);
 
-    return (
-        <>{children}</>
-    );
+    return (<>{children}</>);
 };
 
 export default Wave;
