@@ -22,18 +22,13 @@ const Transition: FC<TransitionProps> =
          visible,
          ...rest
      }) => {
-        const defaultTransitionActive = {
-            transition: "300ms all cubic-bezier(.645, .045, .355, 1)"
-        };
-
         const nodeStyleHandler = (node: HTMLElement, css: any) => {
             Object.keys(css).forEach((key) => {
                 node.style[key as any] = css[key];
             });
         };
-
         const nodeHandler = useCallback((node: HTMLElement) => {
-            node.style.display = visible ? "" : "none";
+            node.style.display = "";
             nodeStyleHandler(node, {
                 transition: "",
                 ...visible
@@ -42,7 +37,7 @@ const Transition: FC<TransitionProps> =
             });
             node.getBoundingClientRect();
             nodeStyleHandler(node, {
-                ...transitionActive ?? defaultTransitionActive,
+                ...transitionActive ?? {transition: "300ms all cubic-bezier(.645, .045, .355, 1)"},
                 ...visible
                     ? (afterEnter || beforeLeave || {})
                     : (afterLeave || beforeEnter || {})
@@ -52,16 +47,19 @@ const Transition: FC<TransitionProps> =
         useEffect(() => {
             if (!(children as any).ref) return;
             const node = (children as any).ref.current;
-            node.addEventListener("transitionend", () => nodeHandler(node));
+            node.addEventListener("transitionend", () => {
+                node.style.display = visible ? "" : "none";
+            });
+            nodeHandler(node);
             return () => {
-                node.removeEventListener("transitionend", () => nodeHandler(node));
+                node.removeEventListener("transitionend", () => {
+                    node.style.display = visible ? "" : "none";
+                });
             };
-        }, [children, nodeHandler]);
+        }, [children, visible]);
 
         return (
-            visible
-                ? React.cloneElement(children as React.ReactElement<{}>, rest)
-                : null
+            React.cloneElement(children as React.ReactElement, rest)
         );
     };
 export default Transition;

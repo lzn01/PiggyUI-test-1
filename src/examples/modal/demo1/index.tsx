@@ -3,7 +3,7 @@ import {useState} from "react";
 import Modal from "../../../components/modal";
 
 const ModalDemo1 = () => {
-    const [visible, setVisible] = useState(false);
+    const [visible, setVisible] = useState(true);
     return (
         <div>
             <button onClick={() => setVisible(!visible)}>
