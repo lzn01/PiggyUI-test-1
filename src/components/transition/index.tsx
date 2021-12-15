@@ -48,23 +48,26 @@ const Transition: FC<TransitionProps> =
             setRendered(true);
         }, [afterEnter, afterLeave, beforeEnter, beforeLeave, transitionActive, visible]);
 
+        const transitionendHandler = useCallback((node: HTMLElement) => {
+            node.style.display = visible ? "" : "none";
+        }, [visible]);
+
         useEffect(() => {
             if (!(children as any).ref.current) return;
             const node = (children as any).ref.current;
             nodeHandler(node);
-            node.addEventListener("transitionend", () => {
-                node.style.display = visible ? "" : "none";
-            });
+            node.addEventListener("transitionend", () => transitionendHandler(node));
             return () => {
-                node.removeEventListener("transitionend", () => {
-                    node.style.display = visible ? "" : "none";
-                });
+                node.addEventListener("transitionend", () => transitionendHandler(node));
             };
-        }, [children, nodeHandler, visible]);
+        }, [children, nodeHandler, transitionendHandler, visible]);
 
         return (
             visible || rendered
-                ? React.cloneElement(children as React.ReactElement<{}>, rest)
+                ? React.cloneElement(
+                    children as React.ReactElement,
+                    {...rest, style: {display: "none"}}
+                )
                 : null
         );
     };
