@@ -1,9 +1,9 @@
 import * as React from "react";
 import type {FC} from "react";
-import "./index.scss";
-import classes from "../../common/methods/classes";
-import Icon from "../icon";
 import {useRef} from "react";
+import "./index.scss";
+import Icon from "../icon";
+import classes from "../../common/methods/classes";
 import Transition from "../../common/components/transition";
 
 interface ModalProps {

@@ -5,7 +5,7 @@ import ButtonGroup from "../../../components/button/buttonGroup";
 const ButtonDemo1 = () => {
     return (
         <>
-            <div style={{height: "50px", borderColor: "red", borderStyle: "solid", backgroundColor: "#e3ecd9"}}>
+            <div style={{height: "50px", backgroundColor: "#d9ece2"}}>
                 <Button loading kind={"primary"}>中中</Button>
                 <Button size={"large"} icon={"twitter"} kind={"primary"} disabled position={"right"}>大大</Button>
                 <Button kind={"success"}>成功</Button>
@@ -16,7 +16,7 @@ const ButtonDemo1 = () => {
                 <Button kind={"danger"}>大的</Button>
             </div>
 
-            <div style={{height: "50px", borderColor: "red", borderStyle: "solid", backgroundColor: "#e3ecd9"}}>
+            <div style={{height: "50px", backgroundColor: "#a6be8b"}}>
                 <Button kind={"primary"} className={"success"}>按钮</Button>
                 <Button kind={"primary"} ghost>按钮</Button>
                 <Button kind={"success"}>按钮</Button>
