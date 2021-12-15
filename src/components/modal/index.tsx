@@ -6,14 +6,14 @@ import Icon from "../icon";
 import {useRef} from "react";
 import Transition from "../../common/components/transition";
 
-interface DialogProps {
+interface ModalProps {
     visible: boolean;
     className?: string;
 }
 
 const componentName = "modal";
 
-const Modal: FC<DialogProps> =
+const Modal: FC<ModalProps> =
     ({
          children,
          className,
@@ -65,7 +65,6 @@ const Modal: FC<DialogProps> =
                     </div>
                 </Transition>
             </>
-
         );
     };
 export default Modal;

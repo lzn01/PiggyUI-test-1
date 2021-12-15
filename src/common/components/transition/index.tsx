@@ -58,7 +58,7 @@ const Transition: FC<TransitionProps> =
             nodeHandler(node);
             node.addEventListener("transitionend", () => transitionendHandler(node));
             return () => {
-                node.addEventListener("transitionend", () => transitionendHandler(node));
+                node.removeEventListener("transitionend", () => transitionendHandler(node));
             };
         }, [children, nodeHandler, transitionendHandler, visible]);
 
