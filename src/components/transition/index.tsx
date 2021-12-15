@@ -47,19 +47,22 @@ const Transition: FC<TransitionProps> =
         useEffect(() => {
             if (!(children as any).ref) return;
             const node = (children as any).ref.current;
-            node.addEventListener("transitionend", () => {
+            if (!node) return;
+            node?.addEventListener("transitionend", () => {
                 node.style.display = visible ? "" : "none";
             });
             nodeHandler(node);
             return () => {
-                node.removeEventListener("transitionend", () => {
+                node?.removeEventListener("transitionend", () => {
                     node.style.display = visible ? "" : "none";
                 });
             };
         }, [children, visible]);
 
         return (
-            React.cloneElement(children as React.ReactElement, rest)
+            visible
+                ? React.cloneElement(children as React.ReactElement, rest)
+                : null
         );
     };
 export default Transition;

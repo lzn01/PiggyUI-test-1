@@ -24,17 +24,20 @@ const Modal: FC<DialogProps> =
             <Transition
                 visible={visible}
                 beforeEnter={{
+                    top: "50%",
                     opacity: 0,
-                    transform: 'translateX(-50%) translateY(-50%) scale(0)',
-                    top: '50%'
+                    transform: "translateX(-50%) translateY(-50%) scale(0)"
                 }}
                 afterEnter={{
+                    top: "30%",
                     opacity: 1,
-                    transform: 'translateX(-50%) translateY(-50%) scale(1)',
-                    top: '30%'
+                    transform: "translateX(-50%) translateY(-50%) scale(1)"
                 }}
             >
-                <div className={classes(componentName, "", [className])} ref={modalRef}>
+                <div
+                    className={classes(componentName, "", [className])}
+                    ref={modalRef}
+                >
                     <div className={classes(componentName, "close")}>
                         <Icon name={"wechat"}/>
                     </div>
