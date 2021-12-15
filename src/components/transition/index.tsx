@@ -1,6 +1,6 @@
 import * as React from "react";
 import type {FC} from "react";
-import {useCallback, useEffect} from "react";
+import {useCallback, useEffect, useState} from "react";
 
 interface TransitionProps {
     afterEnter?: React.CSSProperties;
@@ -22,6 +22,8 @@ const Transition: FC<TransitionProps> =
          visible,
          ...rest
      }) => {
+        const [rendered, setRendered] = useState(false);
+
         const nodeStyleHandler = (node: HTMLElement, css: any) => {
             Object.keys(css).forEach((key) => {
                 node.style[key as any] = css[key];
@@ -43,25 +45,26 @@ const Transition: FC<TransitionProps> =
                     ? (afterEnter || beforeLeave || {})
                     : (afterLeave || beforeEnter || {})
             });
+            setRendered(true);
         }, [afterEnter, afterLeave, beforeEnter, beforeLeave, transitionActive, visible]);
 
         useEffect(() => {
             if (!(children as any).ref.current) return;
             const node = (children as any).ref.current;
             nodeHandler(node);
-            node?.addEventListener("transitionend", () => {
+            node.addEventListener("transitionend", () => {
                 node.style.display = visible ? "" : "none";
             });
             return () => {
-                node?.removeEventListener("transitionend", () => {
+                node.removeEventListener("transitionend", () => {
                     node.style.display = visible ? "" : "none";
                 });
             };
         }, [children, nodeHandler, visible]);
 
         return (
-            visible
-                ? React.cloneElement(children as React.ReactElement, rest)
+            visible || rendered
+                ? React.cloneElement(children as React.ReactElement<{}>, rest)
                 : null
         );
     };
