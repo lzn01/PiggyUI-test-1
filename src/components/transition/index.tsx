@@ -27,6 +27,7 @@ const Transition: FC<TransitionProps> =
                 node.style[key as any] = css[key];
             });
         };
+
         const nodeHandler = useCallback((node: HTMLElement) => {
             node.style.display = "";
             nodeStyleHandler(node, {
@@ -42,22 +43,21 @@ const Transition: FC<TransitionProps> =
                     ? (afterEnter || beforeLeave || {})
                     : (afterLeave || beforeEnter || {})
             });
-        }, [visible]);
+        }, [afterEnter, afterLeave, beforeEnter, beforeLeave, transitionActive, visible]);
 
         useEffect(() => {
-            if (!(children as any).ref) return;
+            if (!(children as any).ref.current) return;
             const node = (children as any).ref.current;
-            if (!node) return;
+            nodeHandler(node);
             node?.addEventListener("transitionend", () => {
                 node.style.display = visible ? "" : "none";
             });
-            nodeHandler(node);
             return () => {
                 node?.removeEventListener("transitionend", () => {
                     node.style.display = visible ? "" : "none";
                 });
             };
-        }, [children, visible]);
+        }, [children, nodeHandler, visible]);
 
         return (
             visible
