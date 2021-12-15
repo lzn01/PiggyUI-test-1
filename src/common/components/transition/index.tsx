@@ -35,15 +35,15 @@ const Transition: FC<TransitionProps> =
             nodeStyleHandler(node, {
                 transition: "",
                 ...visible
-                    ? (beforeEnter || afterLeave || {})
-                    : (beforeLeave || afterEnter || {})
+                    ? beforeEnter || afterLeave || {}
+                    : beforeLeave || afterEnter || {}
             });
             node.getBoundingClientRect();
             nodeStyleHandler(node, {
                 ...transitionActive ?? {transition: "300ms all cubic-bezier(.645, .045, .355, 1)"},
                 ...visible
-                    ? (afterEnter || beforeLeave || {})
-                    : (afterLeave || beforeEnter || {})
+                    ? afterEnter || beforeLeave || {}
+                    : afterLeave || beforeEnter || {}
             });
             setRendered(true);
         }, [afterEnter, afterLeave, beforeEnter, beforeLeave, transitionActive, visible]);
@@ -53,7 +53,7 @@ const Transition: FC<TransitionProps> =
         }, [visible]);
 
         useEffect(() => {
-            if (!(children as any).ref.current) return;
+            if (!(children as any).ref?.current) return;
             const node = (children as any).ref.current;
             nodeHandler(node);
             node.addEventListener("transitionend", () => transitionendHandler(node));

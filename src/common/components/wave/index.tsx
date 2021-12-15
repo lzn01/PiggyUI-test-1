@@ -24,7 +24,7 @@ const Wave: FC = ({children}) => {
     }, [animationToEnd]);
 
     useEffect(() => {
-        if (!(children as any).ref) return;
+        if (!(children as any).ref?.current) return;
         const node = (children as any).ref.current;
         node.addEventListener("click", () => animationOnStart(node));
         return () => {

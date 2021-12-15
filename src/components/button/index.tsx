@@ -3,7 +3,7 @@ import "./index.scss";
 import type {ButtonHTMLAttributes, FC} from "react";
 import classes from "../../common/methods/classes";
 import Icon from "../icon";
-import Wave from "../../common/components/Wave";
+import Wave from "../../common/components/wave";
 import {useRef} from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
