@@ -5,6 +5,7 @@ import "./index.scss";
 import IconExample from "./examples/icon";
 import ModalExample from "./examples/modal";
 import ButtonExample from "./examples/button";
+import GridExample from "./examples/grid";
 
 ReactDOM.render(
     <Router>
@@ -29,7 +30,7 @@ ReactDOM.render(
                             <NavLink to="/modal">对话框</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/layout">布局</NavLink>
+                            <NavLink to="/grid">布局</NavLink>
                         </li>
                     </ul>
                 </aside>
@@ -37,6 +38,7 @@ ReactDOM.render(
                     <Route path="/icon" component={IconExample}/>
                     <Route path="/button" component={ButtonExample}/>
                     <Route path="/modal" component={ModalExample}/>
+                    <Route path="/grid" component={GridExample}/>
                 </main>
             </div>
         </div>
