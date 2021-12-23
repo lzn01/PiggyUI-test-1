@@ -21,6 +21,7 @@ const Modal: FC<ModalProps> =
      }) => {
         const markRef = useRef<HTMLDivElement | null>(null);
         const modalRef = useRef<HTMLDivElement | null>(null);
+
         return (
             <>
                 <Transition

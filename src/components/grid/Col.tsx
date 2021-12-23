@@ -1,8 +1,7 @@
 import * as React from "react";
 import type {FC} from "react";
 import "./index.scss";
-
-// import classes from "../../common/methods/classes";
+import classes from "../../common/methods/classes";
 
 interface Option {
     span: number; // 栅格占位格数
@@ -15,15 +14,15 @@ interface ColProps {
     span?: number;
     offset?: number;
     style?: React.CSSProperties;
-    xs?: Option;
-    sm?: Option;
-    md?: Option;
-    lg?: Option;
-    xl?: Option;
-    xxl?: Option;
+    xs?: number | Option;
+    sm?: number | Option;
+    md?: number | Option;
+    lg?: number | Option;
+    xl?: number | Option;
+    xxl?: number | Option;
 }
 
-// const componentName = "col";
+const componentName = "col";
 
 const Col: FC<ColProps> =
     ({
@@ -42,21 +41,37 @@ const Col: FC<ColProps> =
          ...rest
      }) => {
         const classNameHandler = (): string[] => {
-            const classNameArray = [`col-span-${span}`, `col-offset-${offset}`];
-            const responseSizeKeys = [xs, sm, md, lg, xl, xxl];
-            responseSizeKeys.forEach(size => {
+            const responseSizes: any = {xs, sm, md, lg, xl, xxl};
+            const classNameArray = className
+                ? [`col-span-${span ?? 0}`, `col-offset-${offset ?? 0}`, className]
+                : [`col-span-${span ?? 0}`, `col-offset-${offset ?? 0}`];
 
-            });
-            const options: any = {sm, md, lg, xl};
-            Object.keys(options).forEach(key => {
-                if (options[key]) {
-                    console.log(options[key]);
+            Object.keys(responseSizes).forEach(key => {
+                if (typeof responseSizes[key] === "object") {
+                    const {span: sizeSpan, offset: sizeOffset} = responseSizes[key];
+                    classNameArray.push(`${key}-col-span-${sizeSpan}`);
+                    classNameArray.push(`${key}-col-offset-${sizeOffset ?? 0}`);
+                }
+                if (typeof responseSizes[key] === "number") {
+                    classNameArray.push(`${key}-col-span-${responseSizes[key]}`);
+                    classNameArray.push(`${key}-col-offset-0`);
                 }
             });
             return classNameArray;
         };
+
         return (
-            <div/>
+            <div
+                className={classes(componentName, "", classNameHandler())}
+                style={{
+                    paddingLeft: `${gutter! / 2}px`,
+                    paddingRight: `${gutter! / 2}px`,
+                    ...style
+                }}
+                {...rest}
+            >
+                {children}
+            </div>
         );
     };
 export default Col;
