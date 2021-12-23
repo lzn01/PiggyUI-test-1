@@ -1,19 +1,12 @@
 import * as React from "react";
 import type {FC} from "react";
-import "./index.scss";
-import classes from "../../common/methods/classes";
+import "../index.scss";
+import classes from "../../../common/methods/classes";
+import type {GridProps, Option} from "../data";
 
-interface Option {
-    span: number; // 栅格占位格数
-    offset?: number; // 栅格向右偏移的格数
-}
-
-interface ColProps {
-    className?: string;
-    gutter?: number; // 栅格间隔
+interface ColProps extends GridProps {
     span?: number;
     offset?: number;
-    style?: React.CSSProperties;
     xs?: number | Option;
     sm?: number | Option;
     md?: number | Option;

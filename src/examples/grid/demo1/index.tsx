@@ -1,5 +1,5 @@
 import * as React from "react";
-import Col from "../../../components/grid/Col";
+import Col from "../../../components/grid/index/Col";
 
 const GridDemo1 = () => {
     return (
