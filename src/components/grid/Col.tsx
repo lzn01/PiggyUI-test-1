@@ -64,8 +64,8 @@ const Col: FC<ColProps> =
             <div
                 className={classes(componentName, "", classNameHandler())}
                 style={{
-                    paddingLeft: `${gutter! / 2}px`,
-                    paddingRight: `${gutter! / 2}px`,
+                    paddingLeft: `${gutter ?? 0 / 2}px`,
+                    paddingRight: `${gutter ?? 0 / 2}px`,
                     ...style
                 }}
                 {...rest}
