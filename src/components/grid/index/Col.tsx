@@ -4,7 +4,7 @@ import "../index.scss";
 import classes from "../../../common/methods/classes";
 import type {GridProps, Option} from "../data";
 
-interface ColProps extends GridProps {
+export interface ColProps extends GridProps {
     span?: number;
     offset?: number;
     xs?: number | Option;

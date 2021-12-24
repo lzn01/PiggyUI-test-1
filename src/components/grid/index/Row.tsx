@@ -28,9 +28,12 @@ const Row: FC<RowProps> =
                 }}
                 {...rest}
             >
-                {React.Children.map(children, child => (
-                    React.cloneElement(child as React.ReactElement<ColProps>, {gutter})
-                ))}
+                {
+                    React.Children.map(children, child => (
+                            React.cloneElement(child as React.ReactElement<ColProps>, {gutter})
+                        )
+                    )
+                }
             </div>
         );
     };
