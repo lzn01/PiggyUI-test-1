@@ -2,11 +2,8 @@ import * as React from "react";
 import type {FC} from "react";
 import "../index.scss";
 import classes from "../../../common/methods/classes";
-import type {GridProps} from "../data";
+import type {RowProps} from "./data";
 import type {ColProps} from "./Col";
-
-interface RowProps extends GridProps {
-}
 
 const componentName = "col";
 

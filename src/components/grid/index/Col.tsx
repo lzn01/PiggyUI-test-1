@@ -2,7 +2,7 @@ import * as React from "react";
 import type {FC} from "react";
 import "../index.scss";
 import classes from "../../../common/methods/classes";
-import type {GridProps, Option} from "../data";
+import type {GridProps, Option} from "./data";
 
 export interface ColProps extends GridProps {
     span?: number;

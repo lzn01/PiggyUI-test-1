@@ -10,3 +10,6 @@ export interface GridProps {
     gutter?: number; // 栅格间隔
     style?: React.CSSProperties;
 }
+
+export interface RowProps extends GridProps {
+}
