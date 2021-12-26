@@ -5,7 +5,7 @@ import classes from "../../../common/methods/classes";
 import type {RowProps} from "./data";
 import type {ColProps} from "./Col";
 
-const componentName = "col";
+const componentName = "row";
 
 const Row: FC<RowProps> =
     ({
