@@ -59,8 +59,8 @@ const Button: FC<ButtonProps> =
                 >
                     {iconRenderHandler()}
                     <span className={classes(componentName, "text")}>
-                    {children}
-                </span>
+                        {children}
+                    </span>
                     {!disabled && <span className={classes(componentName, "ripple")}/>}
                 </button>
             </Wave>
