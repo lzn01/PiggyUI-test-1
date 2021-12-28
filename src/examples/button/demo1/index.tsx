@@ -5,17 +5,6 @@ import ButtonGroup from "../../../components/button/buttonGroup";
 const ButtonDemo1 = () => {
     return (
         <>
-            <div style={{height: "50px", backgroundColor: "#d9ece2"}}>
-                <Button loading kind={"primary"}>中中</Button>
-                <Button size={"large"} icon={"twitter"} kind={"primary"} disabled position={"right"}>大大</Button>
-                <Button kind={"success"}>成功</Button>
-                <Button kind={"warning"}>警告</Button>
-                {/*<Button kind={'dashed'}>失败</Button>*/}
-                <Button>默认</Button>
-                <Button ghost>鬼鬼</Button>
-                <Button kind={"danger"}>大的</Button>
-            </div>
-
             <div style={{height: "50px", backgroundColor: "#a6be8b"}}>
                 <Button kind={"primary"} className={"success"}>按钮</Button>
                 <Button kind={"primary"} ghost>按钮</Button>
@@ -31,9 +20,6 @@ const ButtonDemo1 = () => {
                 <Button kind={"default"} ghost>按钮</Button>
             </div>
             <ButtonGroup>
-                <Button kind={"danger"}>按钮</Button>
-                <Button kind={"danger"}>按钮</Button>
-                <Button kind={"dashed"}>按钮</Button>
                 <Button kind={"dashed"} >按钮</Button>
                 <Button kind={"default"}>按钮</Button>
                 <Button kind={"default"} >按钮</Button>
