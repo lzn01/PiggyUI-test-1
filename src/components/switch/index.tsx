@@ -41,7 +41,7 @@ const Switch: FC<SwitchProps> =
                 className={classes(
                     componentName,
                     "",
-                    [className, size],
+                    [className, size ?? "default"],
                     {checked: derivedChecked, disabled})
                 }
                 onClick={clickHandler}
