@@ -6,6 +6,7 @@ import IconExample from "./examples/icon";
 import ModalExample from "./examples/modal";
 import ButtonExample from "./examples/button";
 import GridExample from "./examples/grid";
+import SwitchExample from "./examples/switch";
 
 ReactDOM.render(
     <Router>
@@ -32,6 +33,9 @@ ReactDOM.render(
                         <li>
                             <NavLink to="/grid">布局</NavLink>
                         </li>
+                        <li>
+                            <NavLink to="/switch">开关</NavLink>
+                        </li>
                     </ul>
                 </aside>
                 <main>
@@ -39,6 +43,7 @@ ReactDOM.render(
                     <Route path="/button" component={ButtonExample}/>
                     <Route path="/modal" component={ModalExample}/>
                     <Route path="/grid" component={GridExample}/>
+                    <Route path="/switch" component={SwitchExample}/>
                 </main>
             </div>
         </div>
