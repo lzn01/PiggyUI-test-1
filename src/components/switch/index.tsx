@@ -18,9 +18,9 @@ const componentName = "switch";
 
 const Switch: FC<SwitchProps> =
     ({
-         checked,
+         // checked,
          className,
-         defaultChecked,
+         // defaultChecked,
          disabled,
          onChange,
          size,
