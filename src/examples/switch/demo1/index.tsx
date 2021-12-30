@@ -1,10 +1,27 @@
 import * as React from "react";
+import {useState} from "react";
+import Switch from "../../../components/switch";
+import Button from "../../../components/button";
 // import "./index.scss";
 
 const SwitchDemo1 = () => {
+    const [checked, setChecked] = useState(false);
+    const onChange = (value: boolean) => {
+        console.log(value);
+    };
+    const onClick = () => {
+        setChecked(!checked);
+    };
+    const onChange2 = (value: boolean) => {
+        setChecked(!checked);
+    };
     return (
         <>
-            1
+            <Switch defaultChecked={true} onChange={onChange}/>
+            <Switch checked={checked} size={"small"} onChange={onChange}/>
+            <Button onClick={onClick}>开关</Button>
+            <Switch disabled defaultChecked={true}/>
+            <Switch checked={checked} onChange={onChange2}/>
         </>
     );
 };

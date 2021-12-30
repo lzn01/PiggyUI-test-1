@@ -31,16 +31,18 @@ const Switch: FC<SwitchProps> =
         const clickHandler: React.MouseEventHandler = (e) => {
             if (disabled) return;
             if (onChange) {
-                onChange(!switchState, e);
+                onChange(typeof checked === "boolean" ? checked : !switchState, e);
             }
-            setSwitchState(!switchState);
+            if (typeof checked !== "boolean") {
+                setSwitchState(!switchState);
+            }
         };
 
         useEffect(() => {
-            if (checked !== switchState) {
+            if (typeof checked === "boolean") {
                 setSwitchState(checked);
             }
-        }, [checked, switchState]);
+        }, [checked]);
 
         return (
             <div
