@@ -5,9 +5,9 @@ import type {FC} from "react";
 import {useState} from "react";
 
 interface SwitchProps {
-    checked?: boolean;
+    checked?: boolean; // 当前选中状态
     className?: string;
-    defaultChecked?: boolean;
+    defaultChecked?: boolean; // 默认选中状态
     disabled?: boolean;
     onChange?: (checked: boolean, e: React.MouseEvent) => any;
     size?: "small" | "default";
@@ -26,14 +26,14 @@ const Switch: FC<SwitchProps> =
          size,
          style
      }) => {
-        const [derivedChecked, setDerivedChecked] = useState(false);
+        const [switchState, setSwitchState] = useState(false); // 开关状态 true开 false关
 
         const clickHandler: React.MouseEventHandler = (e) => {
             if (disabled) return;
             if (onChange) {
-                onChange(!derivedChecked, e);
+                onChange(!switchState, e);
             }
-            setDerivedChecked(!derivedChecked);
+            setSwitchState(!switchState);
         };
 
         return (
@@ -42,7 +42,7 @@ const Switch: FC<SwitchProps> =
                     componentName,
                     "",
                     [className, size ?? "default"],
-                    {checked: derivedChecked, disabled})
+                    {checked: switchState, disabled})
                 }
                 onClick={clickHandler}
                 style={style}
