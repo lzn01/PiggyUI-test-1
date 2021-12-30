@@ -22,8 +22,8 @@ const Col: FC<ColProps> =
          children,
          className,
          gutter,
-         span,
-         offset,
+         span = 0,
+         offset = 0,
          style,
          xs,
          sm,
@@ -35,19 +35,18 @@ const Col: FC<ColProps> =
      }) => {
         const classNameHandler = (): string[] => {
             const responseSizes: any = {xs, sm, md, lg, xl, xxl};
-            const classNameArray = className
-                ? [`col-span-${span ?? 0}`, `col-offset-${offset ?? 0}`, className]
-                : [`col-span-${span ?? 0}`, `col-offset-${offset ?? 0}`];
+            const classNameArray = [`col-span-${span}`, `col-offset-${offset}`];
 
+            if (className) {
+                classNameArray.push(className);
+            }
             Object.keys(responseSizes).forEach(key => {
                 if (typeof responseSizes[key] === "object") {
                     const {span: sizeSpan, offset: sizeOffset} = responseSizes[key];
-                    classNameArray.push(`${key}-col-span-${sizeSpan}`);
-                    classNameArray.push(`${key}-col-offset-${sizeOffset ?? 0}`);
+                    classNameArray.push(`${key}-col-span-${sizeSpan}`, `${key}-col-offset-${sizeOffset ?? 0}`);
                 }
                 if (typeof responseSizes[key] === "number") {
-                    classNameArray.push(`${key}-col-span-${responseSizes[key]}`);
-                    classNameArray.push(`${key}-col-offset-0`);
+                    classNameArray.push(`${key}-col-span-${responseSizes[key]}`, `${key}-col-offset-0`);
                 }
             });
             return classNameArray;
