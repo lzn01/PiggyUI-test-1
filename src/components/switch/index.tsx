@@ -26,7 +26,7 @@ const Switch: FC<SwitchProps> =
          size,
          style
      }) => {
-        const [switchState, setSwitchState] = useState<boolean | undefined>(defaultChecked); // 开关状态 true开 false关
+        const [switchState, setSwitchState] = useState(defaultChecked); // 开关状态 true开 false关
 
         const clickHandler: React.MouseEventHandler = (e) => {
             if (disabled) return;
