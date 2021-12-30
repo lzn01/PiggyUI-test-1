@@ -2,7 +2,7 @@ import * as React from "react";
 import "./index.scss";
 import classes from "../../common/methods/classes";
 import type {FC} from "react";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 interface SwitchProps {
     checked?: boolean; // 当前选中状态
@@ -18,15 +18,15 @@ const componentName = "switch";
 
 const Switch: FC<SwitchProps> =
     ({
-         // checked,
+         checked,
          className,
-         // defaultChecked,
-         disabled,
+         defaultChecked = false,
+         disabled = false,
          onChange,
          size,
          style
      }) => {
-        const [switchState, setSwitchState] = useState(false); // 开关状态 true开 false关
+        const [switchState, setSwitchState] = useState<boolean | undefined>(defaultChecked); // 开关状态 true开 false关
 
         const clickHandler: React.MouseEventHandler = (e) => {
             if (disabled) return;
@@ -35,6 +35,12 @@ const Switch: FC<SwitchProps> =
             }
             setSwitchState(!switchState);
         };
+
+        useEffect(() => {
+            if (checked !== switchState) {
+                setSwitchState(checked);
+            }
+        }, [checked, switchState]);
 
         return (
             <div
