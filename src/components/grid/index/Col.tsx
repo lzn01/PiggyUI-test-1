@@ -40,6 +40,7 @@ const Col: FC<ColProps> =
             if (className) {
                 classNameArray.push(className);
             }
+
             Object.keys(responseSizes).forEach(key => {
                 if (typeof responseSizes[key] === "object") {
                     const {span: sizeSpan, offset: sizeOffset} = responseSizes[key];
