@@ -1,6 +1,6 @@
 import * as React from "react";
 import type {FC} from "react";
-import {useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import "./index.scss";
 import Icon from "../icon";
 import classes from "../../common/methods/classes";
@@ -21,11 +21,21 @@ const Modal: FC<ModalProps> =
      }) => {
         const markRef = useRef<HTMLDivElement | null>(null);
         const modalRef = useRef<HTMLDivElement | null>(null);
+        const [modalVisible, setModalVisible] = useState(visible);
+
+        // 关闭图标点击事件
+        const closeIconClickedHandler = () => {
+            setModalVisible(false);
+        };
+
+        useEffect(() => {
+            setModalVisible(visible);
+        }, [visible]);
 
         return (
             <>
                 <Transition
-                    visible={visible}
+                    visible={modalVisible}
                     beforeEnter={{opacity: 0}}
                     afterEnter={{opacity: 0.7}}
                 >
@@ -35,7 +45,7 @@ const Modal: FC<ModalProps> =
                     />
                 </Transition>
                 <Transition
-                    visible={visible}
+                    visible={modalVisible}
                     beforeEnter={{
                         top: "50%",
                         opacity: 0,
@@ -51,7 +61,10 @@ const Modal: FC<ModalProps> =
                         className={classes(componentName, "", [className])}
                         ref={modalRef}
                     >
-                        <div className={classes(componentName, "close")}>
+                        <div
+                            className={classes(componentName, "close")}
+                            onClick={closeIconClickedHandler}
+                        >
                             <Icon name={"wechat"}/>
                         </div>
                         <header className={classes(componentName, "header")}>
