@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./index.scss";
 import classes from "../../common/methods/classes";
-import type {FC} from "react";
+import type {CSSProperties, FC} from "react";
 import {useEffect, useState} from "react";
 
 interface SwitchProps {
@@ -11,7 +11,7 @@ interface SwitchProps {
     disabled?: boolean;
     onChange?: (checked: boolean, e: React.MouseEvent) => any;
     size?: "small" | "default";
-    style?: React.CSSProperties;
+    style?: CSSProperties;
 }
 
 const componentName = "switch";

@@ -1,4 +1,4 @@
-import React from "react";
+import type {CSSProperties} from "react";
 
 export interface Option {
     span: number; // 栅格占位格数
@@ -8,7 +8,7 @@ export interface Option {
 export interface GridProps {
     className?: string;
     gutter?: number; // 栅格间隔
-    style?: React.CSSProperties;
+    style?: CSSProperties;
 }
 
 export interface RowProps extends GridProps {
