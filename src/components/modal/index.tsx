@@ -20,7 +20,7 @@ interface ModalProps {
     okType?: "default" | "dashed" | "primary" | "success" | "warning" | "danger"; // 确定按钮类型
     onCancel?: MouseEventHandler; // 取消回调
     onOk?: MouseEventHandler; // 确定回调
-    title?: ReactNode;
+    title?: ReactNode; // 标题
     visible: boolean;
 }
 
@@ -59,7 +59,6 @@ const Modal: FC<ModalProps> =
                 onOk(e);
             }
         };
-
 
         // 蒙层点击事件
         const maskHandler: React.MouseEventHandler = (e) => {
@@ -103,7 +102,7 @@ const Modal: FC<ModalProps> =
                             className={classes(componentName, "close")}
                             onClick={cancelHandler}
                         >
-                            <Icon name={"wechat"}/>
+                            <Icon name={"close"} size={12}/>
                         </div>
                         <header className={classes(componentName, "header")}>
                             {title ?? "Title"}

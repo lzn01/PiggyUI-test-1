@@ -39,7 +39,7 @@ module.exports = {
             },
             {   // 命中scss文件
                 test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'sass-loader']
+                use: ["style-loader", "css-loader", "sass-loader"]
             }
         ]
     },

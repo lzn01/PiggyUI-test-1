@@ -14,7 +14,11 @@ const ModalDemo1 = () => {
             <button onClick={() => setVisible(!visible)}>
                 click
             </button>
-            <Modal visible={visible} onCancel={onCancel} maskStyle={{background: "#33b771"}}>
+            <Modal
+                visible={visible}
+                onCancel={onCancel}
+                title={'哈哈'}
+            >
                 哈哈
             </Modal>
         </div>
