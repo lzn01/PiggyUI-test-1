@@ -8,9 +8,11 @@ import Transition from "../../common/components/transition";
 
 interface ModalProps {
     className?: string;
-    onCancel?: React.MouseEventHandler;
-    onMask?: React.MouseEventHandler;
-    onOk?: React.MouseEventHandler;
+    mask?: boolean; // 是否展示蒙层
+    maskClosable?: boolean; // 点击蒙层是否允许关闭
+    maskStyle?: React.CSSProperties; // 蒙层样式
+    onCancel?: React.MouseEventHandler; // 取消回调
+    onOk?: React.MouseEventHandler; // 确定回调
     visible: boolean;
 }
 
@@ -20,12 +22,14 @@ const Modal: FC<ModalProps> =
     ({
          children,
          className,
+         mask = true,
+         maskClosable = true,
+         maskStyle,
          onCancel,
-         onMask,
          onOk,
          visible
      }) => {
-        const markRef = useRef<HTMLDivElement | null>(null);
+        const maskRef = useRef<HTMLDivElement | null>(null);
         const modalRef = useRef<HTMLDivElement | null>(null);
 
         // 关闭图标点击事件
@@ -35,16 +39,25 @@ const Modal: FC<ModalProps> =
             }
         };
 
+        // 蒙层点击事件
+        const maskHandler: React.MouseEventHandler = (e) => {
+            if (maskClosable && onCancel) {
+                onCancel(e);
+            }
+        };
+
         return (
             <>
                 <Transition
-                    visible={visible}
+                    visible={mask && visible}
                     beforeEnter={{opacity: 0}}
                     afterEnter={{opacity: 0.7}}
                 >
                     <div
                         className={classes(componentName, "mask")}
-                        ref={markRef}
+                        ref={maskRef}
+                        onClick={maskHandler}
+                        style={{...maskStyle}}
                     />
                 </Transition>
                 <Transition
