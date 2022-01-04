@@ -1,14 +1,17 @@
 import * as React from "react";
 import type {FC} from "react";
-import {useEffect, useRef, useState} from "react";
+import {useRef} from "react";
 import "./index.scss";
 import Icon from "../icon";
 import classes from "../../common/methods/classes";
 import Transition from "../../common/components/transition";
 
 interface ModalProps {
-    visible: boolean;
     className?: string;
+    onCancel?: React.MouseEventHandler;
+    onMask?: React.MouseEventHandler;
+    onOk?: React.MouseEventHandler;
+    visible: boolean;
 }
 
 const componentName = "modal";
@@ -17,25 +20,25 @@ const Modal: FC<ModalProps> =
     ({
          children,
          className,
+         onCancel,
+         onMask,
+         onOk,
          visible
      }) => {
         const markRef = useRef<HTMLDivElement | null>(null);
         const modalRef = useRef<HTMLDivElement | null>(null);
-        const [modalVisible, setModalVisible] = useState(visible);
 
         // 关闭图标点击事件
-        const closeIconClickedHandler = () => {
-            setModalVisible(false);
+        const cancelHandler: React.MouseEventHandler = (e) => {
+            if (onCancel) {
+                onCancel(e);
+            }
         };
-
-        useEffect(() => {
-            setModalVisible(visible);
-        }, [visible]);
 
         return (
             <>
                 <Transition
-                    visible={modalVisible}
+                    visible={visible}
                     beforeEnter={{opacity: 0}}
                     afterEnter={{opacity: 0.7}}
                 >
@@ -45,7 +48,7 @@ const Modal: FC<ModalProps> =
                     />
                 </Transition>
                 <Transition
-                    visible={modalVisible}
+                    visible={visible}
                     beforeEnter={{
                         top: "50%",
                         opacity: 0,
@@ -63,7 +66,7 @@ const Modal: FC<ModalProps> =
                     >
                         <div
                             className={classes(componentName, "close")}
-                            onClick={closeIconClickedHandler}
+                            onClick={cancelHandler}
                         >
                             <Icon name={"wechat"}/>
                         </div>
