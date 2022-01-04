@@ -1,11 +1,12 @@
 import * as React from "react";
-import type {CSSProperties, FC, MouseEventHandler, ReactNode} from "react";
 import {useRef} from "react";
+import {createPortal} from "react-dom";
+import type {CSSProperties, FC, MouseEventHandler, ReactNode} from "react";
 import "./index.scss";
 import Icon from "../icon";
+import Button from "../button";
 import classes from "../../common/methods/classes";
 import Transition from "../../common/components/transition";
-import Button from "../button";
 
 interface ModalProps {
     cancelText?: string; // 取消按钮文字
@@ -45,12 +46,20 @@ const Modal: FC<ModalProps> =
         const maskRef = useRef<HTMLDivElement | null>(null);
         const modalRef = useRef<HTMLDivElement | null>(null);
 
-        // 关闭图标点击事件
+        // 取消回调
         const cancelHandler: React.MouseEventHandler = (e) => {
             if (onCancel) {
                 onCancel(e);
             }
         };
+
+        // 确定回调
+        const okHandler: React.MouseEventHandler = (e) => {
+            if (onOk) {
+                onOk(e);
+            }
+        };
+
 
         // 蒙层点击事件
         const maskHandler: React.MouseEventHandler = (e) => {
@@ -59,7 +68,7 @@ const Modal: FC<ModalProps> =
             }
         };
 
-        return (
+        return createPortal(
             <>
                 <Transition
                     visible={mask && visible}
@@ -108,13 +117,16 @@ const Modal: FC<ModalProps> =
                                 ??
                                 <>
                                     <Button
-                                        style={{marginRight: "8px"}}
-                                        onClick={cancelHandler}
                                         kind={cancelType}
+                                        onClick={cancelHandler}
+                                        style={{marginRight: "8px"}}
                                     >
                                         {cancelText}
                                     </Button>
-                                    <Button kind={okType} onClick={cancelHandler}>
+                                    <Button
+                                        kind={okType}
+                                        onClick={okHandler}
+                                    >
                                         {okText}
                                     </Button>
                                 </>
@@ -122,7 +134,8 @@ const Modal: FC<ModalProps> =
                         </footer>
                     </div>
                 </Transition>
-            </>
+            </>,
+            document.body
         );
     };
 export default Modal;
