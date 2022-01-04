@@ -52,12 +52,12 @@ const Modal: FC<ModalProps> =
                     visible={mask && visible}
                     beforeEnter={{opacity: 0}}
                     afterEnter={{opacity: 0.7}}
+                    style={{...maskStyle}}
                 >
                     <div
                         className={classes(componentName, "mask")}
                         ref={maskRef}
                         onClick={maskHandler}
-                        style={{...maskStyle}}
                     />
                 </Transition>
                 <Transition

@@ -8,6 +8,7 @@ interface TransitionProps {
     beforeEnter?: React.CSSProperties;
     beforeLeave?: React.CSSProperties;
     transitionActive?: React.CSSProperties;
+    style?: React.CSSProperties;
     visible: boolean;
 }
 
@@ -20,6 +21,7 @@ const Transition: FC<TransitionProps> =
          children,
          transitionActive,
          visible,
+         style,
          ...rest
      }) => {
         const [rendered, setRendered] = useState(false);
@@ -66,7 +68,7 @@ const Transition: FC<TransitionProps> =
             visible || rendered
                 ? React.cloneElement(
                     children as React.ReactElement,
-                    {...rest, style: {display: "none"}}
+                    {...rest, style: {...style, display: "none"}}
                 )
                 : null
         );
