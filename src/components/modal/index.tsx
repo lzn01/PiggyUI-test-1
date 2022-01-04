@@ -1,7 +1,7 @@
+import type {CSSProperties, FC, MouseEventHandler, ReactNode} from "react";
 import * as React from "react";
 import {useRef} from "react";
 import {createPortal} from "react-dom";
-import type {CSSProperties, FC, MouseEventHandler, ReactNode} from "react";
 import "./index.scss";
 import Icon from "../icon";
 import Button from "../button";
@@ -12,6 +12,7 @@ interface ModalProps {
     cancelText?: string; // 取消按钮文字
     cancelType?: "default" | "dashed" | "primary" | "success" | "warning" | "danger"; // 取消按钮类型
     className?: string;
+    closable?: boolean; // 是否展示右上角关闭按钮
     footer?: ReactNode;
     mask?: boolean; // 是否展示蒙层
     maskClosable?: boolean; // 点击蒙层是否允许关闭
@@ -32,6 +33,7 @@ const Modal: FC<ModalProps> =
          cancelType = "default",
          children,
          className,
+         closable = true,
          footer,
          mask = true,
          maskClosable = true,
@@ -98,39 +100,45 @@ const Modal: FC<ModalProps> =
                         className={classes(componentName, "", [className])}
                         ref={modalRef}
                     >
-                        <div
-                            className={classes(componentName, "close")}
-                            onClick={cancelHandler}
-                        >
-                            <Icon name={"close"} size={12}/>
-                        </div>
+                        {
+                            closable &&
+                            <div
+                                className={classes(componentName, "close")}
+                                onClick={cancelHandler}
+                            >
+                                <Icon name={"close"} size={12}/>
+                            </div>
+                        }
                         <header className={classes(componentName, "header")}>
-                            {title ?? "Title"}
+                            {title ?? ""}
                         </header>
                         <main className={classes(componentName, "main")}>
                             {children}
                         </main>
-                        <footer className={classes(componentName, "footer")}>
-                            {
-                                footer
-                                ??
-                                <>
-                                    <Button
-                                        kind={cancelType}
-                                        onClick={cancelHandler}
-                                        style={{marginRight: "8px"}}
-                                    >
-                                        {cancelText}
-                                    </Button>
-                                    <Button
-                                        kind={okType}
-                                        onClick={okHandler}
-                                    >
-                                        {okText}
-                                    </Button>
-                                </>
-                            }
-                        </footer>
+                        {
+                            footer !== null
+                                ? <footer className={classes(componentName, "footer")}>
+                                    {
+                                        footer ??
+                                        <>
+                                            <Button
+                                                kind={cancelType}
+                                                onClick={cancelHandler}
+                                                style={{marginRight: "8px"}}
+                                            >
+                                                {cancelText}
+                                            </Button>
+                                            <Button
+                                                kind={okType}
+                                                onClick={okHandler}
+                                            >
+                                                {okText}
+                                            </Button>
+                                        </>
+                                    }
+                                </footer>
+                                : null
+                        }
                     </div>
                 </Transition>
             </>,
