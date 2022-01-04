@@ -61,11 +61,11 @@
     transform: translate(-50%, 50%);
     cursor: pointer;
     border: 1px solid rgba(0, 0, 0, 0.15);
-    color: rgba(0, 0, 0, 0.75);
+    color: rgba(0, 0, 0, 0.55);
     padding: 2px;
 
     :hover {
-      color: rgba(0, 0, 0, 0.55);
+      color: rgba(0, 0, 0, 0.75);
     }
   }
 }
