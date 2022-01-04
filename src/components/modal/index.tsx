@@ -1,18 +1,25 @@
 import * as React from "react";
-import type {FC} from "react";
+import type {CSSProperties, FC, MouseEventHandler, ReactNode} from "react";
 import {useRef} from "react";
 import "./index.scss";
 import Icon from "../icon";
 import classes from "../../common/methods/classes";
 import Transition from "../../common/components/transition";
+import Button from "../button";
 
 interface ModalProps {
+    cancelText?: string; // 取消按钮文字
+    cancelType?: "default" | "dashed" | "primary" | "success" | "warning" | "danger"; // 取消按钮类型
     className?: string;
+    footer?: ReactNode;
     mask?: boolean; // 是否展示蒙层
     maskClosable?: boolean; // 点击蒙层是否允许关闭
-    maskStyle?: React.CSSProperties; // 蒙层样式
-    onCancel?: React.MouseEventHandler; // 取消回调
-    onOk?: React.MouseEventHandler; // 确定回调
+    maskStyle?: CSSProperties; // 蒙层样式
+    okText?: string; // 确定按钮文字
+    okType?: "default" | "dashed" | "primary" | "success" | "warning" | "danger"; // 确定按钮类型
+    onCancel?: MouseEventHandler; // 取消回调
+    onOk?: MouseEventHandler; // 确定回调
+    title?: ReactNode;
     visible: boolean;
 }
 
@@ -20,13 +27,19 @@ const componentName = "modal";
 
 const Modal: FC<ModalProps> =
     ({
+         cancelText = "取 消",
+         cancelType = "default",
          children,
          className,
+         footer,
          mask = true,
          maskClosable = true,
          maskStyle,
+         okText = "确 定",
+         okType = "primary",
          onCancel,
          onOk,
+         title,
          visible
      }) => {
         const maskRef = useRef<HTMLDivElement | null>(null);
@@ -84,13 +97,28 @@ const Modal: FC<ModalProps> =
                             <Icon name={"wechat"}/>
                         </div>
                         <header className={classes(componentName, "header")}>
-                            提示
+                            {title ?? "Title"}
                         </header>
                         <main className={classes(componentName, "main")}>
                             {children}
                         </main>
                         <footer className={classes(componentName, "footer")}>
-                            按钮
+                            {
+                                footer
+                                ??
+                                <>
+                                    <Button
+                                        style={{marginRight: "8px"}}
+                                        onClick={cancelHandler}
+                                        kind={cancelType}
+                                    >
+                                        {cancelText}
+                                    </Button>
+                                    <Button kind={okType} onClick={cancelHandler}>
+                                        {okText}
+                                    </Button>
+                                </>
+                            }
                         </footer>
                     </div>
                 </Transition>
