@@ -1,6 +1,9 @@
 import * as React from "react";
 import "./index.scss";
 import type {CSSProperties, FC} from "react";
+import classes from "../../common/methods/classes";
+import Transition from "../../common/components/transition";
+import Icon from "../icon";
 
 interface SpinProps {
     className?: string;
@@ -10,18 +13,48 @@ interface SpinProps {
     tip?: string; // 自定义描述文案
 }
 
+const componentName = "spin";
+
 const Spin: FC<SpinProps> =
     ({
          children,
          className,
-         size,
-         spinning,
+         size = 16,
+         spinning = true,
          style,
          tip
      }) => {
         return (
-            <></>
+            <div
+                className={classes(componentName, "", [className], {"with-children": !!children})}
+                style={style}
+            >
+                <div className={classes(componentName, "mask", {active: !!children, spinning})}/>
+                <Transition
+                    visible={!!spinning}
+                    beforeEnter={{opacity: 0}}
+                    afterEnter={{opacity: 1}}
+                >
+                    <div className={classes(componentName, "container", {
+                            "with-tip": !!tip,
+                            "with-children": !!children
+                        }
+                    )}>
+                        <Icon
+                            className={classes(componentName, "icon")}
+                            name="loading"
+                            size={size}
+                        />
+                        {
+                            tip &&
+                            <span className={classes(componentName, "tip")}>
+                                {tip}
+                            </span>
+                        }
+                    </div>
+                </Transition>
+                {children}
+            </div>
         );
-
     };
 export default Spin;
