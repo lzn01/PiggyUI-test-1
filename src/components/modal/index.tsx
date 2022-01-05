@@ -1,6 +1,6 @@
-import type {CSSProperties, FC, MouseEventHandler, ReactNode} from "react";
 import * as React from "react";
-import {useRef} from "react";
+import type {CSSProperties, FC, MouseEventHandler, ReactNode} from "react";
+import {useEffect, useRef} from "react";
 import {createPortal} from "react-dom";
 import "./index.scss";
 import Icon from "../icon";
@@ -47,6 +47,7 @@ const Modal: FC<ModalProps> =
      }) => {
         const maskRef = useRef<HTMLDivElement | null>(null);
         const modalRef = useRef<HTMLDivElement | null>(null);
+        const bodyOverflowRef = useRef(window.getComputedStyle(document.body).overflow); // 在第一次渲染时取 body 原始的 overflow 值
 
         // 取消回调
         const cancelHandler: React.MouseEventHandler = (e) => {
@@ -68,6 +69,13 @@ const Modal: FC<ModalProps> =
                 onCancel(e);
             }
         };
+
+        // modal显示时 阻止页面滚动
+        useEffect(() => {
+            document.body.style.overflow = visible
+                ? "hidden"
+                : bodyOverflowRef.current;
+        }, [visible]);
 
         return createPortal(
             <>
