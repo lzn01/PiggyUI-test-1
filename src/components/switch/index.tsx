@@ -50,8 +50,8 @@ const Switch: FC<SwitchProps> =
                     componentName,
                     "",
                     [className, size ?? "default"],
-                    {checked: switchState, disabled})
-                }
+                    {checked: switchState, disabled}
+                )}
                 onClick={clickHandler}
                 style={style}
             >
