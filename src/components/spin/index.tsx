@@ -4,6 +4,7 @@ import type {CSSProperties, FC} from "react";
 import classes from "../../common/methods/classes";
 import Transition from "../../common/components/transition";
 import Icon from "../icon";
+import {useRef} from "react";
 
 interface SpinProps {
     className?: string;
@@ -24,6 +25,8 @@ const Spin: FC<SpinProps> =
          style,
          tip
      }) => {
+        const spinRef = useRef<HTMLDivElement | null>(null);
+
         return (
             <div
                 className={classes(componentName, "", [className], {"with-children": !!children})}
@@ -35,11 +38,14 @@ const Spin: FC<SpinProps> =
                     beforeEnter={{opacity: 0}}
                     afterEnter={{opacity: 1}}
                 >
-                    <div className={classes(componentName, "container", {
-                            "with-tip": !!tip,
-                            "with-children": !!children
-                        }
-                    )}>
+                    <div
+                        className={classes(componentName, "container", {
+                                "with-tip": !!tip,
+                                "with-children": !!children
+                            }
+                        )}
+                        ref={spinRef}
+                    >
                         <Icon
                             className={classes(componentName, "icon")}
                             name="loading"
