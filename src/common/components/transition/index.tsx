@@ -62,13 +62,15 @@ const Transition: FC<TransitionProps> =
             return () => {
                 node.removeEventListener("transitionend", () => transitionendHandler(node));
             };
-        }, [children, nodeHandler, transitionendHandler, visible]);
+        }, [children, nodeHandler, transitionendHandler]);
 
         return (
             visible || rendered
                 ? React.cloneElement(
-                    children as React.ReactElement,
-                    {...rest, style: {...style, display: "none"}}
+                    children as React.ReactElement, {
+                        ...rest,
+                        style: {...style, display: "none"}
+                    }
                 )
                 : null
         );
