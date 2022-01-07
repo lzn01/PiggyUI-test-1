@@ -14,10 +14,21 @@ interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "prefix
 // const componentName = "input";
 
 const Input: FC<InputProps> =
-    ({}) => {
+    ({
+         addonAfter,
+         addonBefore,
+         className,
+         defaultValue,
+         disabled = false,
+         prefix,
+         suffix,
+         ...rest
+     }) => {
         return (
             <label>
-
+                <input
+                    {...rest}
+                />
             </label>
         );
     };
