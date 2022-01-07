@@ -1,6 +1,6 @@
 import * as React from "react";
-import Button from "../../../components/button";
-import ButtonGroup from "../../../components/button/buttonGroup";
+import Button from "../../../components/button/index/Button";
+import ButtonGroup from "../../../components/button/index/ButtonGroup";
 
 const ButtonDemo1 = () => {
     return (

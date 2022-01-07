@@ -1,7 +1,7 @@
 import * as React from "react";
 import {useState} from "react";
 import Switch from "../../../components/switch";
-import Button from "../../../components/button";
+import Button from "../../../components/button/index/Button";
 
 const SwitchDemo1 = () => {
     const [checked, setChecked] = useState(false);

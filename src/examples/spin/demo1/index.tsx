@@ -1,7 +1,7 @@
 import * as React from "react";
 import Spin from "../../../components/spin";
 import {useState} from "react";
-import Button from "../../../components/button";
+import Button from "../../../components/button/index/Button";
 import "./index.scss";
 
 const SpinDemo1 = () => {
