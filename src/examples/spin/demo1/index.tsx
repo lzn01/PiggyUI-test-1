@@ -26,7 +26,7 @@ const SpinDemo1 = () => {
                 </Spin>
                 <Button
                     onClick={() => setSpinning(!spinning)}
-                    kind="primary"
+                    type="primary"
                     style={{marginTop: "20px"}}
                 >
                     Toggle

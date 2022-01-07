@@ -6,11 +6,11 @@ import classes from "../../../common/methods/classes";
 import Icon from "../../icon";
 import Wave from "../../../common/components/wave";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "type"> {
     ghost?: boolean;
     icon?: string;
     loading?: boolean;
-    kind?: "default" | "dashed" | "primary" | "success" | "warning" | "danger";
+    type?: "default" | "dashed" | "primary" | "success" | "warning" | "danger";
     position?: "left" | "right";
     size?: "small" | "medium" | "large";
 }
@@ -25,10 +25,8 @@ const Button: FC<ButtonProps> =
          ghost,
          icon,
          loading,
-         kind,
          position,
          size,
-         style,
          type,
          ...rest
      }) => {
@@ -36,7 +34,7 @@ const Button: FC<ButtonProps> =
         const buttonClassName = classes(
             componentName,
             "",
-            [className, `p-${kind ?? "default"}`, `p-${position ?? "left"}`, `p-${size ?? "medium"}`],
+            [className, `p-${type ?? "default"}`, `p-${position ?? "left"}`, `p-${size ?? "medium"}`],
             {ghost, disabled}
         );
 
@@ -52,8 +50,6 @@ const Button: FC<ButtonProps> =
                 <button
                     className={buttonClassName}
                     disabled={disabled}
-                    type={type}
-                    style={style}
                     ref={buttonRef}
                     {...rest}
                 >

@@ -130,14 +130,14 @@ const Modal: FC<ModalProps> =
                                         footer ??
                                         <>
                                             <Button
-                                                kind={cancelType}
+                                                type={cancelType}
                                                 onClick={cancelHandler}
                                                 style={{marginRight: "8px"}}
                                             >
                                                 {cancelText}
                                             </Button>
                                             <Button
-                                                kind={okType}
+                                                type={okType}
                                                 onClick={okHandler}
                                             >
                                                 {okText}
