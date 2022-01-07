@@ -20,7 +20,7 @@ const Spin: FC<SpinProps> =
     ({
          children,
          className,
-         size = 16,
+         size = 24,
          spinning = true,
          style,
          tip
