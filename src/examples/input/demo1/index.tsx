@@ -9,7 +9,7 @@ const InputDemo1 = () => {
     };
     return (
         <>
-            <Input onChange={onChange}/>
+            <Input onChange={onChange} />
         </>
     );
 };
