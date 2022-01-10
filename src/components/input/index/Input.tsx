@@ -2,6 +2,7 @@ import * as React from "react";
 import "../index.scss";
 import type {FC, InputHTMLAttributes, KeyboardEventHandler, ReactNode} from "react";
 import classes from "../../../common/methods/classes";
+import {ChangeEventHandler, useState} from "react";
 
 interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "prefix"> {
     addonAfter?: ReactNode; // 后置标签
@@ -22,12 +23,29 @@ const Input: FC<InputProps> =
          className,
          defaultValue,
          disabled = false,
+         onChange,
          onPressEnter,
          prefix,
          suffix,
          value,
          ...rest
      }) => {
+        const [inputValue, setInputValue] = useState(defaultValue ?? "");
+
+        const changeHandler: ChangeEventHandler<HTMLInputElement> = (e) => {
+            if (onChange) {
+                onChange(e);
+            }
+            setInputValue(e.target.value);
+        };
+
+        const pressEnterHandler: KeyboardEventHandler<HTMLInputElement> = (e) => {
+            // review
+            if (onPressEnter && e.key === "Enter") {
+                onPressEnter(e);
+            }
+        };
+
         return (
             <label className={classes(componentName, "container", [className], {
                     "addon-after": !!addonAfter,
@@ -64,7 +82,10 @@ const Input: FC<InputProps> =
 
                 <input
                     className={classes(componentName, "")}
+                    onChange={changeHandler}
+                    onKeyPress={pressEnterHandler}
                     type={"text"}
+                    value={inputValue}
                     {...rest}
                 />
 
