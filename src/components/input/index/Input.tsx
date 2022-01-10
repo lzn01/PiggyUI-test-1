@@ -1,8 +1,8 @@
 import * as React from "react";
+import {useState} from "react";
+import type {FC, ChangeEventHandler, InputHTMLAttributes, KeyboardEventHandler, ReactNode} from "react";
 import "../index.scss";
-import type {FC, InputHTMLAttributes, KeyboardEventHandler, ReactNode} from "react";
 import classes from "../../../common/methods/classes";
-import {ChangeEventHandler, useState} from "react";
 
 interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "prefix"> {
     addonAfter?: ReactNode; // 后置标签
@@ -58,7 +58,7 @@ const Input: FC<InputProps> =
             >
                 {
                     addonBefore &&
-                    <div className={classes(componentName, "addon-before")}>
+                    <div className={classes(componentName, "addon-before-container")}>
                         {
                             typeof addonBefore === "string" ?
                                 <span className={classes(componentName, "addon-before-span")}>
@@ -70,7 +70,7 @@ const Input: FC<InputProps> =
 
                 {
                     prefix &&
-                    <div className={classes(componentName, "prefix")}>
+                    <div className={classes(componentName, "prefix-container")}>
                         {
                             typeof prefix === "string" ?
                                 <span className={classes(componentName, "prefix-span")}>
@@ -91,7 +91,7 @@ const Input: FC<InputProps> =
 
                 {
                     suffix &&
-                    <div className={classes(componentName, "suffix")}>
+                    <div className={classes(componentName, "suffix-container")}>
                         {
                             typeof suffix === "string" ?
                                 <span className={classes(componentName, "suffix-span")}>
