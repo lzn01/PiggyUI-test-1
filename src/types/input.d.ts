@@ -14,12 +14,11 @@ interface baseInputProps extends InputHTMLAttributes<HTMLInputElement> {
 export interface InputProps extends Omit<baseInputProps, "prefix"> {
     addonAfter?: ReactNode; // 后置标签
     addonBefore?: ReactNode; // 前置标签
-    onPressEnter?: KeyboardEventHandler; // 按下回车的回调
     prefix?: ReactNode; // 输入框前缀
     suffix?: ReactNode; // 输入框后缀
 }
 
-export interface SearchProps extends Omit<baseInputProps, "onPressEnter"> {
+export interface SearchProps extends baseInputProps {
     enterButton?: ReactNode;
     onSearch?: (value: string) => void;
 }
