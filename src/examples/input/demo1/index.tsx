@@ -9,6 +9,7 @@ const InputDemo1 = () => {
             <Input disabled suffix={<Icon name={"loading"}/>}/>
             <Input addonBefore="Http://" addonAfter=".com" placeholder="yoursite"/>
             <Input prefix={<Icon name={"wechat"}/>} placeholder="username"/>
+            <Input/>
         </>
     );
 };

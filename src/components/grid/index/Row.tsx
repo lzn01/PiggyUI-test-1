@@ -2,7 +2,7 @@ import * as React from "react";
 import type {FC} from "react";
 import "../index.scss";
 import classes from "../../../common/methods/classes";
-import type {RowProps} from "./data";
+import type {RowProps} from "../../../types/grid";
 import type {ColProps} from "./Col";
 
 const componentName = "row";

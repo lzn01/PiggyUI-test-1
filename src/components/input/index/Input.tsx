@@ -80,6 +80,7 @@ const Input: FC<InputProps> =
 
                 <input
                     className={classes(componentName, "")}
+                    disabled={disabled}
                     onChange={changeHandler}
                     onKeyPress={pressEnterHandler}
                     type={"text"}
