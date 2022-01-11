@@ -3,7 +3,6 @@ import Input from "../../../components/input/index/Input";
 import Icon from "../../../components/icon";
 
 const InputDemo1 = () => {
-
     return (
         <>
             <Input disabled suffix={<Icon name={"loading"}/>}/>
