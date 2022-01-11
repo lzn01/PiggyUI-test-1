@@ -58,24 +58,22 @@ const Input: FC<InputProps> =
             >
                 {
                     addonBefore &&
-                    <div className={classes(componentName, "addon-before-container")}>
+                    <div className={"addon-before-container"}>
                         {
-                            typeof addonBefore === "string" ?
-                                <span className={classes(componentName, "addon-before-span")}>
-                                    {addonBefore}
-                                </span> : addonBefore
+                            typeof addonBefore === "string"
+                                ? <span className={"addon-before-span"}>{addonBefore}</span>
+                                : addonBefore
                         }
                     </div>
                 }
 
                 {
                     prefix &&
-                    <div className={classes(componentName, "prefix-container")}>
+                    <div className={"prefix-container"}>
                         {
-                            typeof prefix === "string" ?
-                                <span className={classes(componentName, "prefix-span")}>
-                                    {prefix}
-                                </span> : prefix
+                            typeof prefix === "string"
+                                ? <span className={"prefix-span"}>{prefix}</span>
+                                : prefix
                         }
                     </div>
                 }
@@ -91,24 +89,22 @@ const Input: FC<InputProps> =
 
                 {
                     suffix &&
-                    <div className={classes(componentName, "suffix-container")}>
+                    <div className={"suffix-container"}>
                         {
-                            typeof suffix === "string" ?
-                                <span className={classes(componentName, "suffix-span")}>
-                                    {suffix}
-                                </span> : suffix
+                            typeof suffix === "string"
+                                ? <span className={"suffix-span"}>{suffix}</span>
+                                : suffix
                         }
                     </div>
                 }
 
                 {
                     addonAfter &&
-                    <div className={classes(componentName, "addon-after")}>
+                    <div className={"addon-after-container"}>
                         {
-                            typeof addonAfter === "string" ?
-                                <span className={classes(componentName, "addon-after-span")}>
-                                    {addonAfter}
-                                </span> : addonAfter
+                            typeof addonAfter === "string"
+                                ? <span className={"addon-after-span"}>{addonAfter}</span>
+                                : addonAfter
                         }
                     </div>
                 }

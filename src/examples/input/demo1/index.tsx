@@ -1,15 +1,14 @@
 import * as React from "react";
 import Input from "../../../components/input/index/Input";
-import {ChangeEventHandler} from "react";
+import Icon from "../../../components/icon";
 
 const InputDemo1 = () => {
-    const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-        const {value} = e.target;
-        console.log(value);
-    };
+
     return (
         <>
-            <Input onChange={onChange} />
+            <Input disabled suffix={<Icon name={"loading"}/>}/>
+            <Input addonBefore="Http://" addonAfter=".com" placeholder="yoursite"/>
+            <Input prefix={<Icon name={"wechat"}/>} placeholder="username"/>
         </>
     );
 };
