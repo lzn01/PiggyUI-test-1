@@ -36,6 +36,9 @@ const Search: FC<SearchProps> =
 
         return (
             <Input
+                className={classes(componentName, "", [className], {
+                    "enter-button": !!enterButton
+                })}
                 addonAfter={
                     enterButton &&
                     <div
@@ -49,9 +52,6 @@ const Search: FC<SearchProps> =
                         }
                     </div>
                 }
-                className={classes(componentName, "", [className], {
-                    "enter-button": !!enterButton
-                })}
                 suffix={
                     !enterButton &&
                     <Icon
