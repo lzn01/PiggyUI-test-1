@@ -1,10 +1,5 @@
 import {InputHTMLAttributes, KeyboardEventHandler, ReactNode, TextareaHTMLAttributes} from "react";
 
-interface Size {
-    cols: number;
-    rows: number;
-}
-
 interface baseInputProps extends InputHTMLAttributes<HTMLInputElement> {
     defaultValue?: string;
     onPressEnter?: KeyboardEventHandler; // 按下回车的回调
@@ -27,6 +22,5 @@ export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElemen
     autosize?: boolean;
     defaultValue?: string;
     onPressEnter?: KeyboardEventHandler;
-    size?: Size;
     value?: string;
 }
