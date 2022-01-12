@@ -1,8 +1,8 @@
-import {InputHTMLAttributes, KeyboardEventHandler, ReactNode} from "react";
+import {InputHTMLAttributes, KeyboardEventHandler, ReactNode, TextareaHTMLAttributes} from "react";
 
 interface Size {
-    rows: number | string;
-    cols: number | string;
+    cols: number;
+    rows: number;
 }
 
 interface baseInputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -23,7 +23,10 @@ export interface SearchProps extends baseInputProps {
     onSearch?: (value: string) => void;
 }
 
-export interface TextareaProps extends baseInputProps {
+export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     autosize?: boolean;
+    defaultValue?: string;
+    onPressEnter?: KeyboardEventHandler;
     size?: Size;
+    value?: string;
 }
