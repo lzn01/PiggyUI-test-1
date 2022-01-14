@@ -9,6 +9,7 @@ import GridExample from "./examples/grid";
 import SwitchExample from "./examples/switch";
 import SpinExample from "./examples/spin";
 import InputExample from "./examples/input";
+import CheckboxExample from "./examples/checkbox";
 
 ReactDOM.render(
     <Router>
@@ -44,6 +45,9 @@ ReactDOM.render(
                         <li>
                             <NavLink to="/input">输入</NavLink>
                         </li>
+                        <li>
+                            <NavLink to="/checkbox">选择框</NavLink>
+                        </li>
                     </ul>
                 </aside>
                 <main>
@@ -54,6 +58,7 @@ ReactDOM.render(
                     <Route path="/switch" component={SwitchExample}/>
                     <Route path="/spin" component={SpinExample}/>
                     <Route path="/input" component={InputExample}/>
+                    <Route path="/checkbox" component={CheckboxExample}/>
                 </main>
             </div>
         </div>
