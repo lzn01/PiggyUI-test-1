@@ -1,0 +1,92 @@
+@import "../../common/styles/mixins.scss";
+
+.pui-checkbox {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 10px;
+
+  &-selection {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 2px;
+    background-color: $white;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    &:hover {
+      border-color: $theme-color;
+    }
+
+    &::after {
+      display: block;
+      content: "";
+      transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+      border: 2px solid $white;
+      border-radius: 1px;
+      border-top: 0;
+      border-right: 0;
+      width: 8px;
+      height: 5px;
+      transform: rotateZ(-45deg) translateX(1px) scale(0);
+    }
+
+    &.checked {
+      border-color: $theme-color;
+      background-color: $theme-color;
+
+      &::after {
+        border: 2px solid $white;
+        border-radius: 1px;
+        border-top: 0;
+        border-right: 0;
+        width: 8px;
+        height: 5px;
+        transform: rotateZ(-45deg) translateX(1px) scale(1.2);
+      }
+    }
+
+    &.disabled {
+      border-color: $checkboxDisable;
+      background-color: $checkboxDisable;
+    }
+
+    &.checked.disabled {
+      border-color: $checkboxDisable;
+      background-color: $checkboxDisable;
+
+      &::after {
+        border: 2px solid $white;
+        border-radius: 1px;
+        border-top: 0;
+        border-right: 0;
+        width: 8px;
+        height: 5px;
+        transform: rotateZ(-45deg) translateX(1px) scale(1.2);
+      }
+    }
+
+    &.indeterminate {
+      border-color: $theme-color;
+      background-color: $theme-color;
+
+      &::after {
+        border: 3px solid $white;
+        border-radius: 1px;
+        width: 0;
+        height: 0;
+        transform: rotateZ(0) translateX(0) scale(1.2);
+      }
+    }
+  }
+}
+
+.pui-checkbox-group {
+  display: inline-flex;
+  justify-content: flex-start;
+}
