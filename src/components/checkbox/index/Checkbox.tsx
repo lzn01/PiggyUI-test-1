@@ -10,6 +10,7 @@ interface CheckboxProps {
     checked?: boolean; // 选中状态
     defaultChecked?: boolean; // 默认选中状态
     disabled?: boolean; // 禁用状态
+    halfChecked?: boolean; // 半选状态
     onChange?: (checked: boolean, e: MouseEvent) => void;
 }
 
@@ -18,7 +19,8 @@ const Checkbox: FC<CheckboxProps> =
          checked,
          children,
          defaultChecked = false,
-         disabled,
+         disabled = false,
+         halfChecked = false,
          onChange
      }) => {
         const [checkboxState, setCheckboxState] = useState(defaultChecked);
@@ -45,8 +47,9 @@ const Checkbox: FC<CheckboxProps> =
                 onClick={clickHandler}
             >
                 <div className={classes(componentName, "core", {
+                    checked: checkboxState,
                     disabled,
-                    checked: checkboxState
+                    "half-checked": halfChecked
                 })}
                 >
                     {children}
