@@ -6,7 +6,6 @@ import classes from "../../../common/methods/classes";
 import Checkbox from "./Checkbox";
 
 interface Option {
-    disable?: boolean;
     label: ReactNode;
     value: string;
 }
@@ -39,13 +38,13 @@ const CheckboxGroup: FC<CheckboxGroupProps> =
             if (checkboxGroupValue?.length > 0) {
                 return checkboxGroupValue?.length < options.length ? "half-checked" : "all";
             }
-            return;
+            return "none";
         };
 
         const masterCheckBoxChangeHandler = () => {
             const newCheckboxGroupValue = checkBoxStateHandler() === "all"
-                ? options.reduce((prev, current) => [current.value, ...prev], [])
-                : [];
+                ? []
+                : options.reduce((prev, current) => [current.value, ...prev], []);
             if (onChange) {
                 onChange(newCheckboxGroupValue);
             }
@@ -53,7 +52,7 @@ const CheckboxGroup: FC<CheckboxGroupProps> =
         };
 
         const otherCheckBoxChangeHandler = (param: string) => {
-            const newCheckboxGroupValue = checkboxGroupValue?.indexOf(param) > 0
+            const newCheckboxGroupValue = checkboxGroupValue?.indexOf(param) > -1
                 ? checkboxGroupValue?.filter(i => i !== param)
                 : [param, ...checkboxGroupValue];
             if (onChange) {
@@ -84,8 +83,7 @@ const CheckboxGroup: FC<CheckboxGroupProps> =
                     options.map(option =>
                         <Checkbox
                             key={option.value}
-                            checked={checkboxGroupValue?.indexOf(option.value) > 0}
-                            disabled={!!option.disable}
+                            checked={checkboxGroupValue?.indexOf(option.value) > -1}
                             onChange={() => otherCheckBoxChangeHandler(option.value)}
                         >
                             {option.label}
