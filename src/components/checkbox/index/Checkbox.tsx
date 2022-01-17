@@ -47,13 +47,12 @@ const Checkbox: FC<CheckboxProps> =
                 onClick={clickHandler}
             >
                 <div className={classes(componentName, "core", {
-                    checked: checkboxState,
-                    disabled,
-                    "half-checked": halfChecked
-                })}
-                >
-                    {children}
-                </div>
+                        checked: checkboxState,
+                        disabled,
+                        "half-checked": halfChecked
+                    }
+                )}/>
+                {children}
             </div>
         );
     };
