@@ -3,7 +3,7 @@ import type {FC, MouseEventHandler} from "react";
 import "../index.scss";
 import classes from "../../../common/methods/classes";
 
-interface OptionProps {
+export interface OptionProps {
     checkedValue?: any;
     disabled?: boolean;
     onClick?: (checkedValue: any, e: React.MouseEvent) => any;
