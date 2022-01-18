@@ -1,14 +1,14 @@
 import * as React from "react";
-import "../index.scss";
-import type {CSSProperties, FC, ReactElement} from "react";
 import {Children, cloneElement, useEffect, useState} from "react";
+import type {CSSProperties, FC, MouseEvent, ReactElement} from "react";
 import classes from "../../../common/methods/classes";
+import "../index.scss";
 import {OptionProps} from "./Option";
 
 interface RadioProps {
     className?: string;
     defaultValue?: any;
-    onChange?: (checkedValue: any, e: MouseEvent) => any;
+    onChange?: (checkedValue: any, e: MouseEvent) => void;
     radioStyle?: "radio" | "button";
     style?: CSSProperties;
     value?: any;
@@ -28,12 +28,11 @@ const Radio: FC<RadioProps> =
          vertical = false,
          style
      }) => {
-
         const [radioValue, setRadioValue] = useState<any>(defaultValue);
 
-        const clickHandler = (param: any, e: MouseEvent) => {
+        const clickHandler = (e: MouseEvent, param: any) => {
             if (onChange) {
-                onChange(param, e);
+                onChange(e, param);
             }
             setRadioValue(param);
         };
@@ -53,7 +52,7 @@ const Radio: FC<RadioProps> =
                     Children.map(children, (child: ReactElement<OptionProps>) => {
                         return cloneElement(child, {
                             checkedValue: radioValue,
-                            onClick: () => clickHandler,
+                            onClick: clickHandler,
                             radioStyle,
                             vertical
                         });
