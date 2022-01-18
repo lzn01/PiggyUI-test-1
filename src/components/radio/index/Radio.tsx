@@ -1,16 +1,14 @@
 import * as React from "react";
 import "../index.scss";
 import type {CSSProperties, FC, ReactElement} from "react";
-import {Children, cloneElement, useState} from "react";
+import {Children, cloneElement, useEffect, useState} from "react";
 import classes from "../../../common/methods/classes";
 import {OptionProps} from "./Option";
 
 interface RadioProps {
-    checkedValue?: any;
     className?: string;
     defaultValue?: any;
-    disabled?: boolean;
-    onClick?: (checkedValue: any, e: React.MouseEvent) => any;
+    onChange?: (checkedValue: any, e: MouseEvent) => any;
     radioStyle?: "radio" | "button";
     style?: CSSProperties;
     value?: any;
@@ -21,22 +19,30 @@ const componentName = "radio";
 
 const Radio: FC<RadioProps> =
     ({
-         checkedValue,
          children,
          className,
          defaultValue,
-         disabled,
-         onClick,
+         onChange,
          radioStyle = "radio",
          value,
          vertical = false,
          style
      }) => {
 
-        const [radioValue, setRadioValue] = useState(defaultValue);
+        const [radioValue, setRadioValue] = useState<any>(defaultValue);
 
-        const clickHandler = (checkedValue: any, e: MouseEvent) => {
+        const clickHandler = (param: any, e: MouseEvent) => {
+            if (onChange) {
+                onChange(param, e);
+            }
+            setRadioValue(param);
         };
+
+        useEffect(() => {
+            if (typeof value !== "undefined") {
+                setRadioValue(value);
+            }
+        }, [value]);
 
         return (
             <div
@@ -46,8 +52,8 @@ const Radio: FC<RadioProps> =
                 {
                     Children.map(children, (child: ReactElement<OptionProps>) => {
                         return cloneElement(child, {
-                            checkedValue,
-                            onClick: clickHandler,
+                            checkedValue: radioValue,
+                            onClick: () => clickHandler,
                             radioStyle,
                             vertical
                         });
