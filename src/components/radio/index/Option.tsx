@@ -1,16 +1,8 @@
 import * as React from "react";
-import type {FC, MouseEvent, MouseEventHandler} from "react";
+import type {FC, MouseEventHandler} from "react";
+import type {OptionProps} from "../../../types/radio";
 import "../index.scss";
 import classes from "../../../common/methods/classes";
-
-export interface OptionProps {
-    checkedValue?: any;
-    disabled?: boolean;
-    onClick?: (checkedValue: any, e: MouseEvent) => void;
-    radioStyle?: "radio" | "button";
-    value?: any;
-    vertical?: boolean;
-}
 
 const componentName = "option";
 

@@ -1,19 +1,9 @@
 import * as React from "react";
 import {Children, cloneElement, useEffect, useState} from "react";
-import type {CSSProperties, FC, MouseEvent, ReactElement} from "react";
+import type {FC, MouseEvent, ReactElement} from "react";
+import type {OptionProps, RadioProps} from "../../../types/radio";
 import classes from "../../../common/methods/classes";
 import "../index.scss";
-import {OptionProps} from "./Option";
-
-interface RadioProps {
-    className?: string;
-    defaultValue?: any;
-    onChange?: (checkedValue: any, e: MouseEvent) => void;
-    radioStyle?: "radio" | "button";
-    style?: CSSProperties;
-    value?: any;
-    vertical?: boolean;
-}
 
 const componentName = "radio";
 
