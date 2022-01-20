@@ -12,7 +12,7 @@ interface RateProps {
     defaultValue?: number;
     disabled?: boolean;
     onChange?: (value: number) => void;
-    onMouseEnter?: (value: number) => void;
+    onHover?: (value: number) => void;
     style?: CSSProperties;
     tips?: ReactNode;
     value?: number;
@@ -28,7 +28,7 @@ const Rate: FC<RateProps> =
          defaultValue = 0,
          disabled = false,
          onChange,
-         onMouseEnter,
+         onHover,
          style,
          tips,
          value
@@ -36,17 +36,34 @@ const Rate: FC<RateProps> =
         const [hoveredRateValue, setHoveredRateValue] = useState(0);
         const [selectedRateValue, setSelectedRateValue] = useState(defaultValue);
 
+
         const mouseLeaveHandler = () => {
-            setHoveredRateValue(0)
+            hoverHandler(0);
+            setHoveredRateValue(0);
         };
-        
-        const mouseEnterHandler = () => {
-          
-        }
-        
+
+        const mouseEnterHandler = (index: number, position: string) => {
+            const newValue = position === "left" ? 0.5 : 1 + index;
+            if (disabled) return;
+            if (allowHalf && hoveredRateValue !== newValue) {
+                hoverHandler(newValue);
+                setHoveredRateValue(newValue);
+            }
+            if (!allowHalf && hoveredRateValue !== index + 1) {
+                hoverHandler(index + 1);
+                setHoveredRateValue(index + 1);
+            }
+        };
+
+        const hoverHandler = (param: number) => {
+            if (onHover) {
+                onHover(param);
+            }
+        };
+
         const clickHandler = () => {
-          
-        }
+
+        };
 
         return (
             <div
