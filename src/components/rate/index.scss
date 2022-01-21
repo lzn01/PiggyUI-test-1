@@ -1,0 +1,61 @@
+@import "../../common/styles/mixins";
+
+.pui-rate {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  > .pui-rate-container {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    > .pui-star {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 30px;
+      cursor: pointer;
+      position: relative;
+
+      .pui-rate-star-icon {
+        transform: scale(1);
+        pointer-events: none;
+        transition: all .3s cubic-bezier(.645, .045, .355, 1);
+      }
+
+      &:hover {
+        .pui-rate-star-icon {
+          transform: scale(1.2);
+        }
+      }
+
+      > .pui-star-filler {
+        width: 12px;
+        height: 30px;
+        position: absolute;
+        top: 0;
+
+        &.left {
+          left: 0;
+        }
+
+        &.right {
+          right: 0;
+        }
+      }
+    }
+  }
+
+  > .pui-rate-tips {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: rgba(0, 0, 0, 0.65);
+    margin-left: 8px;
+  }
+}

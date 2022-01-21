@@ -3,6 +3,7 @@ import "../index.scss";
 import type {FC} from "react";
 import classes from "../../../common/methods/classes";
 import Icon from "../../icon";
+import Wave from "../../../common/components/wave";
 
 interface StarProps {
     count: number;
@@ -44,23 +45,25 @@ const Star: FC<StarProps> =
         };
 
         return (
-            <li className={classes(componentName, "")}>
-                <Icon
-                    name={iconNameHandler()}
-                    size={20}
-                    className="pui-rate-star-icon"
-                />
-                <div
-                    className={classes(componentName, "filler-left")}
-                    onMouseEnter={() => mouseEnterHandler("left")}
-                    onClick={() => clickHandler("left")}
-                />
-                <div
-                    className={classes(componentName, "filler-right")}
-                    onMouseEnter={() => mouseEnterHandler("right")}
-                    onClick={() => clickHandler("right")}
-                />
-            </li>
+            <Wave>
+                <li className={classes(componentName, "")}>
+                    <Icon
+                        name={iconNameHandler()}
+                        size={20}
+                        className="pui-rate-star-icon"
+                    />
+                    <div
+                        className={classes(componentName, "filler", ["left"])}
+                        onMouseEnter={() => mouseEnterHandler("left")}
+                        onClick={() => clickHandler("left")}
+                    />
+                    <div
+                        className={classes(componentName, "filler", ["right"])}
+                        onMouseEnter={() => mouseEnterHandler("right")}
+                        onClick={() => clickHandler("right")}
+                    />
+                </li>
+            </Wave>
         );
     };
 export default Star;
