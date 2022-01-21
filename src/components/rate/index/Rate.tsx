@@ -36,6 +36,11 @@ const Rate: FC<RateProps> =
         const [hoveredRateValue, setHoveredRateValue] = useState(0);
         const [selectedRateValue, setSelectedRateValue] = useState(defaultValue);
 
+        const hoverHandler = (param: number) => {
+            if (onHover) {
+                onHover(param);
+            }
+        };
 
         const mouseLeaveHandler = () => {
             hoverHandler(0);
@@ -55,14 +60,18 @@ const Rate: FC<RateProps> =
             }
         };
 
-        const hoverHandler = (param: number) => {
-            if (onHover) {
-                onHover(param);
+        const clickHandler = (index: number, position: string) => {
+            const newValue = allowHalf && position === "left" ? 0.5 : 1 + index;
+            const valueState = selectedRateValue === newValue;
+            if (disabled) return;
+            if (allowClear) {
+                hoverHandler(valueState ? 0 : newValue);
+                setSelectedRateValue(valueState ? 0 : newValue);
+                valueState && setHoveredRateValue(0);
+            } else if (valueState) {
+                hoverHandler(newValue);
+                setSelectedRateValue(newValue);
             }
-        };
-
-        const clickHandler = () => {
-
         };
 
         return (
