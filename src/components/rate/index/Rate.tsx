@@ -50,14 +50,14 @@ const Rate: FC<RateProps> =
 
         // 处理星星点击事件
         const clickHandler = (index: number, position: string) => {
-            const newValue = allowHalf && position === "left" ? 0.5 : 1 + index;
+            const newValue = (allowHalf && position === "left" ? 0.5 : 1) + index;
             const valueState = selectedRateValue === newValue;
             if (disabled) return;
             if (allowClear) {
                 changeHandler(valueState ? 0 : newValue);
                 setSelectedRateValue(valueState ? 0 : newValue);
                 valueState && setHoveredRateValue(0);
-            } else if (valueState) {
+            } else if (!valueState) {
                 changeHandler(newValue);
                 setSelectedRateValue(newValue);
             }
@@ -65,7 +65,7 @@ const Rate: FC<RateProps> =
 
         // 处理容器内鼠标移动
         const mouseEnterHandler = (index: number, position: string) => {
-            const newValue = position === "left" ? 0.5 : 1 + index;
+            const newValue = (position === "left" ? 0.5 : 1) + index;
             if (disabled) return;
             if (allowHalf && hoveredRateValue !== newValue) {
                 hoverHandler(newValue);
