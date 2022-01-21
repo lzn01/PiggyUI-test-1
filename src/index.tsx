@@ -11,6 +11,7 @@ import SpinExample from "./examples/spin";
 import InputExample from "./examples/input";
 import CheckboxExample from "./examples/checkbox";
 import RadioExample from "./examples/radio";
+import RateExample from "./examples/rate";
 
 ReactDOM.render(
     <Router>
@@ -52,6 +53,9 @@ ReactDOM.render(
                         <li>
                             <NavLink to="/radio">单选框</NavLink>
                         </li>
+                        <li>
+                            <NavLink to="/rate">评分</NavLink>
+                        </li>
                     </ul>
                 </aside>
                 <main>
@@ -64,6 +68,7 @@ ReactDOM.render(
                     <Route path="/input" component={InputExample}/>
                     <Route path="/checkbox" component={CheckboxExample}/>
                     <Route path="/radio" component={RadioExample}/>
+                    <Route path="/rate" component={RateExample}/>
                 </main>
             </div>
         </div>
