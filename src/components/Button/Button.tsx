@@ -1,10 +1,11 @@
 import * as React from "react";
-import "../index.scss";
+import "./index.scss";
 import type {ButtonHTMLAttributes, FC} from "react";
-import {useRef} from "react";
-import classes from "../../../common/methods/classes";
-import Icon from "../../icon";
-import Wave from "../../../common/components/wave";
+import {HTMLAttributes, useRef} from "react";
+import classes from "../../common/methods/classes";
+import Icon from "../icon";
+import Wave from "../../common/components/wave";
+import ButtonGroup from "./ButtonGroup";
 
 interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "type"> {
     ghost?: boolean;
@@ -15,11 +16,15 @@ interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "typ
     size?: "small" | "medium" | "large";
 }
 
+interface ButtonInterface extends FC<ButtonProps> {
+    Group: FC<HTMLAttributes<HTMLElement>>;
+}
+
 const componentName = "button";
 const twoCNCharRegex = /^[\u4e00-\u9fa5]{2}$/; // regex char 字符
 const isTwoCNChar = twoCNCharRegex.test.bind(twoCNCharRegex); // test() 方法用于检测一个字符串是否匹配某个模式
 
-const Button: FC<ButtonProps> =
+const Button: ButtonInterface =
     ({
          children,
          className,
@@ -64,4 +69,5 @@ const Button: FC<ButtonProps> =
             </Wave>
         );
     };
+Button.Group = ButtonGroup;
 export default Button;

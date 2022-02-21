@@ -4,7 +4,7 @@ import {HashRouter as Router, Route, NavLink} from "react-router-dom";
 import "./index.scss";
 import IconExample from "./examples/icon";
 import ModalExample from "./examples/modal";
-import ButtonExample from "./examples/button";
+import ButtonExample from "./examples/Button";
 import GridExample from "./examples/grid";
 import SwitchExample from "./examples/switch";
 import SpinExample from "./examples/spin";

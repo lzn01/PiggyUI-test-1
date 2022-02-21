@@ -1,7 +1,7 @@
 import * as React from "react";
-import Button from "../../../components/button/index/Button";
-import ButtonGroup from "../../../components/button/index/ButtonGroup";
+import Button from "../../../components/Button/Button";
 
+const {Group} = Button;
 const ButtonDemo1 = () => {
     return (
         <>
@@ -19,11 +19,11 @@ const ButtonDemo1 = () => {
                 <Button type={"default"}>按钮</Button>
                 <Button type={"default"} ghost>按钮</Button>
             </div>
-            <ButtonGroup>
-                <Button type={"dashed"} >按钮</Button>
+            <Group>
+                <Button type={"dashed"}>按钮</Button>
                 <Button type={"default"}>按钮</Button>
-                <Button type={"default"} >按钮</Button>
-            </ButtonGroup>
+                <Button type={"default"}>按钮</Button>
+            </Group>
         </>
     );
 };
