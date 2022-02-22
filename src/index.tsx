@@ -9,7 +9,7 @@ import GridExample from "./examples/grid";
 import SwitchExample from "./examples/switch";
 import SpinExample from "./examples/spin";
 import InputExample from "./examples/input";
-import CheckboxExample from "./examples/checkbox";
+import CheckboxExample from "./examples/Checkbox";
 import RadioExample from "./examples/radio";
 import RateExample from "./examples/rate";
 
