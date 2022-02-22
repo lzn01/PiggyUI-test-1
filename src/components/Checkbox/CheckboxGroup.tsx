@@ -1,8 +1,8 @@
 import * as React from "react";
-import "../index.scss";
+import "./index.scss";
 import type {ReactNode, FC, CSSProperties} from "react";
 import {useEffect, useState} from "react";
-import classes from "../../../common/methods/classes";
+import classes from "../../common/methods/classes";
 import Checkbox from "./Checkbox";
 
 interface Option {
@@ -20,7 +20,7 @@ interface CheckboxGroupProps {
     value?: string[];
 }
 
-const componentName = "checkbox-group";
+const componentName = "Checkbox-group";
 
 const CheckboxGroup: FC<CheckboxGroupProps> =
     ({

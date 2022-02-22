@@ -1,6 +1,6 @@
 import * as React from "react";
-import Checkbox from "../../../components/checkbox/index/Checkbox";
-import CheckboxGroup from "../../../components/checkbox/index/CheckboxGroup";
+import Checkbox from "../../../components/Checkbox/Checkbox";
+import CheckboxGroup from "../../../components/Checkbox/CheckboxGroup";
 
 const CheckboxDemo1 = () => {
     const options = [

@@ -1,10 +1,10 @@
 import * as React from "react";
-import "../index.scss";
+import "./index.scss";
 import type {FC, MouseEvent} from "react";
 import {useEffect, useState} from "react";
-import classes from "../../../common/methods/classes";
+import classes from "../../common/methods/classes";
 
-const componentName = "checkbox";
+const componentName = "Checkbox";
 
 interface CheckboxProps {
     checked?: boolean; // 选中状态
