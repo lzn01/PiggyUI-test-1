@@ -10,7 +10,7 @@ interface Option {
     value: string;
 }
 
-interface CheckboxGroupProps {
+export interface CheckboxGroupProps {
     className?: string;
     defaultValue?: string[];
     onChange?: (value: string[]) => void;

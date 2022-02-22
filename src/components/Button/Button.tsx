@@ -21,8 +21,8 @@ interface ButtonInterface extends FC<ButtonProps> {
 }
 
 const componentName = "button";
-const twoCNCharRegex = /^[\u4e00-\u9fa5]{2}$/; // regex char 字符
-const isTwoCNChar = twoCNCharRegex.test.bind(twoCNCharRegex); // test() 方法用于检测一个字符串是否匹配某个模式
+// const twoCNCharRegex = /^[\u4e00-\u9fa5]{2}$/; // regex char 字符
+// const isTwoCNChar = twoCNCharRegex.test.bind(twoCNCharRegex); // test() 方法用于检测一个字符串是否匹配某个模式
 
 const Button: ButtonInterface =
     ({

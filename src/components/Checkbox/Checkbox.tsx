@@ -3,6 +3,7 @@ import "./index.scss";
 import type {FC, MouseEvent} from "react";
 import {useEffect, useState} from "react";
 import classes from "../../common/methods/classes";
+import CheckboxGroup, {CheckboxGroupProps} from "./CheckboxGroup";
 
 const componentName = "Checkbox";
 
@@ -14,7 +15,11 @@ interface CheckboxProps {
     onChange?: (checked: boolean, e: MouseEvent) => void;
 }
 
-const Checkbox: FC<CheckboxProps> =
+interface CheckboxInterface extends FC<CheckboxProps> {
+    Group: FC<CheckboxGroupProps>;
+}
+
+const Checkbox: CheckboxInterface =
     ({
          checked,
          children,
@@ -56,4 +61,5 @@ const Checkbox: FC<CheckboxProps> =
             </div>
         );
     };
+Checkbox.Group = CheckboxGroup;
 export default Checkbox;
