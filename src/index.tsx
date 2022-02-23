@@ -5,7 +5,7 @@ import "./index.scss";
 import IconExample from "./examples/icon";
 import ModalExample from "./examples/modal";
 import ButtonExample from "./examples/Button";
-import GridExample from "./examples/grid";
+import GridExample from "./examples/Grid";
 import SwitchExample from "./examples/switch";
 import SpinExample from "./examples/spin";
 import InputExample from "./examples/input";

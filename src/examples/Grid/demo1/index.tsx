@@ -1,7 +1,6 @@
 import * as React from "react";
-import Col from "../../../components/grid/index/Col";
-import Row from '../../../components/grid/index/Row';
 import './index.scss'
+import {Col, Row} from "../../../components/Grid";
 
 const GridDemo1 = () => {
     return (
