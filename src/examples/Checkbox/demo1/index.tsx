@@ -1,7 +1,7 @@
 import * as React from "react";
-import Checkbox from "../../../components/Checkbox/Checkbox";
-import CheckboxGroup from "../../../components/Checkbox/CheckboxGroup";
+import {Checkbox} from "../../../components/Checkbox";
 
+const {Group} = Checkbox;
 const CheckboxDemo1 = () => {
     const options = [
         {label: "Apple", value: "Apple"},
@@ -11,7 +11,7 @@ const CheckboxDemo1 = () => {
     return (
         <div style={{width: "100%"}}>
             <Checkbox disabled>啊啊啊啊</Checkbox>
-            <CheckboxGroup
+            <Group
                 options={options}
                 title="SelectAll"
                 onChange={(value: string[]) => console.log(value)}
