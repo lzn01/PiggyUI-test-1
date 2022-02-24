@@ -1,11 +1,16 @@
 import * as React from "react";
-import type {ChangeEventHandler, FC} from "react";
-import type {SearchProps} from "../../../types/input";
-import "../index.scss";
-import Input from "./Input";
-import classes from "../../../common/methods/classes";
-import Icon from "../../Icon";
 import {useState} from "react";
+import Icon from "../Icon";
+import Input from "./Input";
+import classes from "../../common/methods/classes";
+import "./styles/index.scss";
+import type {baseInputProps} from "../../types/input";
+import type {ChangeEventHandler, FC, ReactNode} from "react";
+
+export interface SearchProps extends baseInputProps {
+    enterButton?: ReactNode;
+    onSearch?: (value: string) => void;
+}
 
 const componentName = "search";
 

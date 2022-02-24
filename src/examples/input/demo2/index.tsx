@@ -1,5 +1,5 @@
 import * as React from "react";
-import Textarea from "../../../components/input/index/Textarea";
+import Textarea from "../../../components/Input/Textarea";
 
 const InputDemo2 = () => {
     return (

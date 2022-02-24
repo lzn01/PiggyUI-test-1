@@ -1,13 +1,33 @@
 import * as React from "react";
 import {useState} from "react";
-import type {FC, ChangeEventHandler, KeyboardEventHandler} from "react";
-import type {InputProps} from "../../../types/input";
-import "../index.scss";
-import classes from "../../../common/methods/classes";
+import {Search, Textarea} from "./index";
+import classes from "../../common/methods/classes";
+import "./styles/index.scss";
+import type {SearchProps} from "./Search";
+import type {TextareaProps} from "./Textarea";
+import type {FC, ChangeEventHandler, KeyboardEventHandler, InputHTMLAttributes, ReactNode} from "react";
+
+interface baseInputProps extends InputHTMLAttributes<HTMLInputElement> {
+    defaultValue?: string;
+    onPressEnter?: KeyboardEventHandler; // 按下回车的回调
+    value?: string;
+}
+
+export interface InputProps extends Omit<baseInputProps, "prefix"> {
+    addonAfter?: ReactNode; // 后置标签
+    addonBefore?: ReactNode; // 前置标签
+    prefix?: ReactNode; // 输入框前缀
+    suffix?: ReactNode; // 输入框后缀
+}
+
+interface InputInterface extends FC<InputProps> {
+    Search: FC<SearchProps>;
+    Textarea: FC<TextareaProps>;
+}
 
 const componentName = "input";
 
-const Input: FC<InputProps> =
+const Input: InputInterface =
     ({
          addonAfter,
          addonBefore,
@@ -103,4 +123,6 @@ const Input: FC<InputProps> =
             </label>
         );
     };
+Input.Search = Search;
+Input.Textarea = Textarea;
 export default Input;

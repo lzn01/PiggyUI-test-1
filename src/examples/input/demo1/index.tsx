@@ -1,7 +1,7 @@
 import * as React from "react";
-import Input from "../../../components/input/index/Input";
+import Input from "../../../components/Input/Input";
 import Icon from "../../../components/Icon";
-import Search from "../../../components/input/index/Search";
+import Search from "../../../components/Input/Search";
 
 const InputDemo1 = () => {
     const onSearch = (e: any) => {

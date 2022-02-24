@@ -1,10 +1,16 @@
 import * as React from "react";
-import type {ChangeEventHandler, FC} from "react";
-import "../index.scss";
-import type {TextareaProps} from "../../../types/input";
 import {useEffect, useRef, useState} from "react";
-import classes from "../../../common/methods/classes";
-import {calculateNodeHeight} from "../../../common/methods/calculateNodeHeight";
+import classes from "../../common/methods/classes";
+import {calculateNodeHeight} from "../../common/methods/calculateNodeHeight";
+import "./styles/index.scss";
+import type {ChangeEventHandler, FC, KeyboardEventHandler, TextareaHTMLAttributes} from "react";
+
+export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+    autosize?: boolean;
+    defaultValue?: string;
+    onPressEnter?: KeyboardEventHandler;
+    value?: string;
+}
 
 const componentName = "textarea";
 
