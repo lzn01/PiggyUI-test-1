@@ -1,9 +1,10 @@
 import * as React from "react";
+import {useEffect, useState} from "react";
+import {CheckboxGroup} from "./index";
+import classes from "../../common/methods/classes";
 import "./styles/index.scss";
 import type {FC, MouseEvent} from "react";
-import {useEffect, useState} from "react";
-import classes from "../../common/methods/classes";
-import CheckboxGroup, {CheckboxGroupProps} from "./CheckboxGroup";
+import type {CheckboxGroupProps} from "./CheckboxGroup";
 
 const componentName = "Checkbox";
 

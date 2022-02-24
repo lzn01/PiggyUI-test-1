@@ -1,9 +1,9 @@
 import * as React from "react";
-import "./styles/index.scss";
-import type {ReactNode, FC, CSSProperties} from "react";
 import {useEffect, useState} from "react";
 import classes from "../../common/methods/classes";
-import Checkbox from "./Checkbox";
+import Checkbox from ".";
+import "./styles/index.scss";
+import type {ReactNode, FC, CSSProperties} from "react";
 
 interface Option {
     label: ReactNode;
