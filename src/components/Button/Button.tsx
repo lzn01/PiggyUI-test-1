@@ -1,9 +1,9 @@
 import * as React from "react";
-import "./index.scss";
+import "./styles/index.scss";
 import type {ButtonHTMLAttributes, FC} from "react";
 import {HTMLAttributes, useRef} from "react";
 import classes from "../../common/methods/classes";
-import Icon from "../icon";
+import Icon from "../Icon";
 import Wave from "../../common/components/wave";
 import ButtonGroup from "./ButtonGroup";
 

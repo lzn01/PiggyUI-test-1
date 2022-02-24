@@ -1,6 +1,6 @@
 import * as React from "react";
 import type {FC} from "react";
-import "./index.scss";
+import "./styles/index.scss";
 import classes from "../../common/methods/classes";
 import type {GridProps, Option} from "../../types/grid";
 

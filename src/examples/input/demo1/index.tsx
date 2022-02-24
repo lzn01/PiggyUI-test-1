@@ -1,6 +1,6 @@
 import * as React from "react";
 import Input from "../../../components/input/index/Input";
-import Icon from "../../../components/icon";
+import Icon from "../../../components/Icon";
 import Search from "../../../components/input/index/Search";
 
 const InputDemo1 = () => {

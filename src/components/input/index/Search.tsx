@@ -4,7 +4,7 @@ import type {SearchProps} from "../../../types/input";
 import "../index.scss";
 import Input from "./Input";
 import classes from "../../../common/methods/classes";
-import Icon from "../../icon";
+import Icon from "../../Icon";
 import {useState} from "react";
 
 const componentName = "search";

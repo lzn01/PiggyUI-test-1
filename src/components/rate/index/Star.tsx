@@ -2,7 +2,7 @@ import * as React from "react";
 import "../index.scss";
 import type {FC} from "react";
 import classes from "../../../common/methods/classes";
-import Icon from "../../icon";
+import Icon from "../../Icon";
 
 interface StarProps {
     count: number;

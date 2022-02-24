@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./index.scss";
+import "./styles/index.scss";
 import type {ReactNode, FC, CSSProperties} from "react";
 import {useEffect, useState} from "react";
 import classes from "../../common/methods/classes";
