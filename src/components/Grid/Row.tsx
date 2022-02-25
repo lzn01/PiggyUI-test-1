@@ -1,9 +1,10 @@
 import * as React from "react";
-import type {FC} from "react";
 import "./styles/index.scss";
 import classes from "../../common/methods/classes";
-import type {RowProps} from "../../types/grid";
-import {ColProps} from "./Col";
+import type {FC} from "react";
+import type {ColProps, GridProps} from "./Col";
+
+export type RowProps = GridProps
 
 const componentName = "row";
 

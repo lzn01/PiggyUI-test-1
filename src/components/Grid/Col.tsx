@@ -1,8 +1,18 @@
 import * as React from "react";
-import type {FC} from "react";
+import type {FC, CSSProperties} from "react";
 import "./styles/index.scss";
 import classes from "../../common/methods/classes";
-import type {GridProps, Option} from "../../types/grid";
+
+export interface Option {
+    span: number; // 栅格占位格数
+    offset?: number; // 栅格向右偏移的格数
+}
+
+export interface GridProps {
+    className?: string;
+    gutter?: number; // 栅格间隔
+    style?: CSSProperties;
+}
 
 export interface ColProps extends GridProps {
     span?: number;
