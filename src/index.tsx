@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {HashRouter as Router, Route, NavLink} from "react-router-dom";
 import "./index.scss";
-import IconExample from "./examples/icon";
+import IconExample from "./examples/Icon";
 import ModalExample from "./examples/modal";
 import ButtonExample from "./examples/Button";
 import GridExample from "./examples/Grid";

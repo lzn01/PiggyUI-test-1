@@ -1,12 +1,12 @@
 import * as React from "react";
-import type {CSSProperties, FC, MouseEventHandler, ReactNode} from "react";
 import {useEffect, useRef} from "react";
 import {createPortal} from "react-dom";
-import "./index.scss";
 import Icon from "../Icon";
-import Button from "../Button/Button";
-import classes from "../../common/methods/classes";
+import {Button} from "../Button";
 import Transition from "../../common/components/transition";
+import classes from "../../common/methods/classes";
+import "./styles/index.scss";
+import type {CSSProperties, FC, MouseEventHandler, ReactNode} from "react";
 
 interface ModalProps {
     cancelText?: string; // 取消按钮文字
@@ -25,7 +25,7 @@ interface ModalProps {
     visible: boolean;
 }
 
-const componentName = "modal";
+const componentName = "Modal";
 
 const Modal: FC<ModalProps> =
     ({

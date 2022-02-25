@@ -1,6 +1,6 @@
 import * as React from "react";
 import {useState} from "react";
-import Modal from "../../../components/modal";
+import Modal from "../../../components/Modal";
 
 const ModalDemo1 = () => {
     const [visible, setVisible] = useState(false);
