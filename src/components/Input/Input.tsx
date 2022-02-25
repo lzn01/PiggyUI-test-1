@@ -7,7 +7,7 @@ import type {SearchProps} from "./Search";
 import type {TextareaProps} from "./Textarea";
 import type {FC, ChangeEventHandler, KeyboardEventHandler, InputHTMLAttributes, ReactNode} from "react";
 
-interface baseInputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface baseInputProps extends InputHTMLAttributes<HTMLInputElement> {
     defaultValue?: string;
     onPressEnter?: KeyboardEventHandler; // 按下回车的回调
     value?: string;

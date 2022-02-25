@@ -4,7 +4,7 @@ import Icon from "../Icon";
 import Input from "./Input";
 import classes from "../../common/methods/classes";
 import "./styles/index.scss";
-import type {baseInputProps} from "../../types/input";
+import type {baseInputProps} from "./Input";
 import type {ChangeEventHandler, FC, ReactNode} from "react";
 
 export interface SearchProps extends baseInputProps {
