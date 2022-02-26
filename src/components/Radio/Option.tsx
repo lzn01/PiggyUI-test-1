@@ -1,8 +1,8 @@
 import * as React from "react";
 import type {FC, MouseEventHandler} from "react";
-import type {OptionProps} from "../../../types/radio";
-import "../index.scss";
-import classes from "../../../common/methods/classes";
+import type {OptionProps} from "../../types/radio";
+import "./styles/index.scss";
+import classes from "../../common/methods/classes";
 
 const componentName = "option";
 
@@ -34,7 +34,7 @@ const Option: FC<OptionProps> =
                 onClick={clickHandler}
             >
                 {
-                    radioStyle === "radio" &&
+                    radioStyle === "Radio" &&
                     <span className="label-dot"/>
                 }
                 <div className="label-text">

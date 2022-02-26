@@ -1,7 +1,7 @@
 import {CSSProperties, MouseEvent} from "react";
 
 interface BaseProps {
-    radioStyle?: "radio" | "button";
+    radioStyle?: "Radio" | "button";
     value?: any;
     vertical?: boolean;
 }

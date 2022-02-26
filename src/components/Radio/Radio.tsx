@@ -1,11 +1,11 @@
 import * as React from "react";
 import {Children, cloneElement, useEffect, useState} from "react";
 import type {FC, MouseEvent, ReactElement} from "react";
-import type {OptionProps, RadioProps} from "../../../types/radio";
-import classes from "../../../common/methods/classes";
-import "../index.scss";
+import type {OptionProps, RadioProps} from "../../types/radio";
+import classes from "../../common/methods/classes";
+import "./styles/index.scss";
 
-const componentName = "radio";
+const componentName = "Radio";
 
 const Radio: FC<RadioProps> =
     ({
@@ -13,7 +13,7 @@ const Radio: FC<RadioProps> =
          className,
          defaultValue,
          onChange,
-         radioStyle = "radio",
+         radioStyle = "Radio",
          value,
          vertical = false,
          style

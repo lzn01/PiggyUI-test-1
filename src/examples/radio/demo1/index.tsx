@@ -1,6 +1,6 @@
 import * as React from "react";
-import Radio from "../../../components/radio/index/Radio";
-import Option from "../../../components/radio/index/Option";
+import Radio from "../../../components/Radio/Radio";
+import Option from "../../../components/Radio/Option";
 
 const RadioDemo1 = () => {
     return (
