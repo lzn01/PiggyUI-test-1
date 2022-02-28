@@ -1,8 +1,8 @@
 import * as React from "react";
-import type {FC, MouseEventHandler} from "react";
-import type {OptionProps} from "../../types/radio";
-import "./styles/index.scss";
 import classes from "../../common/methods/classes";
+import "./styles/index.scss";
+import type {OptionProps} from "./Radio";
+import type {FC, MouseEventHandler} from "react";
 
 const componentName = "option";
 

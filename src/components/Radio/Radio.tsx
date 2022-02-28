@@ -1,13 +1,36 @@
 import * as React from "react";
 import {Children, cloneElement, useEffect, useState} from "react";
-import type {FC, MouseEvent, ReactElement} from "react";
-import type {OptionProps, RadioProps} from "../../types/radio";
+import {Option} from "./index";
 import classes from "../../common/methods/classes";
 import "./styles/index.scss";
+import type {FC, MouseEvent, CSSProperties, ReactElement} from "react";
+
+export interface BaseProps {
+    radioStyle?: "Radio" | "button";
+    value?: any;
+    vertical?: boolean;
+}
+
+export interface RadioProps extends BaseProps {
+    className?: string;
+    defaultValue?: any;
+    onChange?: (checkedValue: any, e: MouseEvent) => void;
+    style?: CSSProperties;
+}
+
+export interface OptionProps extends BaseProps {
+    checkedValue?: any;
+    disabled?: boolean;
+    onClick?: (checkedValue: any, e: MouseEvent) => void;
+}
+
+interface RadioInterface extends FC<RadioProps> {
+    Option: FC<OptionProps>;
+}
 
 const componentName = "Radio";
 
-const Radio: FC<RadioProps> =
+const Radio: RadioInterface =
     ({
          children,
          className,
@@ -51,4 +74,5 @@ const Radio: FC<RadioProps> =
             </div>
         );
     };
+Radio.Option = Option;
 export default Radio;
