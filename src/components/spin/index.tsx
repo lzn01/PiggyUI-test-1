@@ -2,7 +2,7 @@ import * as React from "react";
 import "./index.scss";
 import type {CSSProperties, FC} from "react";
 import classes from "../../common/methods/classes";
-import Transition from "../../common/components/transition";
+import Transition from "../../common/components/Transition/Transition";
 import Icon from "../Icon";
 import {useRef} from "react";
 

@@ -4,7 +4,7 @@ import type {ButtonHTMLAttributes, FC} from "react";
 import {HTMLAttributes, useRef} from "react";
 import classes from "../../common/methods/classes";
 import Icon from "../Icon";
-import Wave from "../../common/components/wave";
+import Wave from "../../common/components/Wave";
 import ButtonGroup from "./ButtonGroup";
 
 interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "type"> {

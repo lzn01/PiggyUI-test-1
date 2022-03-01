@@ -3,7 +3,7 @@ import {useEffect, useRef} from "react";
 import {createPortal} from "react-dom";
 import Icon from "../Icon";
 import {Button} from "../Button";
-import Transition from "../../common/components/transition";
+import Transition from "../../common/components/Transition/Transition";
 import classes from "../../common/methods/classes";
 import "./styles/index.scss";
 import type {CSSProperties, FC, MouseEventHandler, ReactNode} from "react";
