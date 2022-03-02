@@ -1,9 +1,9 @@
 import * as React from "react";
-import "../index.scss";
-import type {CSSProperties, FC, ReactNode} from "react";
 import {useEffect, useState} from "react";
-import classes from "../../../common/methods/classes";
 import Star from "./Star";
+import classes from "../../common/methods/classes";
+import "./styles/index.scss";
+import type {CSSProperties, FC, ReactNode} from "react";
 
 interface RateProps {
     allowClear?: boolean;

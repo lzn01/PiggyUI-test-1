@@ -1,8 +1,8 @@
 import * as React from "react";
-import "../index.scss";
+import "./styles/index.scss";
+import Icon from "../Icon";
+import classes from "../../common/methods/classes";
 import type {FC} from "react";
-import classes from "../../../common/methods/classes";
-import Icon from "../../Icon";
 
 interface StarProps {
     count: number;

@@ -1,5 +1,5 @@
 import * as React from "react";
-import Rate from "../../../components/rate/index/Rate";
+import Rate from "../../../components/Rate";
 
 const RateDemo1 = () => {
     return (
