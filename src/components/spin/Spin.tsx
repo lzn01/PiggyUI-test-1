@@ -1,11 +1,10 @@
-
 import * as React from "react";
-import "./index.scss";
-import type {CSSProperties, FC} from "react";
-import classes from "../../common/methods/classes";
-import Transition from "../../common/components/Transition/Transition";
-import Icon from "../Icon";
 import {useRef} from "react";
+import Transition from "../../common/components/Transition";
+import Icon from "../Icon";
+import classes from "../../common/methods/classes";
+import "./styles/index.scss";
+import type {CSSProperties, FC} from "react";
 
 interface SpinProps {
     className?: string;
