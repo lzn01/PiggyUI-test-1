@@ -10,7 +10,7 @@ import SwitchExample from "./examples/switch";
 import SpinExample from "./examples/spin";
 import InputExample from "./examples/Input";
 import CheckboxExample from "./examples/Checkbox";
-import RadioExample from "./examples/radio";
+import RadioExample from "./examples/Radio";
 import RateExample from "./examples/rate";
 
 ReactDOM.render(
