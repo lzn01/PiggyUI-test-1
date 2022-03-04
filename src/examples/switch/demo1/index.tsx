@@ -1,6 +1,6 @@
 import * as React from "react";
 import {useState} from "react";
-import Switch from "../../../components/switch";
+import Switch from "../../../components/Switch";
 import Button from "../../../components/Button/Button";
 
 const SwitchDemo1 = () => {

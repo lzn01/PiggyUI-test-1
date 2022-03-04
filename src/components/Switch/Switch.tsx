@@ -1,8 +1,8 @@
 import * as React from "react";
-import "./index.scss";
-import classes from "../../common/methods/classes";
-import type {CSSProperties, FC} from "react";
 import {useEffect, useState} from "react";
+import classes from "../../common/methods/classes";
+import "./styles/index.scss";
+import type {CSSProperties, FC} from "react";
 
 interface SwitchProps {
     checked?: boolean; // 当前选中状态
