@@ -6,7 +6,7 @@ import IconExample from "./examples/Icon";
 import ModalExample from "./examples/Modal";
 import ButtonExample from "./examples/Button";
 import GridExample from "./examples/Grid";
-import SwitchExample from "./examples/switch";
+import SwitchExample from "./examples/Switch";
 import SpinExample from "./examples/spin";
 import InputExample from "./examples/Input";
 import CheckboxExample from "./examples/Checkbox";
