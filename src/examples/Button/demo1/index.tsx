@@ -1,7 +1,6 @@
 import * as React from "react";
 import Button from "../../../components/Button";
 
-const {Group} = Button;
 const ButtonDemo1 = () => {
     return (
         <>
@@ -19,11 +18,11 @@ const ButtonDemo1 = () => {
                 <Button type={"default"}>按钮</Button>
                 <Button type={"default"} ghost>按钮</Button>
             </div>
-            <Group>
+            <Button.Group>
                 <Button type={"dashed"}>按钮</Button>
                 <Button type={"default"}>按钮</Button>
                 <Button type={"default"}>按钮</Button>
-            </Group>
+            </Button.Group>
         </>
     );
 };

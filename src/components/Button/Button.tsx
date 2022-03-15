@@ -5,7 +5,7 @@ import {HTMLAttributes, useRef} from "react";
 import classes from "../../common/methods/classes";
 import Icon from "../Icon";
 import Wave from "../../common/components/Wave";
-import {ButtonGroup} from "./index";
+import Group from "./ButtonGroup";
 
 interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "type"> {
     ghost?: boolean;
@@ -69,5 +69,5 @@ const Button: ButtonInterface =
             </Wave>
         );
     };
-Button.Group = ButtonGroup;
+Button.Group = Group;
 export default Button;
