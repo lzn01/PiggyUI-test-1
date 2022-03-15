@@ -1,6 +1,6 @@
 import * as React from "react";
 import {useEffect, useState} from "react";
-import {CheckboxGroup} from "./index";
+import Group from "./CheckboxGroup";
 import classes from "../../common/methods/classes";
 import "./styles/index.scss";
 import type {FC, MouseEvent} from "react";
@@ -62,5 +62,5 @@ const Checkbox: CheckboxInterface =
             </div>
         );
     };
-Checkbox.Group = CheckboxGroup;
+Checkbox.Group = Group;
 export default Checkbox;

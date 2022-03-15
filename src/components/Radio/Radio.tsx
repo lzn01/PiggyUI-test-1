@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Children, cloneElement, useEffect, useState} from "react";
-import {Option} from "./index";
+import Option from "./Option";
 import classes from "../../common/methods/classes";
 import "./styles/index.scss";
 import type {FC, MouseEvent, CSSProperties, ReactElement} from "react";
