@@ -13,7 +13,7 @@ interface CarouselProps {
     style?: CSSProperties;
 }
 
-const componentName = "carousel";
+const componentName = "Carousel";
 
 const Carousel: FC<CarouselProps> =
     ({
@@ -29,24 +29,35 @@ const Carousel: FC<CarouselProps> =
         const [current, setCurrent] = useState(1);
         const [hasTransitionClassName, setHasTransitionClassName] = useState(true);
 
+        const containerClassName = classes(componentName, "container", {
+            "has-transition-class-name": hasTransitionClassName
+        });
+
         return (
             <div
                 className={classes(componentName, "", [className])}
                 style={style}
             >
-                <div className={""} ref={containerRef}>
+                <div
+                    className={containerClassName}
+                    ref={containerRef}
+                >
                     {children}
                 </div>
                 {
                     dots &&
                     <div className={classes(componentName, "dot-wrapper")}>
                         {
-                            Children.map(
-                                children,
-                                (child, index) =>
-                                    <span
-                                        className={classes(componentName, "dot", {active: current === index + 1})}
-                                    />
+                            Children.map(children, (
+                                child, index) =>
+                                <span
+                                    className={classes(componentName, "dot", {
+                                            active: current === index + 1
+                                        }
+                                    )}
+                                    onClick={() => {
+                                    }}
+                                />
                             )
                         }
                     </div>
