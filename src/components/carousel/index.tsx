@@ -1,18 +1,3 @@
-import * as React from "react";
-import "./index.scss";
-import type {FC} from "react";
+import Carousel from "./Carousel";
 
-interface CarouselProps {
-
-}
-
-// const componentName = "carousel";
-
-
-const Carousel: FC<CarouselProps> =
-    ({}) => {
-        return (
-            <></>
-        );
-    };
-export default Carousel;
+export default Carousel

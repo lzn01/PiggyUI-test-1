@@ -1,9 +1,9 @@
-.fui-carousel {
+.pui-carousel {
   width: 100%;
   overflow: hidden;
   position: relative;
 
-  > .fui-carousel-container {
+  > .pui-carousel-container {
     display: flex;
     width: 100%;
     transform: translateX(-100%);
@@ -13,7 +13,7 @@
     }
   }
 
-  > .fui-carousel-dots-wrapper {
+  > .pui-carousel-dots-wrapper {
     position: absolute;
     bottom: 15px;
     left: 50%;
@@ -22,7 +22,7 @@
     justify-content: center;
     align-items: center;
 
-    > .fui-carousel-dot {
+    > .pui-carousel-dot {
       display: block;
       background-color: #fff;
       opacity: 0.3;
