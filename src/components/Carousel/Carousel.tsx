@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Children, useRef, useState} from "react";
+import {Children, useEffect, useRef, useState} from "react";
 import classes from "../../common/methods/classes";
 import "./styles/index.scss";
 import type {CSSProperties, FC} from "react";
@@ -29,9 +29,26 @@ const Carousel: FC<CarouselProps> =
         const [current, setCurrent] = useState(1);
         const [hasTransitionClassName, setHasTransitionClassName] = useState(true);
 
+        const cloneNode = () => {
+            const nodeList: HTMLElement[] = [];
+            const containerNode = containerRef.current;
+            containerNode?.childNodes.forEach(node => {
+                if (node.nodeType === 1) {
+                    const eleNode = node as HTMLElement;
+                    nodeList.push(eleNode);
+                }
+            });
+            containerNode?.append(nodeList[0].cloneNode(true));
+            containerNode?.prepend(nodeList[nodeList.length - 1].cloneNode(true));
+        };
+
         const containerClassName = classes(componentName, "container", {
             "has-transition-class-name": hasTransitionClassName
         });
+
+        useEffect(() => {
+            cloneNode();
+        }, []);
 
         return (
             <div
