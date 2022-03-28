@@ -1,17 +1,16 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import {HashRouter as Router, Route, NavLink} from "react-router-dom";
-import "./index.scss";
-import IconExample from "./examples/Icon";
-import ModalExample from "./examples/Modal";
-import ButtonExample from "./examples/Button";
-import GridExample from "./examples/Grid";
-import SwitchExample from "./examples/Switch";
-import SpinExample from "./examples/spin";
-import InputExample from "./examples/Input";
-import CheckboxExample from "./examples/Checkbox";
-import RadioExample from "./examples/Radio";
-import RateExample from "./examples/rate";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
+import './index.scss';
+import IconExample from './examples/Icon';
+import ModalExample from './examples/Modal';
+import ButtonExample from './examples/Button';
+import GridExample from './examples/Grid';
+import SwitchExample from './examples/Switch';
+import InputExample from './examples/Input';
+import CheckboxExample from './examples/Checkbox';
+import RadioExample from './examples/Radio';
+import RateExample from './examples/Rate';
 
 ReactDOM.render(
     <Router>
@@ -41,9 +40,9 @@ ReactDOM.render(
                         <li>
                             <NavLink to="/switch">开关</NavLink>
                         </li>
-                        <li>
-                            <NavLink to="/spin">加载中</NavLink>
-                        </li>
+                        {/*<li>*/}
+                        {/*    <NavLink to="/spin">加载中</NavLink>*/}
+                        {/*</li>*/}
                         <li>
                             <NavLink to="/input">输入</NavLink>
                         </li>
@@ -59,19 +58,19 @@ ReactDOM.render(
                     </ul>
                 </aside>
                 <main>
-                    <Route path="/icon" component={IconExample}/>
-                    <Route path="/button" component={ButtonExample}/>
-                    <Route path="/modal" component={ModalExample}/>
-                    <Route path="/grid" component={GridExample}/>
-                    <Route path="/switch" component={SwitchExample}/>
-                    <Route path="/spin" component={SpinExample}/>
-                    <Route path="/input" component={InputExample}/>
-                    <Route path="/checkbox" component={CheckboxExample}/>
-                    <Route path="/radio" component={RadioExample}/>
-                    <Route path="/rate" component={RateExample}/>
+                    <Route path="/icon" component={IconExample} />
+                    <Route path="/button" component={ButtonExample} />
+                    <Route path="/modal" component={ModalExample} />
+                    <Route path="/grid" component={GridExample} />
+                    <Route path="/switch" component={SwitchExample} />
+                    {/*<Route path="/spin" component={SpinExample}/>*/}
+                    <Route path="/input" component={InputExample} />
+                    <Route path="/checkbox" component={CheckboxExample} />
+                    <Route path="/radio" component={RadioExample} />
+                    <Route path="/rate" component={RateExample} />
                 </main>
             </div>
         </div>
     </Router>,
-    document.querySelector("#root")
+    document.querySelector('#root'),
 );
