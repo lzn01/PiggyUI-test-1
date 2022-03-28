@@ -1,8 +1,8 @@
-import * as React from "react";
-import {Children, useEffect, useRef, useState} from "react";
-import classes from "../../common/methods/classes";
-import "./styles/index.scss";
-import type {CSSProperties, FC} from "react";
+import * as React from 'react';
+import { Children, useEffect, useRef, useState } from 'react';
+import classes from '../../common/methods/classes';
+import './styles/index.scss';
+import type { CSSProperties, FC } from 'react';
 
 interface CarouselProps {
     afterChange?: (current: number, from: number) => any; // 面板切换完成时的回调
@@ -13,7 +13,7 @@ interface CarouselProps {
     style?: CSSProperties;
 }
 
-const componentName = "Carousel";
+const componentName = 'Carousel';
 
 const Carousel: FC<CarouselProps> =
     ({
@@ -23,7 +23,7 @@ const Carousel: FC<CarouselProps> =
          className,
          dots,
          duration,
-         style
+         style,
      }) => {
         const containerRef = useRef<HTMLDivElement | null>(null);
         const [current, setCurrent] = useState(1);
@@ -42,8 +42,8 @@ const Carousel: FC<CarouselProps> =
             containerNode?.prepend(nodeList[nodeList.length - 1].cloneNode(true));
         };
 
-        const containerClassName = classes(componentName, "container", {
-            "has-transition-class-name": hasTransitionClassName
+        const containerClassName = classes(componentName, 'container', {
+            'has-transition-class-name': hasTransitionClassName,
         });
 
         useEffect(() => {
@@ -52,7 +52,7 @@ const Carousel: FC<CarouselProps> =
 
         return (
             <div
-                className={classes(componentName, "", [className])}
+                className={classes(componentName, '', [className])}
                 style={style}
             >
                 <div
@@ -63,18 +63,18 @@ const Carousel: FC<CarouselProps> =
                 </div>
                 {
                     dots &&
-                    <div className={classes(componentName, "dot-wrapper")}>
+                    <div className={classes(componentName, 'dot-wrapper')}>
                         {
                             Children.map(children, (
                                 child, index) =>
                                 <span
-                                    className={classes(componentName, "dot", {
-                                            active: current === index + 1
-                                        }
+                                    className={classes(componentName, 'dot', {
+                                            active: current === index + 1,
+                                        },
                                     )}
                                     onClick={() => {
                                     }}
-                                />
+                                />,
                             )
                         }
                     </div>

@@ -34,9 +34,9 @@
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(.645, .045, .355, 1); // 从开始到结束的不同速度过渡效果
-  &:hover &-ripple {
-    animation: button-hover-animation 1s;
-  }
+  //&:hover &-ripple {
+  //  animation: button-hover-animation 1s;
+  //}
 
   &:focus, &:hover {
     outline: none;
