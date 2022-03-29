@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Slider from 'react-slick';
+import { useImperativeHandle } from 'react';
 import { isNotUndefined } from '../../common/methods/is';
 import './styles/index.scss';
-import type { CSSProperties, FC } from 'react';
+import type { CSSProperties, ForwardRefRenderFunction } from 'react';
 import type { Settings } from 'react-slick';
 
 if (isNotUndefined(window)) {
@@ -15,12 +15,12 @@ if (isNotUndefined(window)) {
     window.matchMedia = matchMedia || matchMediaPolyfill;
 }
 
-export type CarouselEffect = 'scrollx' | 'fade';                // 动画效果
+export type CarouselEffect = 'scrollX' | 'fade';                // 动画效果
 export type DotsPosition = 'top' | 'bottom' | 'left' | 'right'; // 面板指示点的四个显示位置
 
-export interface CarouselProps extends Omit<Settings, 'dots'> {
-    dots?: boolean;                                             // 是否显示面板指示点
+export interface CarouselProps extends Settings {
     dotsPosition?: DotsPosition;                                // 面板指示点的显示位置
+    dotsTimer?: boolean;                                        // 是否在面板指示点提供帧剩余时间效果，开启自动切换时有效
     effect?: CarouselEffect;                                    // 动画效果函数
     style?: CSSProperties;                                      // 容器样式
 }
@@ -35,30 +35,52 @@ export interface CarouselRef {
 
 // const componentName = 'Carousel';
 
-const Carousel: FC<CarouselProps> =
-    ({
-         afterChange,
-         beforeChange,
-         children,
-         className,
-         dots,
-         style,
-     }) => {
-        const slickRef = React.useRef<Slider>();
-        const goTo = (slide: number, dontAnimate = false) => {
-            (slickRef.current as Slider).slickGoTo(slide, dontAnimate);
-        };
+const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
+    {
+        arrows = false,
+        autoplay = true,
+        autoplaySpeed = 3000,
+        centerMode = false,
+        centerPadding = '50px',
+        className,
+        dots = true,
+        dotsPosition = 'bottom',
+        dotsTimer = false,
+        nextArrow,
+        prevArrow,
+        slidesToShow = 1,
+        style,
+        ...rest
+    },
+    ref,
+) => {
+    const slickRef = React.useRef<any>();
 
-        const prev = () => {
-            (slickRef.current as Slider).slickPrev();
-        };
-
-        const next = () => {
-            (slickRef.current as Slider).slickNext();
-        };
-
-        return (
-            <></>
-        );
+    const goTo = (slide: number, dontAnimate = false) => {
+        slickRef.current.slickGoTo(slide, dontAnimate);
     };
+
+    const next = () => {
+        slickRef.current.slickNext();
+    };
+
+    const prev = () => {
+        slickRef.current.slickPrev();
+    };
+
+    useImperativeHandle(
+        ref, () => ({
+            goTo,
+            next,
+            prev,
+            autoPlay: slickRef.current.innerSlider.autoPlay,
+            innerSlider: slickRef.current.innerSlider,
+        }), [slickRef.current]);
+
+    return (
+        <></>
+    );
+};
+
+const Carousel = React.forwardRef<CarouselRef, CarouselProps>(InternalCarousel);
 export default Carousel;
