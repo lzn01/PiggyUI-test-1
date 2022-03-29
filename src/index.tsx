@@ -12,6 +12,7 @@ import CheckboxExample from './examples/Checkbox';
 import RadioExample from './examples/Radio';
 import RateExample from './examples/Rate';
 import SpinExample from './examples/Spin';
+import CarouselExample from './examples/Carousel';
 
 ReactDOM.render(
     <Router>
@@ -56,6 +57,9 @@ ReactDOM.render(
                         <li>
                             <NavLink to="/rate">评分</NavLink>
                         </li>
+                        <li>
+                            <NavLink to="/carousel">走马灯</NavLink>
+                        </li>
                     </ul>
                 </aside>
                 <main>
@@ -64,11 +68,12 @@ ReactDOM.render(
                     <Route path="/modal" component={ModalExample} />
                     <Route path="/grid" component={GridExample} />
                     <Route path="/switch" component={SwitchExample} />
-                    <Route path="/spin" component={SpinExample}/>
+                    <Route path="/spin" component={SpinExample} />
                     <Route path="/input" component={InputExample} />
                     <Route path="/checkbox" component={CheckboxExample} />
                     <Route path="/radio" component={RadioExample} />
                     <Route path="/rate" component={RateExample} />
+                    <Route path="/carousel" component={CarouselExample} />
                 </main>
             </div>
         </div>
