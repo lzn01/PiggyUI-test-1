@@ -1,9 +1,9 @@
-import * as React from "react";
-import {useEffect, useRef, useState} from "react";
-import classes from "../../common/methods/classes";
-import {calculateNodeHeight} from "../../common/methods/calculateNodeHeight";
-import "./styles/index.scss";
-import type {ChangeEventHandler, FC, KeyboardEventHandler, TextareaHTMLAttributes} from "react";
+import * as React from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { classes } from '../../common/methods/classes';
+import { calculateNodeHeight } from '../../common/methods/calculateNodeHeight';
+import './styles/index.scss';
+import type { ChangeEventHandler, FC, KeyboardEventHandler, TextareaHTMLAttributes } from 'react';
 
 export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     autosize?: boolean;
@@ -12,13 +12,13 @@ export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElemen
     value?: string;
 }
 
-const componentName = "textarea";
+const componentName = 'textarea';
 
 const Textarea: FC<TextareaProps> =
     ({
          autosize,
          className,
-         defaultValue = "",
+         defaultValue = '',
          onChange,
          ...rest
      }) => {
@@ -42,13 +42,13 @@ const Textarea: FC<TextareaProps> =
 
         useEffect(() => {
             const node = textareaRef.current as HTMLTextAreaElement;
-            const {top, bottom} = node?.getBoundingClientRect();
+            const { top, bottom } = node?.getBoundingClientRect();
             setOriginHeight(bottom - top);
         }, []);
 
         return (
             <textarea
-                className={classes(componentName, "", [className], {autosize})}
+                className={classes(componentName, '', [className], { autosize })}
                 onChange={changeHandler}
                 value={textareaValue}
                 ref={textareaRef}

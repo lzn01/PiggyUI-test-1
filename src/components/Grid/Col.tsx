@@ -1,7 +1,7 @@
-import * as React from "react";
-import type {FC, CSSProperties} from "react";
-import "./styles/index.scss";
-import classes from "../../common/methods/classes";
+import * as React from 'react';
+import type { FC, CSSProperties } from 'react';
+import './styles/index.scss';
+import { classes } from '../../common/methods/classes';
 
 export interface Option {
     span: number; // 栅格占位格数
@@ -25,7 +25,7 @@ export interface ColProps extends GridProps {
     xxl?: number | Option;
 }
 
-const componentName = "col";
+const componentName = 'col';
 
 const Col: FC<ColProps> =
     ({
@@ -44,7 +44,7 @@ const Col: FC<ColProps> =
          ...rest
      }) => {
         const classNameHandler = (): string[] => {
-            const responseSizes: any = {xs, sm, md, lg, xl, xxl};
+            const responseSizes: any = { xs, sm, md, lg, xl, xxl };
             const classNameArray = [`col-span-${span}`, `col-offset-${offset}`];
 
             if (className) {
@@ -52,11 +52,11 @@ const Col: FC<ColProps> =
             }
 
             Object.keys(responseSizes).forEach(key => {
-                if (typeof responseSizes[key] === "object") {
-                    const {span: sizeSpan, offset: sizeOffset} = responseSizes[key];
+                if (typeof responseSizes[key] === 'object') {
+                    const { span: sizeSpan, offset: sizeOffset } = responseSizes[key];
                     classNameArray.push(`${key}-col-span-${sizeSpan}`, `${key}-col-offset-${sizeOffset ?? 0}`);
                 }
-                if (typeof responseSizes[key] === "number") {
+                if (typeof responseSizes[key] === 'number') {
                     classNameArray.push(`${key}-col-span-${responseSizes[key]}`, `${key}-col-offset-0`);
                 }
             });
@@ -65,11 +65,11 @@ const Col: FC<ColProps> =
 
         return (
             <div
-                className={classes(componentName, "", classNameHandler())}
+                className={classes(componentName, '', classNameHandler())}
                 style={{
                     paddingLeft: `${gutter ? 0 : gutter! / 2}px`,
                     paddingRight: `${gutter ? 0 : gutter! / 2}px`,
-                    ...style
+                    ...style,
                 }}
                 {...rest}
             >

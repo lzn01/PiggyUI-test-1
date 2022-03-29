@@ -1,16 +1,16 @@
-import * as React from "react";
-import {useEffect, useRef} from "react";
-import {createPortal} from "react-dom";
-import Icon from "../Icon";
-import Button from "../Button";
-import Transition from "../../common/components/Transition";
-import classes from "../../common/methods/classes";
-import "./styles/index.scss";
-import type {CSSProperties, FC, MouseEventHandler, ReactNode} from "react";
+import * as React from 'react';
+import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
+import Icon from '../Icon';
+import Button from '../Button';
+import Transition from '../../common/components/Transition';
+import { classes } from '../../common/methods/classes';
+import './styles/index.scss';
+import type { CSSProperties, FC, MouseEventHandler, ReactNode } from 'react';
 
 interface ModalProps {
     cancelText?: string; // 取消按钮文字
-    cancelType?: "default" | "dashed" | "primary" | "success" | "warning" | "danger"; // 取消按钮类型
+    cancelType?: 'default' | 'dashed' | 'primary' | 'success' | 'warning' | 'danger'; // 取消按钮类型
     className?: string;
     closable?: boolean; // 是否展示右上角关闭按钮
     footer?: ReactNode;
@@ -18,19 +18,19 @@ interface ModalProps {
     maskClosable?: boolean; // 点击蒙层是否允许关闭
     maskStyle?: CSSProperties; // 蒙层样式
     okText?: string; // 确定按钮文字
-    okType?: "default" | "dashed" | "primary" | "success" | "warning" | "danger"; // 确定按钮类型
+    okType?: 'default' | 'dashed' | 'primary' | 'success' | 'warning' | 'danger'; // 确定按钮类型
     onCancel?: MouseEventHandler; // 取消回调
     onOk?: MouseEventHandler; // 确定回调
     title?: ReactNode; // 标题
     visible: boolean;
 }
 
-const componentName = "Modal";
+const componentName = 'Modal';
 
 const Modal: FC<ModalProps> =
     ({
-         cancelText = "取 消",
-         cancelType = "default",
+         cancelText = '取 消',
+         cancelType = 'default',
          children,
          className,
          closable = true,
@@ -38,12 +38,12 @@ const Modal: FC<ModalProps> =
          mask = true,
          maskClosable = true,
          maskStyle,
-         okText = "确 定",
-         okType = "primary",
+         okText = '确 定',
+         okType = 'primary',
          onCancel,
          onOk,
          title,
-         visible
+         visible,
      }) => {
         const maskRef = useRef<HTMLDivElement | null>(null);
         const modalRef = useRef<HTMLDivElement | null>(null);
@@ -73,7 +73,7 @@ const Modal: FC<ModalProps> =
         // modal显示时 阻止页面滚动
         useEffect(() => {
             document.body.style.overflow = visible
-                ? "hidden"
+                ? 'hidden'
                 : bodyOverflowRef.current;
         }, [visible]);
 
@@ -81,12 +81,12 @@ const Modal: FC<ModalProps> =
             <>
                 <Transition
                     visible={mask && visible}
-                    beforeEnter={{opacity: 0}}
-                    afterEnter={{opacity: 0.7}}
-                    style={{...maskStyle}}
+                    beforeEnter={{ opacity: 0 }}
+                    afterEnter={{ opacity: 0.7 }}
+                    style={{ ...maskStyle }}
                 >
                     <div
-                        className={classes(componentName, "mask")}
+                        className={classes(componentName, 'mask')}
                         ref={maskRef}
                         onClick={maskHandler}
                     />
@@ -94,45 +94,45 @@ const Modal: FC<ModalProps> =
                 <Transition
                     visible={visible}
                     beforeEnter={{
-                        top: "50%",
+                        top: '50%',
                         opacity: 0,
-                        transform: "translateX(-50%) translateY(-50%) scale(0)"
+                        transform: 'translateX(-50%) translateY(-50%) scale(0)',
                     }}
                     afterEnter={{
-                        top: "30%",
+                        top: '30%',
                         opacity: 1,
-                        transform: "translateX(-50%) translateY(-50%) scale(1)"
+                        transform: 'translateX(-50%) translateY(-50%) scale(1)',
                     }}
                 >
                     <div
-                        className={classes(componentName, "", [className])}
+                        className={classes(componentName, '', [className])}
                         ref={modalRef}
                     >
                         {
                             closable &&
                             <div
-                                className={classes(componentName, "close")}
+                                className={classes(componentName, 'close')}
                                 onClick={cancelHandler}
                             >
-                                <Icon name={"close"} size={12}/>
+                                <Icon name={'close'} size={12} />
                             </div>
                         }
-                        <header className={classes(componentName, "header")}>
-                            {title ?? ""}
+                        <header className={classes(componentName, 'header')}>
+                            {title ?? ''}
                         </header>
-                        <main className={classes(componentName, "main")}>
+                        <main className={classes(componentName, 'main')}>
                             {children}
                         </main>
                         {
                             footer !== null
-                                ? <footer className={classes(componentName, "footer")}>
+                                ? <footer className={classes(componentName, 'footer')}>
                                     {
                                         footer ??
                                         <>
                                             <Button
                                                 type={cancelType}
                                                 onClick={cancelHandler}
-                                                style={{marginRight: "8px"}}
+                                                style={{ marginRight: '8px' }}
                                             >
                                                 {cancelText}
                                             </Button>
@@ -150,7 +150,7 @@ const Modal: FC<ModalProps> =
                     </div>
                 </Transition>
             </>,
-            document.body
+            document.body,
         );
     };
 export default Modal;

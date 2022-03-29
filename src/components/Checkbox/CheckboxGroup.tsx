@@ -1,9 +1,9 @@
-import * as React from "react";
-import {useEffect, useState} from "react";
-import classes from "../../common/methods/classes";
-import Checkbox from ".";
-import "./styles/index.scss";
-import type {ReactNode, FC, CSSProperties} from "react";
+import * as React from 'react';
+import { useEffect, useState } from 'react';
+import { classes } from '../../common/methods/classes';
+import Checkbox from '.';
+import './styles/index.scss';
+import type { ReactNode, FC, CSSProperties } from 'react';
 
 interface Option {
     label: ReactNode;
@@ -20,7 +20,7 @@ export interface CheckboxGroupProps {
     value?: string[];
 }
 
-const componentName = "Checkbox-group";
+const componentName = 'Checkbox-group';
 
 const CheckboxGroup: FC<CheckboxGroupProps> =
     ({
@@ -29,20 +29,20 @@ const CheckboxGroup: FC<CheckboxGroupProps> =
          onChange,
          options,
          style,
-         title = "All",
-         value
+         title = 'All',
+         value,
      }) => {
         const [checkboxGroupValue, setCheckboxGroupValue] = useState(defaultValue);
 
         const checkBoxStateHandler = () => {
             if (checkboxGroupValue?.length > 0) {
-                return checkboxGroupValue?.length < options.length ? "half-checked" : "all";
+                return checkboxGroupValue?.length < options.length ? 'half-checked' : 'all';
             }
-            return "none";
+            return 'none';
         };
 
         const masterCheckBoxChangeHandler = () => {
-            const newCheckboxGroupValue = checkBoxStateHandler() === "all"
+            const newCheckboxGroupValue = checkBoxStateHandler() === 'all'
                 ? []
                 : options.reduce((prev, current) => [current.value, ...prev], []);
             if (onChange) {
@@ -62,19 +62,19 @@ const CheckboxGroup: FC<CheckboxGroupProps> =
         };
 
         useEffect(() => {
-            if (typeof value !== "undefined") {
+            if (typeof value !== 'undefined') {
                 setCheckboxGroupValue(value);
             }
         }, [value]);
 
         return (
             <div
-                className={classes(componentName, "", [className])}
+                className={classes(componentName, '', [className])}
                 style={style}
             >
                 <Checkbox
-                    checked={checkBoxStateHandler() === "all"}
-                    halfChecked={checkBoxStateHandler() === "half-checked"}
+                    checked={checkBoxStateHandler() === 'all'}
+                    halfChecked={checkBoxStateHandler() === 'half-checked'}
                     onChange={masterCheckBoxChangeHandler}
                 >
                     {title}
@@ -87,7 +87,7 @@ const CheckboxGroup: FC<CheckboxGroupProps> =
                             onChange={() => otherCheckBoxChangeHandler(option.value)}
                         >
                             {option.label}
-                        </Checkbox>
+                        </Checkbox>,
                     )
                 }
             </div>

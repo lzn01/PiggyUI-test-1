@@ -1,9 +1,9 @@
-import * as React from "react";
-import {useEffect, useState} from "react";
-import Star from "./Star";
-import classes from "../../common/methods/classes";
-import "./styles/index.scss";
-import type {CSSProperties, FC, ReactNode} from "react";
+import * as React from 'react';
+import { useEffect, useState } from 'react';
+import Star from './Star';
+import { classes } from '../../common/methods/classes';
+import './styles/index.scss';
+import type { CSSProperties, FC, ReactNode } from 'react';
 
 interface RateProps {
     allowClear?: boolean;
@@ -18,7 +18,7 @@ interface RateProps {
     value?: number;
 }
 
-const componentName = "rate";
+const componentName = 'rate';
 
 const Rate: FC<RateProps> =
     ({
@@ -31,7 +31,7 @@ const Rate: FC<RateProps> =
          onHover,
          style,
          tips,
-         value
+         value,
      }) => {
         const [hoveredRateValue, setHoveredRateValue] = useState(0);
         const [selectedRateValue, setSelectedRateValue] = useState(defaultValue);
@@ -50,7 +50,7 @@ const Rate: FC<RateProps> =
 
         // 处理星星点击事件
         const clickHandler = (index: number, position: string) => {
-            const newValue = (allowHalf && position === "left" ? 0.5 : 1) + index;
+            const newValue = (allowHalf && position === 'left' ? 0.5 : 1) + index;
             const valueState = selectedRateValue === newValue;
             if (disabled) return;
             if (allowClear) {
@@ -65,7 +65,7 @@ const Rate: FC<RateProps> =
 
         // 处理容器内鼠标移动
         const mouseEnterHandler = (index: number, position: string) => {
-            const newValue = (position === "left" ? 0.5 : 1) + index;
+            const newValue = (position === 'left' ? 0.5 : 1) + index;
             if (disabled) return;
             if (allowHalf && hoveredRateValue !== newValue) {
                 hoverHandler(newValue);
@@ -84,23 +84,23 @@ const Rate: FC<RateProps> =
         };
 
         useEffect(() => {
-            if (typeof value !== "undefined") {
+            if (typeof value !== 'undefined') {
                 setSelectedRateValue(value);
             }
         }, [value]);
 
         return (
             <div
-                className={classes(componentName, "", [className])}
+                className={classes(componentName, '', [className])}
                 style={style}
             >
                 <ul
-                    className={classes(componentName, "container")}
+                    className={classes(componentName, 'container')}
                     onMouseLeave={mouseLeaveHandler}
                 >
                     {
                         Array
-                            .from({length: 5}, (v, k) => `item-${k}`)
+                            .from({ length: 5 }, (v, k) => `item-${k}`)
                             .map((_, index) =>
                                 <Star
                                     key={_}
@@ -108,13 +108,13 @@ const Rate: FC<RateProps> =
                                     index={index}
                                     onClick={clickHandler}
                                     onMouseEnter={mouseEnterHandler}
-                                />
+                                />,
                             )
                     }
                 </ul>
                 {
                     tips &&
-                    <div className={classes(componentName, "tips")}>
+                    <div className={classes(componentName, 'tips')}>
                         {tips}
                     </div>
                 }

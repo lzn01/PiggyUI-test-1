@@ -1,5 +1,5 @@
-import Radio from "./Radio";
-import Option from "./Option";
+import Radio from './Radio';
+import Option from './Option';
 
-export {Option};
+export { Option };
 export default Radio;

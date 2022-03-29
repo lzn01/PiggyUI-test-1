@@ -1,15 +1,15 @@
-const prefix = "pui";
+import { isArray, isObject, isString } from './is';
 
-const classes = (componentName: string, ...args: any): string => {
+const prefix = 'pui';
+
+export const classes = (componentName: string, ...args: any): string => {
     const className = new Array<string>();
     args.forEach((arg: any) => {
-        if (typeof arg === "string") {
-            className.push(
-                `${prefix}-${componentName.toLowerCase()}${arg && "-" + arg}`
-            );
-        } else if (arg instanceof Array) {
-            arg.forEach(str => typeof str === "string" && className.push(str));
-        } else if (typeof arg === "object" && !(arg instanceof Array)) {
+        if (isString(arg)) {
+            className.push(`${prefix}-${componentName.toLowerCase()}${arg && '-' + arg}`);
+        } else if (isArray(arg)) {
+            arg.forEach(str => isString(str) && className.push(str));
+        } else if (isObject(arg) && !(isArray(arg))) {
             for (const key in arg) {
                 if (arg.hasOwnProperty(key) && arg[key]) {
                     className.push(key);
@@ -17,7 +17,5 @@ const classes = (componentName: string, ...args: any): string => {
             }
         }
     });
-    return className.filter(v => v).join(" ");
+    return className.filter(v => v).join(' ');
 };
-
-export default classes;

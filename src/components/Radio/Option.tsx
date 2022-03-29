@@ -1,10 +1,10 @@
-import * as React from "react";
-import classes from "../../common/methods/classes";
-import "./styles/index.scss";
-import type {OptionProps} from "./Radio";
-import type {FC, MouseEventHandler} from "react";
+import * as React from 'react';
+import { classes } from '../../common/methods/classes';
+import './styles/index.scss';
+import type { OptionProps } from './Radio';
+import type { FC, MouseEventHandler } from 'react';
 
-const componentName = "option";
+const componentName = 'option';
 
 const Option: FC<OptionProps> =
     ({
@@ -14,7 +14,7 @@ const Option: FC<OptionProps> =
          onClick,
          radioStyle,
          value,
-         vertical
+         vertical,
      }) => {
         const clickHandler: MouseEventHandler = (e) => {
             if (disabled || !onClick) {
@@ -25,17 +25,17 @@ const Option: FC<OptionProps> =
 
         return (
             <label
-                className={classes(componentName, "", [radioStyle + "-style"], {
+                className={classes(componentName, '', [radioStyle + '-style'], {
                         checked: value === checkedValue,
                         disabled,
-                        vertical
-                    }
+                        vertical,
+                    },
                 )}
                 onClick={clickHandler}
             >
                 {
-                    radioStyle === "Radio" &&
-                    <span className="label-dot"/>
+                    radioStyle === 'Radio' &&
+                    <span className="label-dot" />
                 }
                 <div className="label-text">
                     {children}

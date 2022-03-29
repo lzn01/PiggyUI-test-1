@@ -1,11 +1,11 @@
-import * as React from "react";
-import {useState} from "react";
-import {Search, Textarea} from "./index";
-import classes from "../../common/methods/classes";
-import "./styles/index.scss";
-import type {SearchProps} from "./Search";
-import type {TextareaProps} from "./Textarea";
-import type {FC, ChangeEventHandler, KeyboardEventHandler, InputHTMLAttributes, ReactNode} from "react";
+import * as React from 'react';
+import { useState } from 'react';
+import { Search, Textarea } from './index';
+import { classes } from '../../common/methods/classes';
+import './styles/index.scss';
+import type { SearchProps } from './Search';
+import type { TextareaProps } from './Textarea';
+import type { FC, ChangeEventHandler, KeyboardEventHandler, InputHTMLAttributes, ReactNode } from 'react';
 
 export interface baseInputProps extends InputHTMLAttributes<HTMLInputElement> {
     defaultValue?: string;
@@ -13,7 +13,7 @@ export interface baseInputProps extends InputHTMLAttributes<HTMLInputElement> {
     value?: string;
 }
 
-export interface InputProps extends Omit<baseInputProps, "prefix"> {
+export interface InputProps extends Omit<baseInputProps, 'prefix'> {
     addonAfter?: ReactNode; // 后置标签
     addonBefore?: ReactNode; // 前置标签
     prefix?: ReactNode; // 输入框前缀
@@ -25,14 +25,14 @@ interface InputInterface extends FC<InputProps> {
     Textarea: FC<TextareaProps>;
 }
 
-const componentName = "input";
+const componentName = 'input';
 
 const Input: InputInterface =
     ({
          addonAfter,
          addonBefore,
          className,
-         defaultValue = "",
+         defaultValue = '',
          disabled = false,
          onChange,
          onPressEnter,
@@ -52,27 +52,27 @@ const Input: InputInterface =
 
         const pressEnterHandler: KeyboardEventHandler<HTMLInputElement> = (e) => {
             // review
-            if (onPressEnter && e.key === "Enter") {
+            if (onPressEnter && e.key === 'Enter') {
                 onPressEnter(e);
             }
         };
 
         return (
-            <label className={classes(componentName, "container", [className], {
-                    "addon-after": !!addonAfter,
-                    "addon-before": !!addonBefore,
+            <label className={classes(componentName, 'container', [className], {
+                    'addon-after': !!addonAfter,
+                    'addon-before': !!addonBefore,
                     disabled,
                     prefix: !!prefix,
-                    suffix: !!suffix
-                }
+                    suffix: !!suffix,
+                },
             )}
             >
                 {
                     addonBefore &&
-                    <div className={"addon-before-container"}>
+                    <div className={'addon-before-container'}>
                         {
-                            typeof addonBefore === "string"
-                                ? <span className={"addon-before-span"}>{addonBefore}</span>
+                            typeof addonBefore === 'string'
+                                ? <span className={'addon-before-span'}>{addonBefore}</span>
                                 : addonBefore
                         }
                     </div>
@@ -80,31 +80,31 @@ const Input: InputInterface =
 
                 {
                     prefix &&
-                    <div className={"prefix-container"}>
+                    <div className={'prefix-container'}>
                         {
-                            typeof prefix === "string"
-                                ? <span className={"prefix-span"}>{prefix}</span>
+                            typeof prefix === 'string'
+                                ? <span className={'prefix-span'}>{prefix}</span>
                                 : prefix
                         }
                     </div>
                 }
 
                 <input
-                    className={classes(componentName, "")}
+                    className={classes(componentName, '')}
                     disabled={disabled}
                     onChange={changeHandler}
                     onKeyPress={pressEnterHandler}
-                    type={"text"}
+                    type={'text'}
                     value={inputValue}
                     {...rest}
                 />
 
                 {
                     suffix &&
-                    <div className={"suffix-container"}>
+                    <div className={'suffix-container'}>
                         {
-                            typeof suffix === "string"
-                                ? <span className={"suffix-span"}>{suffix}</span>
+                            typeof suffix === 'string'
+                                ? <span className={'suffix-span'}>{suffix}</span>
                                 : suffix
                         }
                     </div>
@@ -112,10 +112,10 @@ const Input: InputInterface =
 
                 {
                     addonAfter &&
-                    <div className={"addon-after-container"}>
+                    <div className={'addon-after-container'}>
                         {
-                            typeof addonAfter === "string"
-                                ? <span className={"addon-after-span"}>{addonAfter}</span>
+                            typeof addonAfter === 'string'
+                                ? <span className={'addon-after-span'}>{addonAfter}</span>
                                 : addonAfter
                         }
                     </div>

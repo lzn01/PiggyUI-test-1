@@ -1,12 +1,12 @@
-import * as React from "react";
-import {Children, cloneElement, useEffect, useState} from "react";
-import Option from "./Option";
-import classes from "../../common/methods/classes";
-import "./styles/index.scss";
-import type {FC, MouseEvent, CSSProperties, ReactElement} from "react";
+import * as React from 'react';
+import { Children, cloneElement, useEffect, useState } from 'react';
+import Option from './Option';
+import { classes } from '../../common/methods/classes';
+import './styles/index.scss';
+import type { FC, MouseEvent, CSSProperties, ReactElement } from 'react';
 
 export interface BaseProps {
-    radioStyle?: "Radio" | "button";
+    radioStyle?: 'Radio' | 'button';
     value?: any;
     vertical?: boolean;
 }
@@ -28,7 +28,7 @@ interface RadioInterface extends FC<RadioProps> {
     Option: FC<OptionProps>;
 }
 
-const componentName = "Radio";
+const componentName = 'Radio';
 
 const Radio: RadioInterface =
     ({
@@ -36,10 +36,10 @@ const Radio: RadioInterface =
          className,
          defaultValue,
          onChange,
-         radioStyle = "Radio",
+         radioStyle = 'Radio',
          value,
          vertical = false,
-         style
+         style,
      }) => {
         const [radioValue, setRadioValue] = useState<any>(defaultValue);
 
@@ -51,14 +51,14 @@ const Radio: RadioInterface =
         };
 
         useEffect(() => {
-            if (typeof value !== "undefined") {
+            if (typeof value !== 'undefined') {
                 setRadioValue(value);
             }
         }, [value]);
 
         return (
             <div
-                className={classes(componentName, "", [className], {vertical})}
+                className={classes(componentName, '', [className], { vertical })}
                 style={style}
             >
                 {
@@ -67,7 +67,7 @@ const Radio: RadioInterface =
                             checkedValue: radioValue,
                             onClick: clickHandler,
                             radioStyle,
-                            vertical
+                            vertical,
                         });
                     })
                 }

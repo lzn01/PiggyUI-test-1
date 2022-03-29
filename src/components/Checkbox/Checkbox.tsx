@@ -1,12 +1,12 @@
-import * as React from "react";
-import {useEffect, useState} from "react";
-import Group from "./CheckboxGroup";
-import classes from "../../common/methods/classes";
-import "./styles/index.scss";
-import type {FC, MouseEvent} from "react";
-import type {CheckboxGroupProps} from "./CheckboxGroup";
+import * as React from 'react';
+import { useEffect, useState } from 'react';
+import Group from './CheckboxGroup';
+import { classes } from '../../common/methods/classes';
+import './styles/index.scss';
+import type { FC, MouseEvent } from 'react';
+import type { CheckboxGroupProps } from './CheckboxGroup';
 
-const componentName = "Checkbox";
+const componentName = 'Checkbox';
 
 interface CheckboxProps {
     checked?: boolean; // 选中状态
@@ -27,37 +27,37 @@ const Checkbox: CheckboxInterface =
          defaultChecked = false,
          disabled = false,
          halfChecked = false,
-         onChange
+         onChange,
      }) => {
         const [checkboxState, setCheckboxState] = useState(defaultChecked);
 
         const clickHandler = (e: MouseEvent) => {
             if (disabled) return;
             if (onChange) {
-                onChange(typeof checked === "boolean" ? checked : !checkboxState, e);
+                onChange(typeof checked === 'boolean' ? checked : !checkboxState, e);
             }
-            if (typeof checked !== "boolean") {
+            if (typeof checked !== 'boolean') {
                 setCheckboxState(!checkboxState);
             }
         };
 
         useEffect(() => {
-            if (typeof checked === "boolean") {
+            if (typeof checked === 'boolean') {
                 setCheckboxState(checked);
             }
         }, [checked]);
 
         return (
             <div
-                className={classes(componentName, "")}
+                className={classes(componentName, '')}
                 onClick={clickHandler}
             >
-                <div className={classes(componentName, "core", {
+                <div className={classes(componentName, 'core', {
                         checked: checkboxState,
                         disabled,
-                        "half-checked": halfChecked
-                    }
-                )}/>
+                        'half-checked': halfChecked,
+                    },
+                )} />
                 {children}
             </div>
         );

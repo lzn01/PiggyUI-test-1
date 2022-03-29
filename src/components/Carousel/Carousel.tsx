@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useImperativeHandle } from 'react';
+import { forwardRef, useImperativeHandle } from 'react';
 import { isNotUndefined } from '../../common/methods/is';
 import './styles/index.scss';
 import type { CSSProperties, ForwardRefRenderFunction } from 'react';
@@ -56,17 +56,11 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
 ) => {
     const slickRef = React.useRef<any>();
 
-    const goTo = (slide: number, dontAnimate = false) => {
-        slickRef.current.slickGoTo(slide, dontAnimate);
-    };
+    const goTo = (slide: number, dontAnimate = false) => slickRef.current.slickGoTo(slide, dontAnimate);
 
-    const next = () => {
-        slickRef.current.slickNext();
-    };
+    const next = () => slickRef.current.slickNext();
 
-    const prev = () => {
-        slickRef.current.slickPrev();
-    };
+    const prev = () => slickRef.current.slickPrev();
 
     useImperativeHandle(
         ref, () => ({
@@ -82,5 +76,5 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
     );
 };
 
-const Carousel = React.forwardRef<CarouselRef, CarouselProps>(InternalCarousel);
+const Carousel = forwardRef<CarouselRef, CarouselProps>(InternalCarousel);
 export default Carousel;

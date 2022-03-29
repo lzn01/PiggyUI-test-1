@@ -1,23 +1,23 @@
-import * as React from "react";
-import {useState} from "react";
-import Icon from "../Icon";
-import Input from "./Input";
-import classes from "../../common/methods/classes";
-import "./styles/index.scss";
-import type {baseInputProps} from "./Input";
-import type {ChangeEventHandler, FC, ReactNode} from "react";
+import * as React from 'react';
+import { useState } from 'react';
+import Icon from '../Icon';
+import Input from './Input';
+import { classes } from '../../common/methods/classes';
+import './styles/index.scss';
+import type { baseInputProps } from './Input';
+import type { ChangeEventHandler, FC, ReactNode } from 'react';
 
 export interface SearchProps extends baseInputProps {
     enterButton?: ReactNode;
     onSearch?: (value: string) => void;
 }
 
-const componentName = "search";
+const componentName = 'search';
 
 const Search: FC<SearchProps> =
     ({
          className,
-         defaultValue = "",
+         defaultValue = '',
          enterButton = false,
          onChange,
          onPressEnter,
@@ -41,18 +41,18 @@ const Search: FC<SearchProps> =
 
         return (
             <Input
-                className={classes(componentName, "", [className], {
-                    "enter-button": !!enterButton
+                className={classes(componentName, '', [className], {
+                    'enter-button': !!enterButton,
                 })}
                 addonAfter={
                     enterButton &&
                     <div
-                        className={classes(componentName, "enter-button")}
+                        className={classes(componentName, 'enter-button')}
                         onClick={searchHandler}
                     >
                         {
-                            typeof enterButton === "boolean"
-                                ? <Icon name={"wechat"} size={20}/>
+                            typeof enterButton === 'boolean'
+                                ? <Icon name={'wechat'} size={20} />
                                 : enterButton
                         }
                     </div>
@@ -60,10 +60,10 @@ const Search: FC<SearchProps> =
                 suffix={
                     !enterButton &&
                     <Icon
-                        name={"wechat"}
+                        name={'wechat'}
                         onClick={searchHandler}
                         size={18}
-                        style={{cursor: "pointer"}}
+                        style={{ cursor: 'pointer' }}
                     />
                 }
                 onChange={changeHandler}

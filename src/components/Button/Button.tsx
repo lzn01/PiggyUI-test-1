@@ -2,7 +2,7 @@ import * as React from 'react';
 import './styles/index.scss';
 import type { ButtonHTMLAttributes, FC } from 'react';
 import { HTMLAttributes, useRef } from 'react';
-import classes from '../../common/methods/classes';
+import { classes } from '../../common/methods/classes';
 import Icon from '../Icon';
 import Wave from '../../common/components/Wave';
 import Group from './ButtonGroup';

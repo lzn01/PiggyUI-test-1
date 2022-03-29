@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { FC, HTMLAttributes } from 'react';
 import './styles/index.scss';
-import classes from '../../common/methods/classes';
+import { classes } from '../../common/methods/classes';
 
 const componentName = 'Button-group';
 

@@ -1,15 +1,15 @@
-import * as React from "react";
-import type {FC} from "react";
-import "./styles/index.scss";
-import "../../common/methods/importAll";
-import classes from "../../common/methods/classes";
+import * as React from 'react';
+import type { FC } from 'react';
+import './styles/index.scss';
+import '../../common/methods/importAll';
+import { classes } from '../../common/methods/classes';
 
 interface IconProps extends React.SVGAttributes<SVGElement> {
     name: string;
     size?: number;
 }
 
-const componentName = "icon";
+const componentName = 'icon';
 
 const Icon: FC<IconProps> =
     ({
@@ -20,15 +20,15 @@ const Icon: FC<IconProps> =
          ...rest
      }) => {
         return (
-            <svg className={classes(componentName, "", [className])}
+            <svg className={classes(componentName, '', [className])}
                  style={{
                      width: size && `${size}px`,
                      height: size && `${size}px`,
-                     ...style
+                     ...style,
                  }}
                  {...rest}
             >
-                <use xlinkHref={`#${name}`}/>
+                <use xlinkHref={`#${name}`} />
             </svg>
         );
     };
