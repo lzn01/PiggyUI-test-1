@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Slider from 'react-slick';
 import { isNotUndefined } from '../../common/methods/is';
 import './styles/index.scss';
 import type { CSSProperties, FC } from 'react';
@@ -43,6 +44,19 @@ const Carousel: FC<CarouselProps> =
          dots,
          style,
      }) => {
+        const slickRef = React.useRef<Slider>();
+        const goTo = (slide: number, dontAnimate = false) => {
+            (slickRef.current as Slider).slickGoTo(slide, dontAnimate);
+        };
+
+        const prev = () => {
+            (slickRef.current as Slider).slickPrev();
+        };
+
+        const next = () => {
+            (slickRef.current as Slider).slickNext();
+        };
+
         return (
             <></>
         );
