@@ -22,8 +22,9 @@ module.exports = {
         '@typescript-eslint',
     ],
     'rules': {
-        'semi': ['error', 'always'],
+        'semi': ['error', 'always'], // 分号
         '@typescript-eslint/no-explicit-any': ['off'],
         '@typescript-eslint/no-empty-function': ['off'],
+        '@typescript-eslint/no-var-requires': ['off'],
     },
 };

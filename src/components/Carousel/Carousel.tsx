@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { forwardRef, useImperativeHandle } from 'react';
+import { forwardRef, useEffect, useImperativeHandle } from 'react';
+import _ from 'lodash';
+import { classes } from '../../common/methods/classes';
 import { isNotUndefined } from '../../common/methods/is';
 import './styles/index.scss';
 import type { CSSProperties, ForwardRefRenderFunction } from 'react';
@@ -26,14 +28,16 @@ export interface CarouselProps extends Settings {
 }
 
 export interface CarouselRef {
+    autoPlay: boolean;                                          // 是否自动切换
     goTo: (slide: number, dontAnimate?: boolean) => void;       // 切换到指定面板
+    innerSlider: any;
     next: () => void;                                           // 切换到下一面板
     prev: () => void;                                           // 切换到上一面板
-    autoPlay: boolean;                                          // 是否自动切换
-    innerSlider: any;
 }
 
-// const componentName = 'Carousel';
+const componentName = 'Carousel';
+
+const SlickCarousel = require('react-slick').default;
 
 const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
     {
@@ -46,6 +50,7 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
         dots = true,
         dotsPosition = 'bottom',
         dotsTimer = false,
+        effect,
         nextArrow,
         prevArrow,
         slidesToShow = 1,
@@ -63,14 +68,84 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
     const prev = () => slickRef.current.slickPrev();
 
     useImperativeHandle(ref, () => ({
+        autoPlay: slickRef.current.innerSlider.autoPlay,
         goTo,
+        innerSlider: slickRef.current.innerSlider,
         next,
         prev,
-        autoPlay: slickRef.current.innerSlider.autoPlay,
-        innerSlider: slickRef.current.innerSlider,
     }), [slickRef.current]);
+
+    useEffect(() => {
+        const slickDOM = slickRef.current;
+        if (!autoplay) return;
+        if (dotsTimer) {
+            const timerElement = slickDOM.querySelector('.timer');
+            const animationName = dotsPosition === 'left' || dotsPosition === 'right' ? 'dotsAniVertical' : 'dotsAniNormal';
+
+            const mouseoverAniHandler = () => {
+                timerElement?.style?.setProperty('dots-ani', `none`);
+            };
+
+            const mouseoutAniHandler = () => {
+                timerElement?.style?.setProperty('dots-ani', `${animationName} ${autoplaySpeed / 1000}s infinite`);
+            };
+
+            slickDOM.addEventListener('mouseover', () => mouseoverAniHandler());
+            slickDOM.addEventListener('mouseout', () => mouseoutAniHandler());
+
+            return () => {
+                slickDOM.removeEventListener('mouseover', () => mouseoverAniHandler());
+                slickDOM.removeEventListener('mouseout', () => mouseoutAniHandler());
+            };
+        }
+
+        const autoPlayHandler = () => {
+            if (slickDOM?.innerSlider?.autoPlay) {
+                slickDOM.innerSlider.autoPlay();
+            }
+        };
+
+        const onWindowResized = _.debounce(
+            autoPlayHandler,
+            500,
+            { leading: false },
+        );
+
+        addEventListener('resize', onWindowResized);
+
+        return () => {
+            removeEventListener('resize', onWindowResized);
+            onWindowResized.cancel();
+        };
+    }, [autoplay, slickRef.current]);
+
     return (
-        <></>
+        <div
+            className={classes(componentName, '', [className, dotsPosition])}
+            style={style}
+        >
+            <SlickCarousel
+                ref={slickRef}
+                arrows={arrows}
+                autoplay={autoplay}
+                autoplaySpeed={autoplaySpeed}
+                centerMode={centerMode}
+                centerPadding={centerPadding}
+                dots={dots}
+                dotsClass={classes(componentName, 'dots', {
+                        vertical: dotsPosition === 'left' || dotsPosition === 'right',
+                        timer: autoplay && dotsTimer,
+                    },
+                )}
+                dotsTimer={dotsTimer}
+                fade={effect === 'fade'}
+                nextArrow={nextArrow ?? <div className={classes(componentName, 'next')} onClick={next} />}
+                prevArrow={prevArrow ?? <div className={classes(componentName, 'prev')} onClick={prev} />}
+                slidesToShow={slidesToShow}
+                {...rest}
+            />
+        </div>
     );
 };
+
 export const Carousel = forwardRef<CarouselRef, CarouselProps>(InternalCarousel);

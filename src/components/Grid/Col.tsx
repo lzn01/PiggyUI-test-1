@@ -3,7 +3,7 @@ import type { FC, CSSProperties } from 'react';
 import './styles/index.scss';
 import { classes } from '../../common/methods/classes';
 
-export interface Option {
+export type Option = {
     span: number; // 栅格占位格数
     offset?: number; // 栅格向右偏移的格数
 }
