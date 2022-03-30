@@ -1,7 +1,7 @@
-export const { isArray } = Array;
+export const isArray = (v: any) => Array.isArray(v);
 export const isUndefined = (v: any) => v == null;
 export const isNotUndefined = (v: any) => v != null;
-export const isFunc = (f: any) => typeof f === 'function';
-export const isNumber = (n: any) => typeof n === 'number';
-export const isObject = (val: any) => val && typeof val === 'object' && !isArray(val);
-export const isString = (s: any) => typeof s === 'string';
+export const isFunc = (v: any) => typeof v === 'function';
+export const isNumber = (v: any) => typeof v === 'number';
+export const isObject = (v: any) => v && typeof v === 'object' && !isArray(v);
+export const isString = (v: any) => typeof v === 'string';

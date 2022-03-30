@@ -1,21 +1,25 @@
 import { isArray, isObject, isString } from './is';
 
-const prefix = 'pui';
+const prefixClassName = 'pui';
 
-export const classes = (componentName: string, ...args: any): string => {
+export const classes = (componentName: string, ...params: any): string => {
     const className = new Array<string>();
-    args.forEach((arg: any) => {
-        if (isString(arg)) {
-            className.push(`${prefix}-${componentName.toLowerCase()}${arg && '-' + arg}`);
-        } else if (isArray(arg)) {
-            arg.forEach(str => isString(str) && className.push(str));
-        } else if (isObject(arg) && !(isArray(arg))) {
-            for (const key in arg) {
-                if (arg.hasOwnProperty.call(key) && arg[key]) {
+
+    params.forEach((param: any) => {
+        if (isString(param)) {
+            className.push(`${prefixClassName}-${componentName.toLowerCase()}${param && '-' + param}`);
+        }
+        if (isArray(param)) {
+            param.forEach((str: any) => isString(str) && className.push(str));
+        }
+        if (isObject(param)) {
+            for (const key in param) {
+                if (param.hasOwnProperty.bind(key) && param[key]) {
                     className.push(key);
                 }
             }
         }
     });
+
     return className.filter(v => v).join(' ');
 };

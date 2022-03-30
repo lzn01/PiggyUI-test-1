@@ -18,7 +18,7 @@ const Wave: FC = ({ children }) => {
         if (!active.current) {
             active.current = true;
             originCN.current = node.className;
-            node.className = classes('', [originCN.current, 'pui-Wave-animation-animating']);
+            node.className = classes('', [originCN.current, 'pui-wave-animation-animating']);
             node.addEventListener('animationend', () => animationToEnd(node));
         }
     }, [animationToEnd]);
