@@ -1,4 +1,4 @@
-const arrayIsEqual = (
+export const arrayIsEqual = (
     arr1: Array<string | number>,
     arr2: Array<string | number>
 ): boolean => {
@@ -14,4 +14,3 @@ const arrayIsEqual = (
     }
     return true;
 };
-export default arrayIsEqual;

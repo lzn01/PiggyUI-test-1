@@ -4,13 +4,13 @@ export const parseDateString = (str?: string) => {
         return {
             year: dateObject.getFullYear(),
             month: dateObject.getMonth() + 1,
-            date: dateObject.getDate()
+            date: dateObject.getDate(),
         };
     }
     const dateObject = new Date();
     return {
         year: dateObject.getFullYear(),
         month: dateObject.getMonth() + 1,
-        date: dateObject.getDate()
+        date: dateObject.getDate(),
     };
 };

@@ -11,7 +11,7 @@ export const classes = (componentName: string, ...args: any): string => {
             arg.forEach(str => isString(str) && className.push(str));
         } else if (isObject(arg) && !(isArray(arg))) {
             for (const key in arg) {
-                if (arg.hasOwnProperty(key) && arg[key]) {
+                if (arg.hasOwnProperty.call(key) && arg[key]) {
                     className.push(key);
                 }
             }

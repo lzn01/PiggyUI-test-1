@@ -1,6 +1,6 @@
-import * as React from "react";
-import type {FC} from "react";
-import {useCallback, useEffect, useState} from "react";
+import * as React from 'react';
+import type { FC } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 interface TransitionProps {
     afterEnter?: React.CSSProperties;
@@ -33,34 +33,34 @@ const Transition: FC<TransitionProps> =
         };
 
         const nodeHandler = useCallback((node: HTMLElement) => {
-            node.style.display = "";
+            node.style.display = '';
             nodeStyleHandler(node, {
-                transition: "",
+                transition: '',
                 ...visible
                     ? beforeEnter || afterLeave || {}
-                    : beforeLeave || afterEnter || {}
+                    : beforeLeave || afterEnter || {},
             });
             node.getBoundingClientRect();
             nodeStyleHandler(node, {
-                ...transitionActive ?? {transition: "300ms all cubic-bezier(.645, .045, .355, 1)"},
+                ...transitionActive ?? { transition: '300ms all cubic-bezier(.645, .045, .355, 1)' },
                 ...visible
                     ? afterEnter || beforeLeave || {}
-                    : afterLeave || beforeEnter || {}
+                    : afterLeave || beforeEnter || {},
             });
             setRendered(true);
         }, [afterEnter, afterLeave, beforeEnter, beforeLeave, transitionActive, visible]);
 
         const transitionendHandler = useCallback((node: HTMLElement) => {
-            node.style.display = visible ? "" : "none";
+            node.style.display = visible ? '' : 'none';
         }, [visible]);
 
         useEffect(() => {
             if (!(children as any).ref?.current) return;
             const node = (children as any).ref.current;
             nodeHandler(node);
-            node.addEventListener("transitionend", () => transitionendHandler(node));
+            node.addEventListener('transitionend', () => transitionendHandler(node));
             return () => {
-                node.removeEventListener("transitionend", () => transitionendHandler(node));
+                node.removeEventListener('transitionend', () => transitionendHandler(node));
             };
         }, [children, nodeHandler, transitionendHandler]);
 
@@ -69,8 +69,8 @@ const Transition: FC<TransitionProps> =
                 ? React.cloneElement(
                     children as React.ReactElement, {
                         ...rest,
-                        style: {...style, display: "none"}
-                    }
+                        style: { ...style, display: 'none' },
+                    },
                 )
                 : null
         );
