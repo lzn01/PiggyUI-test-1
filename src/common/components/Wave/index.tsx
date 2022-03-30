@@ -1,3 +1,3 @@
-import Wave from "./Wave";
+import Wave from './Wave';
 
-export default Wave
+export default Wave;

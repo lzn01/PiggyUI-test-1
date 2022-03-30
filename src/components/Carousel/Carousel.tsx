@@ -62,19 +62,15 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
 
     const prev = () => slickRef.current.slickPrev();
 
-    useImperativeHandle(
-        ref, () => ({
-            goTo,
-            next,
-            prev,
-            autoPlay: slickRef.current.innerSlider.autoPlay,
-            innerSlider: slickRef.current.innerSlider,
-        }), [slickRef.current]);
-
+    useImperativeHandle(ref, () => ({
+        goTo,
+        next,
+        prev,
+        autoPlay: slickRef.current.innerSlider.autoPlay,
+        innerSlider: slickRef.current.innerSlider,
+    }), [slickRef.current]);
     return (
         <></>
     );
 };
-
-const Carousel = forwardRef<CarouselRef, CarouselProps>(InternalCarousel);
-export default Carousel;
+export const Carousel = forwardRef<CarouselRef, CarouselProps>(InternalCarousel);
