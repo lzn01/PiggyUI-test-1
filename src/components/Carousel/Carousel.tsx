@@ -1,21 +1,12 @@
 import * as React from 'react';
 import { forwardRef, useEffect, useImperativeHandle } from 'react';
+import { findDOMNode } from 'react-dom';
+import SlickCarousel from 'react-slick';
 import _ from 'lodash';
 import { classes } from '../../common/methods/classes';
-import { isNotUndefined } from '../../common/methods/is';
 import './styles/index.scss';
 import type { CSSProperties, ForwardRefRenderFunction } from 'react';
 import type { Settings } from 'react-slick';
-
-if (isNotUndefined(window)) {
-    const matchMediaPolyfill = (mediaQuery: string) => ({
-        media: mediaQuery,
-        matches: false,
-        addListener() {},
-        removeListener() {},
-    }) as unknown as MediaQueryList;
-    window.matchMedia = matchMedia || matchMediaPolyfill;
-}
 
 export type CarouselEffect = 'scrollX' | 'fade';                // 动画效果
 export type DotsPosition = 'top' | 'bottom' | 'left' | 'right'; // 面板指示点的四个显示位置
@@ -37,8 +28,6 @@ export interface CarouselRef {
 
 const componentName = 'Carousel';
 
-const SlickCarousel = require('react-slick').default;
-
 const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
     {
         arrows = false,
@@ -50,7 +39,7 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
         dots = true,
         dotsPosition = 'bottom',
         dotsTimer = false,
-        effect,
+        effect = 'scrollX',
         nextArrow,
         prevArrow,
         slidesToShow = 1,
@@ -76,10 +65,10 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
     }), [slickRef.current]);
 
     useEffect(() => {
-        const slickDOM = slickRef.current;
         if (!autoplay) return;
         if (dotsTimer) {
-            const timerElement = slickDOM.querySelector('.timer');
+            const slickDOM = findDOMNode(slickRef.current) as HTMLDivElement;
+            const timerElement = slickDOM?.querySelector('.timer') as HTMLLIElement;
             const animationName = dotsPosition === 'left' || dotsPosition === 'right' ? 'dotsAniVertical' : 'dotsAniNormal';
 
             const mouseoverAniHandler = () => {
@@ -100,8 +89,8 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
         }
 
         const autoPlayHandler = () => {
-            if (slickDOM?.innerSlider?.autoPlay) {
-                slickDOM.innerSlider.autoPlay();
+            if (slickRef.current?.innerSlider) {
+                slickRef.current.autoPlay();
             }
         };
 
@@ -126,23 +115,23 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
         >
             <SlickCarousel
                 ref={slickRef}
+                {...rest}
                 arrows={arrows}
                 autoplay={autoplay}
                 autoplaySpeed={autoplaySpeed}
                 centerMode={centerMode}
                 centerPadding={centerPadding}
                 dots={dots}
-                dotsClass={classes(componentName, 'dots', {
-                        vertical: dotsPosition === 'left' || dotsPosition === 'right',
+                dotsClass={
+                    classes(componentName, 'dots', {
                         timer: autoplay && dotsTimer,
-                    },
-                )}
-                dotsTimer={dotsTimer}
+                        vertical: dotsPosition === 'left' || dotsPosition === 'right',
+                    })
+                }
                 fade={effect === 'fade'}
                 nextArrow={nextArrow ?? <div className={classes(componentName, 'next')} onClick={next} />}
                 prevArrow={prevArrow ?? <div className={classes(componentName, 'prev')} onClick={prev} />}
                 slidesToShow={slidesToShow}
-                {...rest}
             />
         </div>
     );

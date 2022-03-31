@@ -20,6 +20,8 @@ export const classes = (componentName: string, ...params: any): string => {
             }
         }
     });
-
     return className.filter(v => v).join(' ');
 };
+
+// str.toUpperCase() 把字符串转换为大写
+// str.toLowerCase() 把字符串转换为小写

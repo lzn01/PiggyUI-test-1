@@ -48,7 +48,7 @@
     "lodash": "^4.17.21",
     "prism-react-renderer": "^0.1.6",
     "raw-loader": "^2.0.0",
-    "react-slick": "^0.23.1",
+    "react-slick": "~0.23.1",
     "react-test-renderer": "^16.8.4",
     "sass": "~1.32.6",
     "sass-loader": "^7.1.0",
