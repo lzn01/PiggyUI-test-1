@@ -69,14 +69,14 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
         if (dotsTimer) {
             const slickDOM = findDOMNode(slickRef.current) as HTMLDivElement;
             const timerElement = slickDOM?.querySelector('.timer') as HTMLLIElement;
-            const animationName = dotsPosition === 'left' || dotsPosition === 'right' ? 'dotsAniVertical' : 'dotsAniNormal';
+            const animationName = dotsPosition === 'left' || dotsPosition === 'right' ? 'dotsAniVertical' : 'dotsAniHorizontal';
 
             const mouseoverAniHandler = () => {
-                timerElement?.style?.setProperty('dots-ani', `none`);
+                timerElement.style.setProperty('dots-ani', `none`);
             };
 
             const mouseoutAniHandler = () => {
-                timerElement?.style?.setProperty('dots-ani', `${animationName} ${autoplaySpeed / 1000}s infinite`);
+                timerElement.style.setProperty('dots-ani', `${animationName} ${autoplaySpeed / 1000}s infinite`);
             };
 
             slickDOM.addEventListener('mouseover', () => mouseoverAniHandler());
@@ -122,12 +122,11 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
                 centerMode={centerMode}
                 centerPadding={centerPadding}
                 dots={dots}
-                dotsClass={
-                    classes(componentName, 'dots', {
+                dotsClass={classes(componentName, 'dots', {
                         timer: autoplay && dotsTimer,
                         vertical: dotsPosition === 'left' || dotsPosition === 'right',
-                    })
-                }
+                    },
+                )}
                 fade={effect === 'fade'}
                 nextArrow={nextArrow ?? <div className={classes(componentName, 'next')} onClick={next} />}
                 prevArrow={prevArrow ?? <div className={classes(componentName, 'prev')} onClick={prev} />}

@@ -143,7 +143,7 @@
     }
   }
 
-  &-dots &-vertical {
+  &-dots .vertical {
     width: 2px;
     bottom: auto;
     top: 50%;
@@ -245,9 +245,9 @@
   }
 }
 
-.pui-carousel-dots.timer li {
+.pui-carousel-dots .timer li {
   &.slick-active button {
-    background: rgba(255,255,255,0.3);
+    background: rgba(255, 255, 255, 0.3);
 
     &:after {
       position: absolute;
@@ -256,14 +256,14 @@
       left: 0;
       height: 100%;
       background: #fff;
-      animation: var(dots-ani, dotsAniNormal 3s infinite);
+      animation: var(dots-ani, dotsAniHorizontal 3s infinite);
     }
   }
 }
 
 .pui-carousel-dots .vertical .timer li {
   &.slick-active button {
-    background: rgba(255,255,255,0.3);
+    background: rgba(255, 255, 255, 0.3);
 
     &:after {
       position: absolute;
@@ -277,14 +277,22 @@
   }
 }
 
-@keyframes dotsAniNormal {
-  from { width: 0; }
-  to { width: 100%; }
+@keyframes dotsAniHorizontal {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 @keyframes dotsAniVertical {
-  from { height: 0; }
-  to { height: 100%; }
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
 }
 
 
