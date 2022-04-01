@@ -14,7 +14,7 @@ interface SpinProps {
     tip?: string; // 自定义描述文案
 }
 
-const componentName = 'spin';
+const componentName = 'Spin';
 
 const Spin: FC<SpinProps> =
     ({
