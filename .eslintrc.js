@@ -24,6 +24,7 @@ module.exports = {
     'rules': {
         'semi': ['error', 'always'], // 分号
         'react/no-find-dom-node': ['off'],
+        // 'react/prop-types': ['off'],
         '@typescript-eslint/no-explicit-any': ['off'],
         '@typescript-eslint/no-empty-function': ['off'],
         '@typescript-eslint/no-var-requires': ['off'],

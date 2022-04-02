@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import Group from './CheckboxGroup';
 import { classes } from '../../common/methods/classes';
 import './styles/index.scss';
@@ -9,6 +9,7 @@ import type { CheckboxGroupProps } from './CheckboxGroup';
 const componentName = 'Checkbox';
 
 interface CheckboxProps {
+    children: ReactNode;
     checked?: boolean; // 选中状态
     defaultChecked?: boolean; // 默认选中状态
     disabled?: boolean; // 禁用状态
@@ -28,7 +29,7 @@ const Checkbox: CheckboxInterface =
          disabled = false,
          halfChecked = false,
          onChange,
-     }) => {
+     }: CheckboxProps) => {
         const [checkboxState, setCheckboxState] = useState(defaultChecked);
 
         const clickHandler = (e: MouseEvent) => {
