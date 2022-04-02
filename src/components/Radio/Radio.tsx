@@ -3,7 +3,7 @@ import { Children, cloneElement, useEffect, useState } from 'react';
 import Option from './Option';
 import { classes } from '../../common/methods/classes';
 import './styles/index.scss';
-import type { FC, MouseEvent, CSSProperties, ReactElement } from 'react';
+import type { FC, MouseEvent, CSSProperties, ReactElement, ReactNode } from 'react';
 
 export interface BaseProps {
     radioStyle?: 'Radio' | 'button';
@@ -12,6 +12,7 @@ export interface BaseProps {
 }
 
 export interface RadioProps extends BaseProps {
+    children: ReactNode;
     className?: string;
     defaultValue?: any;
     onChange?: (checkedValue: any, e: MouseEvent) => void;
@@ -40,7 +41,7 @@ const Radio: RadioInterface =
          value,
          vertical = false,
          style,
-     }) => {
+     }: RadioProps) => {
         const [radioValue, setRadioValue] = useState<any>(defaultValue);
 
         const clickHandler = (e: MouseEvent, param: any) => {

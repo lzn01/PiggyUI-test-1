@@ -38,9 +38,8 @@ const Input: InputInterface =
          onPressEnter,
          prefix,
          suffix,
-         value,
          ...rest
-     }) => {
+     }: InputProps) => {
         const [inputValue, setInputValue] = useState(defaultValue);
 
         const changeHandler: ChangeEventHandler<HTMLInputElement> = (e) => {
