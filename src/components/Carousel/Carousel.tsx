@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { forwardRef, useEffect, useImperativeHandle } from 'react';
-import { findDOMNode } from 'react-dom';
-import SlickCarousel from 'react-slick';
 import _ from 'lodash';
-import { classes } from '../../common/methods/classes';
 import './styles/index.scss';
-import type { CSSProperties, ForwardRefRenderFunction } from 'react';
+import SlickCarousel from 'react-slick';
+import { findDOMNode } from 'react-dom';
+import { forwardRef, useEffect, useImperativeHandle } from 'react';
+import { classes } from '../../common/methods/classes';
 import type { Settings } from 'react-slick';
+import type { CSSProperties, ForwardRefRenderFunction } from 'react';
 
 export type CarouselEffect = 'scrollX' | 'fade';                // 动画效果
 export type DotsPosition = 'top' | 'bottom' | 'left' | 'right'; // 面板指示点的四个显示位置
