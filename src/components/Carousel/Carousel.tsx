@@ -128,8 +128,8 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
                     },
                 )}
                 fade={effect === 'fade'}
-                nextArrow={nextArrow ?? <div className={classes(componentName, 'next')} onClick={next} />}
-                prevArrow={prevArrow ?? <div className={classes(componentName, 'prev')} onClick={prev} />}
+                nextArrow={nextArrow ?? <div className="slick-next" onClick={next} />}
+                prevArrow={prevArrow ?? <div className="slick-prev" onClick={prev} />}
                 slidesToShow={slidesToShow}
             />
         </div>

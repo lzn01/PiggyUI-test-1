@@ -5,6 +5,7 @@ const CarouselExample = () => {
     return (
         <>
             <Carousel
+                arrows
                 dotsTimer
                 style={{
                     textAlign: 'center',

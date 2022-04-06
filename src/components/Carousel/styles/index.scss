@@ -166,8 +166,8 @@
     }
   }
 
-  .pui-carousel-prev,
-  .pui-carousel-next {
+  .slick-prev,
+  .slick-next {
     position: absolute;
     display: flex;
     align-items: center;
@@ -203,24 +203,31 @@
     }
   }
 
-  .pui-carousel-prev {
+  .slick-prev {
     left: 20px;
     transform: translateY(-50%) rotate(180deg);
 
     &:before {
-      content: "\e6e7";
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      content: "\00BB";
+      height: 26px;
     }
   }
 
-  .pui-carousel-next {
+  .slick-next {
     right: 20px;
 
     &:before {
-      content: "\e6e7";
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      content: "\00BB";
+      height: 26px;
     }
   }
 }
-
 
 
 .top {
