@@ -42,7 +42,7 @@ const Textarea: FC<TextareaProps> =
 
         useEffect(() => {
             const node = textareaRef.current as HTMLTextAreaElement;
-            const { top, bottom } = node?.getBoundingClientRect();
+            const { top, bottom } = node.getBoundingClientRect();
             setOriginHeight(bottom - top);
         }, []);
 

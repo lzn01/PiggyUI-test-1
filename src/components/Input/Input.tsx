@@ -7,13 +7,13 @@ import type { SearchProps } from './Search';
 import type { TextareaProps } from './Textarea';
 import type { FC, ChangeEventHandler, KeyboardEventHandler, InputHTMLAttributes, ReactNode } from 'react';
 
-export interface baseInputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface BaseInputProps extends InputHTMLAttributes<HTMLInputElement> {
     defaultValue?: string;
     onPressEnter?: KeyboardEventHandler; // 按下回车的回调
     value?: string;
 }
 
-export interface InputProps extends Omit<baseInputProps, 'prefix'> {
+export interface InputProps extends Omit<BaseInputProps, 'prefix'> {
     addonAfter?: ReactNode; // 后置标签
     addonBefore?: ReactNode; // 前置标签
     prefix?: ReactNode; // 输入框前缀
