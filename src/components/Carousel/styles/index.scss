@@ -254,7 +254,7 @@
   }
 }
 
-.pui-carousel-dots .timer li {
+.pui-carousel-dots.timer li {
   &.slick-active button {
     background: rgba(255, 255, 255, 0.3);
 
@@ -265,12 +265,12 @@
       left: 0;
       height: 100%;
       background: #fff;
-      animation: var(dots-ani, dotsAniHorizontal 3s infinite);
+      animation: var(--dots-ani, dotsAniHorizontal 3s infinite);
     }
   }
 }
 
-.pui-carousel-dots .vertical .timer li {
+.pui-carousel-dots.vertical.timer li {
   &.slick-active button {
     background: rgba(255, 255, 255, 0.3);
 
@@ -281,7 +281,7 @@
       left: 0;
       width: 100%;
       background: #fff;
-      animation: var(dots-ani, dotsAniVertical 3s infinite);
+      animation: var(--dots-ani, dotsAniVertical 3s infinite);
     }
   }
 }

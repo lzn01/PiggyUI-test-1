@@ -3,7 +3,7 @@ import _ from 'lodash';
 import './styles/index.scss';
 import SlickCarousel from 'react-slick';
 import { findDOMNode } from 'react-dom';
-import { forwardRef, useEffect, useImperativeHandle } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
 import { classes } from '../../common/methods/classes';
 import type { Settings } from 'react-slick';
 import type { CSSProperties, ForwardRefRenderFunction } from 'react';
@@ -48,7 +48,7 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
     },
     ref,
 ) => {
-    const slickRef = React.useRef<any>();
+    const slickRef = useRef<any>();
 
     const goTo = (slide: number, dontAnimate = false) => slickRef.current.slickGoTo(slide, dontAnimate);
 
@@ -65,18 +65,19 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
     }), [slickRef.current]);
 
     useEffect(() => {
+        const slickDOM = findDOMNode(slickRef.current) as HTMLDivElement;
         if (!autoplay) return;
         if (dotsTimer) {
-            const slickDOM = findDOMNode(slickRef.current) as HTMLDivElement;
             const timerElement = slickDOM?.querySelector('.timer') as HTMLLIElement;
             const animationName = dotsPosition === 'left' || dotsPosition === 'right' ? 'dotsAniVertical' : 'dotsAniHorizontal';
+            timerElement?.style.setProperty('--dots-ani', `${animationName} ${autoplaySpeed / 1000}s infinite`);
 
             const mouseoverAniHandler = () => {
-                timerElement.style.setProperty('dots-ani', `none`);
+                timerElement?.style.setProperty('--dots-ani', `none`);
             };
 
             const mouseoutAniHandler = () => {
-                timerElement.style.setProperty('dots-ani', `${animationName} ${autoplaySpeed / 1000}s infinite`);
+                timerElement?.style.setProperty('--dots-ani', `${animationName} ${autoplaySpeed / 1000}s infinite`);
             };
 
             slickDOM.addEventListener('mouseover', () => mouseoverAniHandler());
@@ -115,7 +116,6 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
         >
             <SlickCarousel
                 ref={slickRef}
-                {...rest}
                 arrows={arrows}
                 autoplay={autoplay}
                 autoplaySpeed={autoplaySpeed}
@@ -131,6 +131,7 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
                 nextArrow={nextArrow ?? <div className="slick-next" onClick={next} />}
                 prevArrow={prevArrow ?? <div className="slick-prev" onClick={prev} />}
                 slidesToShow={slidesToShow}
+                {...rest}
             />
         </div>
     );
