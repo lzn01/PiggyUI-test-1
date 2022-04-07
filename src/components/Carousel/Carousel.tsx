@@ -135,5 +135,4 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
         </div>
     );
 };
-
 export const Carousel = forwardRef<CarouselRef, CarouselProps>(InternalCarousel);

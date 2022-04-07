@@ -1,12 +1,16 @@
-.container {
-  text-align: center;
-  height: 160px;
-  line-height: 160px;
-  background: #292c33;
-  overflow: hidden;
-  font-size: 24px;
+.carousel {
+  width: 500px;
 
-  h3 {
-    color: white;
+  .abc {
+    text-align: center;
+    height: 160px;
+    line-height: 160px;
+    background: #292c33;
+    overflow: hidden;
+    font-size: 24px;
+
+    h3 {
+      color: white;
+    }
   }
 }
