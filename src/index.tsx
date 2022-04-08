@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
 import './index.scss';
 import IconExample from './examples/Icon';
 import ModalExample from './examples/Modal';
@@ -63,17 +63,19 @@ ReactDOM.render(
                     </ul>
                 </aside>
                 <main>
-                    <Route path="/icon" component={IconExample} />
-                    <Route path="/button" component={ButtonExample} />
-                    <Route path="/modal" component={ModalExample} />
-                    <Route path="/grid" component={GridExample} />
-                    <Route path="/switch" component={SwitchExample} />
-                    <Route path="/spin" component={SpinExample} />
-                    <Route path="/input" component={InputExample} />
-                    <Route path="/checkbox" component={CheckboxExample} />
-                    <Route path="/radio" component={RadioExample} />
-                    <Route path="/rate" component={RateExample} />
-                    <Route path="/carousel" component={CarouselExample} />
+                    <Routes>
+                        <Route path="/icon" element={<IconExample />} />
+                        <Route path="/button" element={<ButtonExample />} />
+                        <Route path="/modal" element={<ModalExample />} />
+                        <Route path="/grid" element={<GridExample />} />
+                        <Route path="/switch" element={<SwitchExample />} />
+                        <Route path="/spin" element={<SpinExample />} />
+                        <Route path="/input" element={<InputExample />} />
+                        <Route path="/checkbox" element={<CheckboxExample />} />
+                        <Route path="/radio" element={<RadioExample />} />
+                        <Route path="/rate" element={<RateExample />} />
+                        <Route path="/carousel" element={<CarouselExample />} />
+                    </Routes>
                 </main>
             </div>
         </div>
