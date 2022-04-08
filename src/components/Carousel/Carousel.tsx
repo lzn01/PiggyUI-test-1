@@ -5,7 +5,7 @@ import SlickCarousel from 'react-slick';
 import { findDOMNode } from 'react-dom';
 import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
 import { classes } from '../../common/methods/classes';
-import type { Settings } from 'react-slick';
+import type { Settings, CustomArrowProps } from 'react-slick';
 import type { CSSProperties, ForwardRefRenderFunction } from 'react';
 
 export type CarouselEffect = 'scrollX' | 'fade';                // 动画效果
@@ -27,6 +27,11 @@ export interface CarouselRef {
 }
 
 const componentName = 'Carousel';
+
+const Arrow = (props: CustomArrowProps) => {
+    const { className, onClick } = props;
+    return <div className={className} onClick={onClick} />;
+};
 
 const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
     {
@@ -128,8 +133,8 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
                     },
                 )}
                 fade={effect === 'fade'}
-                nextArrow={nextArrow ?? <div className="slick-next" onClick={next} />}
-                prevArrow={prevArrow ?? <div className="slick-prev" onClick={prev} />}
+                nextArrow={nextArrow ?? <Arrow className="slick-next" onClick={next} />}
+                prevArrow={prevArrow ?? <Arrow className="slick-prev" onClick={prev} />}
                 slidesToShow={slidesToShow}
                 {...rest}
             />
