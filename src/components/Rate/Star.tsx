@@ -4,11 +4,13 @@ import Icon from '../Icon';
 import { classes } from '../../common/methods/classes';
 import type { FC } from 'react';
 
+type Position = 'left' | 'right';
+
 interface StarProps {
     count: number;
     index: number;
-    onClick?: (index: number, position: 'left' | 'right') => void;
-    onMouseEnter?: (index: number, position: 'left' | 'right') => void;
+    onClick?: (index: number, position: Position) => void;
+    onMouseEnter?: (index: number, position: Position) => void;
 }
 
 const componentName = 'star';

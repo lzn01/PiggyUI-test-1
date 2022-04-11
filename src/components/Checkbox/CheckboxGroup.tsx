@@ -5,7 +5,7 @@ import Checkbox from '.';
 import './styles/index.scss';
 import type { ReactNode, FC, CSSProperties } from 'react';
 
-interface Option {
+type Option = {
     label: ReactNode;
     value: string;
 }
