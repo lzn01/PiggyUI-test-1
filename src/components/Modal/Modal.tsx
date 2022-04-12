@@ -8,9 +8,12 @@ import { classes } from '../../common/methods/classes';
 import './styles/index.scss';
 import type { CSSProperties, FC, MouseEventHandler, ReactNode } from 'react';
 
+type CancelType = 'default' | 'dashed' | 'primary' | 'success' | 'warning' | 'danger';
+type OkType = 'default' | 'dashed' | 'primary' | 'success' | 'warning' | 'danger';
+
 interface ModalProps {
     cancelText?: string; // 取消按钮文字
-    cancelType?: 'default' | 'dashed' | 'primary' | 'success' | 'warning' | 'danger'; // 取消按钮类型
+    cancelType?: CancelType;// 取消按钮类型
     className?: string;
     closable?: boolean; // 是否展示右上角关闭按钮
     footer?: ReactNode;
@@ -18,7 +21,7 @@ interface ModalProps {
     maskClosable?: boolean; // 点击蒙层是否允许关闭
     maskStyle?: CSSProperties; // 蒙层样式
     okText?: string; // 确定按钮文字
-    okType?: 'default' | 'dashed' | 'primary' | 'success' | 'warning' | 'danger'; // 确定按钮类型
+    okType?: OkType; // 确定按钮类型
     onCancel?: MouseEventHandler; // 取消回调
     onOk?: MouseEventHandler; // 确定回调
     title?: ReactNode; // 标题
