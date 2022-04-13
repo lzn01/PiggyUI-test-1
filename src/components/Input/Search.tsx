@@ -12,7 +12,7 @@ export interface SearchProps extends BaseInputProps {
     onSearch?: (value: string) => void;
 }
 
-const componentName = 'search';
+const componentName = 'Search';
 
 const Search: FC<SearchProps> =
     ({

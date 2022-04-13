@@ -25,7 +25,7 @@ interface InputInterface extends FC<InputProps> {
     Textarea: FC<TextareaProps>;
 }
 
-const componentName = 'input';
+const componentName = 'Input';
 
 const Input: InputInterface =
     ({
