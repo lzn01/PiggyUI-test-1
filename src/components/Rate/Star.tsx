@@ -13,7 +13,7 @@ interface StarProps {
     onMouseEnter?: (index: number, position: Position) => void;
 }
 
-const componentName = 'star';
+const componentName = 'Star';
 
 const Star: FC<StarProps> =
     ({

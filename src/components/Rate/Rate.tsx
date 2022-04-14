@@ -18,7 +18,7 @@ interface RateProps {
     value?: number;
 }
 
-const componentName = 'rate';
+const componentName = 'Rate';
 
 const Rate: FC<RateProps> =
     ({
