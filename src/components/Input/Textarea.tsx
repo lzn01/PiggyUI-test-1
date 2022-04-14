@@ -12,7 +12,7 @@ export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElemen
     value?: string;
 }
 
-const componentName = 'textarea';
+const componentName = 'Textarea';
 
 const Textarea: FC<TextareaProps> =
     ({
