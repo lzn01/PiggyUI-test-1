@@ -6,7 +6,7 @@ import type { ColProps, GridProps } from './Col';
 
 export type RowProps = GridProps
 
-const componentName = 'row';
+const componentName = 'Row';
 
 const Row: FC<RowProps> =
     ({

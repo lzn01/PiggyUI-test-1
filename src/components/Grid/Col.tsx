@@ -25,7 +25,7 @@ export interface ColProps extends GridProps {
     xxl?: number | Option;
 }
 
-const componentName = 'col';
+const componentName = 'Col';
 
 const Col: FC<ColProps> =
     ({

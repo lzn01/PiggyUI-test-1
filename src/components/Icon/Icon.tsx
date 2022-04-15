@@ -9,7 +9,7 @@ interface IconProps extends React.SVGAttributes<SVGElement> {
     size?: number;
 }
 
-const componentName = 'icon';
+const componentName = 'Icon';
 
 const Icon: FC<IconProps> =
     ({
