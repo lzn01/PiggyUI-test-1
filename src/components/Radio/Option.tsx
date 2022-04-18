@@ -4,7 +4,7 @@ import './styles/index.scss';
 import type { OptionProps } from './Radio';
 import type { FC, MouseEventHandler } from 'react';
 
-const componentName = 'option';
+const componentName = 'Option';
 
 const Option: FC<OptionProps> =
     ({

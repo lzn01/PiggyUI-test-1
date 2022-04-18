@@ -5,8 +5,10 @@ import { classes } from '../../common/methods/classes';
 import './styles/index.scss';
 import type { FC, MouseEvent, CSSProperties, ReactElement, ReactNode } from 'react';
 
+type RadioStyle = 'radio' | 'button';
+
 export interface BaseProps {
-    radioStyle?: 'Radio' | 'button';
+    radioStyle?: RadioStyle;
     value?: any;
     vertical?: boolean;
 }
@@ -37,7 +39,7 @@ const Radio: RadioInterface =
          className,
          defaultValue,
          onChange,
-         radioStyle = 'Radio',
+         radioStyle = 'radio',
          value,
          vertical = false,
          style,
