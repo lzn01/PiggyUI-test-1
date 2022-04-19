@@ -34,7 +34,7 @@ const Option: FC<OptionProps> =
                 onClick={clickHandler}
             >
                 {
-                    radioStyle === 'Radio' &&
+                    radioStyle === 'radio' &&
                     <span className="label-dot" />
                 }
                 <div className="label-text">
