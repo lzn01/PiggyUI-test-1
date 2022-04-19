@@ -1,4 +1,8 @@
+@import "../../../common/styles/reset.scss";
+
 .pui-carousel {
+  @include reset-component();
+
   .slick-slider {
     position: relative;
     display: block;
