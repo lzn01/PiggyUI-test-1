@@ -20,7 +20,7 @@ export interface CheckboxGroupProps {
     value?: string[];
 }
 
-const componentName = 'Checkbox-group';
+const componentName = 'Checkbox-Group';
 
 const CheckboxGroup: FC<CheckboxGroupProps> =
     ({
