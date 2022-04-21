@@ -17,15 +17,13 @@ const Option: FC<OptionProps> =
          vertical,
      }) => {
         const clickHandler: MouseEventHandler = (e) => {
-            if (disabled || !onClick) {
-                return;
-            }
+            if (disabled || !onClick) return;
             onClick(e, value);
         };
 
         return (
             <label
-                className={classes(componentName, '', [radioStyle + '-style'], {
+                className={classes(componentName, '', [`${radioStyle}-style`], {
                         checked: value === checkedValue,
                         disabled,
                         vertical,
@@ -33,13 +31,8 @@ const Option: FC<OptionProps> =
                 )}
                 onClick={clickHandler}
             >
-                {
-                    radioStyle === 'radio' &&
-                    <span className="label-dot" />
-                }
-                <div className="label-text">
-                    {children}
-                </div>
+                {radioStyle === 'radio' && <span className="label-dot" />}
+                <div className="label-text">{children}</div>
             </label>
         );
     };
