@@ -31,8 +31,13 @@ const Option: FC<OptionProps> =
                 )}
                 onClick={clickHandler}
             >
-                {radioStyle === 'radio' && <span className="label-dot" />}
-                <div className="label-text">{children}</div>
+                {
+                    radioStyle === 'radio' &&
+                    <span className="label-dot" />
+                }
+                <div className="label-text">
+                    {children}
+                </div>
             </label>
         );
     };

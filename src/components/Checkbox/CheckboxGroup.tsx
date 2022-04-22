@@ -4,6 +4,7 @@ import { classes } from '../../common/methods/classes';
 import Checkbox from '.';
 import './styles/index.scss';
 import type { ReactNode, FC, CSSProperties } from 'react';
+import { isUndefined } from '../../common/methods/is';
 
 type Option = {
     label: ReactNode;
@@ -62,8 +63,8 @@ const CheckboxGroup: FC<CheckboxGroupProps> =
         };
 
         useEffect(() => {
-            if (typeof value !== 'undefined') {
-                setCheckboxGroupValue(value);
+            if (isUndefined(value)) {
+                setCheckboxGroupValue(value as string[]);
             }
         }, [value]);
 

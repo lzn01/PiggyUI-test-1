@@ -5,6 +5,7 @@ import { classes } from '../../common/methods/classes';
 import './styles/index.scss';
 import type { FC, MouseEvent } from 'react';
 import type { CheckboxGroupProps } from './CheckboxGroup';
+import { isBoolean } from '../../common/methods/is';
 
 const componentName = 'Checkbox';
 
@@ -35,16 +36,16 @@ const Checkbox: CheckboxInterface =
         const clickHandler = (e: MouseEvent) => {
             if (disabled) return;
             if (onChange) {
-                onChange(typeof checked === 'boolean' ? checked : !checkboxState, e);
+                onChange(isBoolean(checked) ? checked as boolean : !checkboxState, e);
             }
-            if (typeof checked !== 'boolean') {
+            if (!isBoolean(checked)) {
                 setCheckboxState(!checkboxState);
             }
         };
 
         useEffect(() => {
-            if (typeof checked === 'boolean') {
-                setCheckboxState(checked);
+            if (isBoolean(checked)) {
+                setCheckboxState(checked as boolean);
             }
         }, [checked]);
 
