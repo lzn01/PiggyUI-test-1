@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { ReactNode, useEffect, useState } from 'react';
 import Group from './CheckboxGroup';
+import { isBoolean } from '../../common/methods/is';
 import { classes } from '../../common/methods/classes';
 import './styles/index.scss';
 import type { FC, MouseEvent } from 'react';
 import type { CheckboxGroupProps } from './CheckboxGroup';
-import { isBoolean } from '../../common/methods/is';
 
 const componentName = 'Checkbox';
 
