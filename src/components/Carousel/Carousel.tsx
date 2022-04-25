@@ -121,6 +121,7 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
         >
             <SlickCarousel
                 ref={slickRef}
+                {...rest}
                 arrows={arrows}
                 autoplay={autoplay}
                 autoplaySpeed={autoplaySpeed}
@@ -136,7 +137,7 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
                 nextArrow={nextArrow ?? <Arrow className="slick-next" onClick={next} />}
                 prevArrow={prevArrow ?? <Arrow className="slick-prev" onClick={prev} />}
                 slidesToShow={slidesToShow}
-                {...rest}
+                vertical={dotsPosition === 'left' || dotsPosition === 'right'}
             />
         </div>
     );
