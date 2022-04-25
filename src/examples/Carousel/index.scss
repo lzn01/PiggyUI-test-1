@@ -1,15 +1,17 @@
 .carousel {
   width: 500px;
+}
 
-  .abc {
-    text-align: center;
-    line-height: 160px;
-    background: #292c33;
-    overflow: hidden;
-    font-size: 24px;
+.abc {
+  width: 100%;
+  background: #292c33;
+  text-align: center;
+  line-height: 160px;
+  height: 160px;
+  overflow: hidden;
+  font-size: 24px;
 
-    h3 {
-      color: white;
-    }
+  h3 {
+    color: white;
   }
 }

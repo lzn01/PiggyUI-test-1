@@ -90,7 +90,6 @@
   .slick-vertical .slick-slide {
     display: block;
     height: auto;
-    border: 1px solid transparent;
   }
 
   .slick-arrow.slick-hidden {
@@ -214,11 +213,13 @@
     transform: translateY(-50%) rotate(180deg);
 
     &:before {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: block;
+      width: 0;
+      height: 0;
       content: "\203A";
-      height: 26px;
+      margin-top: -8px;
+      margin-left: -10px;
+      font-size: 32px;
     }
   }
 
@@ -226,11 +227,13 @@
     right: 20px;
 
     &:before {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: block;
+      width: 0;
+      height: 0;
       content: "\203A";
-      height: 26px;
+      margin-top: -8px;
+      margin-left: -10px;
+      font-size: 32px;
     }
   }
 }
