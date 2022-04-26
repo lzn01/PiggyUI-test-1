@@ -94,18 +94,21 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
             };
         }
 
+        // 窗口大小改变时，重新自动播放
         const autoPlayHandler = () => {
             if (slickRef.current?.innerSlider) {
                 slickRef.current.autoPlay();
             }
         };
 
+        // 防抖
         const onWindowResized = _.debounce(
             autoPlayHandler,
             500,
             { leading: false },
         );
 
+        // 监听窗口大小改变
         addEventListener('resize', onWindowResized);
 
         return () => {
