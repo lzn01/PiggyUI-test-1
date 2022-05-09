@@ -20,7 +20,7 @@ const CarouselExample = () => {
         <div className={'carousel'}>
             <Button onClick={onClick}>跳转</Button>
             <Button onClick={onClick2}>跳转</Button>
-            <Carousel arrows dotsTimer autoplay={false} ref={ref}>
+            <Carousel arrows autoplay={true} dotsTimer ref={ref}>
                 <div className={'abc'}><h3 style={{ color: '#fff' }}>1</h3></div>
                 <div className={'abc'}><h3 style={{ color: '#fff' }}>2</h3></div>
                 <div className={'abc'}><h3 style={{ color: '#fff' }}>3</h3></div>

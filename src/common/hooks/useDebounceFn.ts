@@ -1,40 +1,37 @@
-import { isFunc } from '../methods/is';
 import useLatest from './useLatest';
 import { debounce } from 'lodash';
 import { useMemo } from 'react';
 import useUnmount from './useUnmount';
 
-type noop = (...args: any[]) => any;
+export type noop = (...args: any[]) => any;
 
-interface DebounceOptions {
+export interface DebounceOptions {
     wait?: number;
     leading?: boolean;
     trailing?: boolean;
     maxWait?: number;
 }
 
-interface Result {
+export interface DebounceResult {
     run: noop;
     cancel: () => void;
     flush: () => void;
 }
 
-const useDebounceFn: <T extends noop>(fn: T, opts?: DebounceOptions) => Result | undefined
+const useDebounceFn: <T extends noop>(fn: T, opts?: DebounceOptions) => DebounceResult
     = (fn, opts) => {
-    if (!isFunc(fn)) return;
+    const { wait = 1000, ...restOpts } = opts || {};
 
     const fnRef = useLatest(fn);
-    const wait = opts?.wait ?? 1000;
+
     const debounced = useMemo(() =>
         debounce(
             (<T extends noop>(...args: Parameters<T>): ReturnType<T> => fnRef.current(...args)),
             wait,
-            opts,
+            restOpts,
         ), []);
 
-    useUnmount(() => {
-        debounced.cancel();
-    });
+    useUnmount(() => debounced.cancel());
 
     return {
         run: debounced,

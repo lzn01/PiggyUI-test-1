@@ -1,14 +1,14 @@
 import * as React from 'react';
-import _ from 'lodash';
 import './styles/index.scss';
 import SlickCarousel from 'react-slick';
 import { findDOMNode } from 'react-dom';
 import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
 import { classes } from '../../common/methods/classes';
+import useDebounceFn from '../../common/hooks/useDebounceFn';
 import type { Settings, CustomArrowProps } from 'react-slick';
 import type { CSSProperties, ForwardRefRenderFunction } from 'react';
 
-export type CarouselEffect = 'scrollX' | 'fade';                // 动画效果
+export type CarouselEffect = 'scrollx' | 'fade';                // 动画效果
 export type DotsPosition = 'top' | 'bottom' | 'left' | 'right'; // 面板指示点的四个显示位置
 
 export interface CarouselProps extends Settings {
@@ -44,7 +44,7 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
         dots = true,
         dotsPosition = 'bottom',
         dotsTimer = false,
-        effect = 'scrollX',
+        effect = 'scrollx',
         nextArrow,
         prevArrow,
         slidesToShow = 1,
@@ -60,6 +60,20 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
     const next = () => slickRef.current.slickNext();
 
     const prev = () => slickRef.current.slickPrev();
+
+    const autoPlayHandler = () => {
+        if (slickRef.current?.innerSlider?.autoPlay) {
+            slickRef.current.innerSlider.autoPlay();
+        }
+    };
+
+    const onWindowResized = useDebounceFn(
+        autoPlayHandler,
+        {
+            wait: 500,
+            leading: false,
+        },
+    );
 
     useImperativeHandle(ref, () => ({
         autoPlay: slickRef.current.innerSlider.autoPlay,
@@ -91,27 +105,9 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
             };
         }
 
-        // 窗口大小改变时，重新自动播放
-        const autoPlayHandler = () => {
-            if (slickRef.current?.innerSlider) {
-                slickRef.current.autoPlay();
-            }
-        };
+        addEventListener('resize', onWindowResized as any);
 
-        // 防抖
-        const onWindowResized = _.debounce(
-            autoPlayHandler,
-            500,
-            { leading: false },
-        );
-
-        // 监听窗口大小改变
-        addEventListener('resize', onWindowResized);
-
-        return () => {
-            removeEventListener('resize', onWindowResized);
-            onWindowResized.cancel();
-        };
+        return () => removeEventListener('resize', onWindowResized as any);
     }, [autoplay, slickRef.current]);
 
     return (
@@ -142,4 +138,5 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
         </div>
     );
 };
+
 export const Carousel = forwardRef<CarouselRef, CarouselProps>(InternalCarousel);
