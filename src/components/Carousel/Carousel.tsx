@@ -67,7 +67,7 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
         }
     };
 
-    const onWindowResized = useDebounceFn(
+    const windowResizedHandler = useDebounceFn(
         autoPlayHandler,
         {
             wait: 500,
@@ -85,16 +85,27 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
 
     useEffect(() => {
         const slickDOM = findDOMNode(slickRef.current) as HTMLDivElement;
+
         if (!autoplay) return;
+
         if (dotsTimer) {
-            const timerElement = slickDOM?.querySelector('.timer') as HTMLLIElement;
+            const timerElement = slickDOM.querySelector('.timer') as HTMLDivElement;
             const animationName = dotsPosition === 'left' || dotsPosition === 'right' ? 'dotsAniVertical' : 'dotsAniHorizontal';
 
-            timerElement?.style.setProperty('--dots-ani', `${animationName} ${autoplaySpeed / 1000}s infinite`);
+            timerElement?.style.setProperty(
+                '--dots-ani',
+                `${animationName} ${autoplaySpeed / 1000}s infinite`,
+            );
 
-            const mouseoverAniHandler = () => timerElement?.style.setProperty('--dots-ani', `none`);
+            const mouseoverAniHandler = () => timerElement?.style.setProperty(
+                '--dots-ani',
+                `none`,
+            );
 
-            const mouseoutAniHandler = () => timerElement?.style.setProperty('--dots-ani', `${animationName} ${autoplaySpeed / 1000}s infinite`);
+            const mouseoutAniHandler = () => timerElement?.style.setProperty(
+                '--dots-ani',
+                `${animationName} ${autoplaySpeed / 1000}s infinite`,
+            );
 
             slickDOM.addEventListener('mouseover', () => mouseoverAniHandler());
             slickDOM.addEventListener('mouseout', () => mouseoutAniHandler());
@@ -105,9 +116,9 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
             };
         }
 
-        addEventListener('resize', onWindowResized as any);
+        addEventListener('resize', () => windowResizedHandler);
 
-        return () => removeEventListener('resize', onWindowResized as any);
+        return () => removeEventListener('resize', () => windowResizedHandler);
     }, [autoplay, slickRef.current]);
 
     return (
