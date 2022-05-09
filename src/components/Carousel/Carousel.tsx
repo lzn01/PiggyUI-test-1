@@ -89,23 +89,15 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
         if (!autoplay) return;
 
         if (dotsTimer) {
-            const timerElement = slickDOM.querySelector('.timer') as HTMLDivElement;
+            const timerElement = slickDOM.querySelector('.timer') as HTMLElement;
             const animationName = dotsPosition === 'left' || dotsPosition === 'right' ? 'dotsAniVertical' : 'dotsAniHorizontal';
+            const animationValue = `${animationName} ${autoplaySpeed}ms linear infinite`;
 
-            timerElement?.style.setProperty(
-                '--dots-ani',
-                `${animationName} ${autoplaySpeed / 1000}s infinite`,
-            );
+            timerElement?.style.setProperty('--dots-ani', animationValue);
 
-            const mouseoverAniHandler = () => timerElement?.style.setProperty(
-                '--dots-ani',
-                `none`,
-            );
+            const mouseoverAniHandler = () => timerElement?.style.setProperty('--dots-ani', `none`);
 
-            const mouseoutAniHandler = () => timerElement?.style.setProperty(
-                '--dots-ani',
-                `${animationName} ${autoplaySpeed / 1000}s infinite`,
-            );
+            const mouseoutAniHandler = () => timerElement?.style.setProperty('--dots-ani', animationValue);
 
             slickDOM.addEventListener('mouseover', () => mouseoverAniHandler());
             slickDOM.addEventListener('mouseout', () => mouseoutAniHandler());
