@@ -18,15 +18,15 @@ export interface DebounceResult {
     flush: () => void;
 }
 
-const useDebounceFn: <T extends noop>(fn: T, opts?: DebounceOptions) => DebounceResult
-    = (fn, opts) => {
+const useDebounceFn: <T extends noop>(func: T, opts?: DebounceOptions) => DebounceResult
+    = (func, opts) => {
     const { wait = 1000, ...restOpts } = opts || {};
 
-    const fnRef = useLatest(fn);
+    const funcRef = useLatest(func);
 
     const debounced = useMemo(() =>
         debounce(
-            <T extends noop>(...args: Parameters<T>): ReturnType<T> => fnRef.current(...args),
+            <T extends noop>(...args: Parameters<T>): ReturnType<T> => funcRef.current(...args),
             wait,
             restOpts,
         ), []);
