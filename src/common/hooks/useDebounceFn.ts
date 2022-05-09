@@ -3,16 +3,16 @@ import { debounce } from 'lodash';
 import { useMemo } from 'react';
 import useUnmount from './useUnmount';
 
-export type noop = (...args: any[]) => any;
+type noop = (...args: any[]) => any;
 
-export interface DebounceOptions {
+interface DebounceOptions {
     wait?: number;
     leading?: boolean;
     trailing?: boolean;
     maxWait?: number;
 }
 
-export interface DebounceResult {
+interface DebounceResult {
     run: noop;
     cancel: () => void;
     flush: () => void;
@@ -24,12 +24,14 @@ const useDebounceFn: <T extends noop>(func: T, opts?: DebounceOptions) => Deboun
 
     const funcRef = useLatest(func);
 
-    const debounced = useMemo(() =>
-        debounce(
-            <T extends noop>(...args: Parameters<T>): ReturnType<T> => funcRef.current(...args),
-            wait,
-            restOpts,
-        ), []);
+    const debounced = useMemo(
+        () =>
+            debounce(
+                <T extends noop>(...args: Parameters<T>): ReturnType<T> => funcRef.current(...args),
+                wait,
+                restOpts,
+            ),
+        []);
 
     useUnmount(() => debounced.cancel());
 
