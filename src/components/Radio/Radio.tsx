@@ -45,13 +45,13 @@ const Radio: RadioInterface =
          vertical = false,
          style,
      }: RadioProps) => {
-        const [radioValue, setRadioValue] = useState<any>(defaultValue);
+        const [radioValue, setRadioValue] = useState(defaultValue);
 
-        const clickHandler = (e: MouseEvent, param: any) => {
+        const clickHandler = (e: MouseEvent, arg: any) => {
             if (onChange) {
-                onChange(e, param);
+                onChange(e, arg);
             }
-            setRadioValue(param);
+            setRadioValue(arg);
         };
 
         useEffect(() => {
@@ -79,5 +79,6 @@ const Radio: RadioInterface =
             </div>
         );
     };
+
 Radio.Option = Option;
 export default Radio;

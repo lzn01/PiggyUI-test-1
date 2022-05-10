@@ -20,6 +20,7 @@ export const classes = (componentName: string, ...args: any): string => {
             }
         }
     });
+
     return className.filter(v => v).join(' ');
 };
 

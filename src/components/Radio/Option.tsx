@@ -41,4 +41,5 @@ const Option: FC<OptionProps> =
             </label>
         );
     };
+
 export default Option;
