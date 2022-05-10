@@ -50,7 +50,7 @@ const Modal: FC<ModalProps> =
      }) => {
         const maskRef = useRef<HTMLDivElement | null>(null);
         const modalRef = useRef<HTMLDivElement | null>(null);
-        const bodyOverflowRef = useRef(window.getComputedStyle(document.body).overflow); // 在第一次渲染时取 body 原始的 overflow 值
+        const bodyOverflowRef = useRef(getComputedStyle(document.body).overflow); // 在第一次渲染时取 body 原始的 overflow 值
 
         // 取消回调
         const cancelHandler: React.MouseEventHandler = (e) => {
@@ -75,9 +75,7 @@ const Modal: FC<ModalProps> =
 
         // modal显示时 阻止页面滚动
         useEffect(() => {
-            document.body.style.overflow = visible
-                ? 'hidden'
-                : bodyOverflowRef.current;
+            document.body.style.overflow = visible ? 'hidden' : bodyOverflowRef.current;
         }, [visible]);
 
         return createPortal(

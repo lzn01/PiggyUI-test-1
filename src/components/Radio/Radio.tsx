@@ -4,6 +4,7 @@ import Option from './Option';
 import { classes } from '../../common/methods/classes';
 import './styles/index.scss';
 import type { FC, MouseEvent, CSSProperties, ReactElement, ReactNode } from 'react';
+import { isUndefined } from '../../common/methods/is';
 
 type RadioStyle = 'radio' | 'button';
 
@@ -54,7 +55,7 @@ const Radio: RadioInterface =
         };
 
         useEffect(() => {
-            if (typeof value !== 'undefined') {
+            if (!isUndefined(value)) {
                 setRadioValue(value);
             }
         }, [value]);
@@ -65,14 +66,15 @@ const Radio: RadioInterface =
                 style={style}
             >
                 {
-                    Children.map(children, (child: ReactElement<OptionProps>) => {
-                        return cloneElement(child, {
+                    Children.map(children, (child: ReactElement<OptionProps>) => cloneElement(
+                        child,
+                        {
                             checkedValue: radioValue,
                             onClick: clickHandler,
                             radioStyle,
                             vertical,
-                        });
-                    })
+                        }),
+                    )
                 }
             </div>
         );

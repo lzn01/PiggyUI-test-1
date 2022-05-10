@@ -20,7 +20,7 @@ export const calculateNodeHeight = (node: HTMLTextAreaElement) => {
     const hiddenElement = getHiddenElement() as HTMLTextAreaElement;
     const value = node.value;
     const placeholder = node.placeholder;
-    const style = window.getComputedStyle(node);
+    const style = getComputedStyle(node);
 
     ELEMENT_FACTORS.forEach(key => {
         hiddenElement.style[key as any] = style.getPropertyValue(key);
