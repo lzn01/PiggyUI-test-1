@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { Search, Textarea } from './index';
+import { isString } from '../../common/methods/is';
 import { classes } from '../../common/methods/classes';
 import './styles/index.scss';
 import type { SearchProps } from './Search';
@@ -70,7 +71,7 @@ const Input: InputInterface =
                     addonBefore &&
                     <div className={'addon-before-container'}>
                         {
-                            typeof addonBefore === 'string'
+                            isString(addonBefore)
                                 ? <span className={'addon-before-span'}>{addonBefore}</span>
                                 : addonBefore
                         }
@@ -81,7 +82,7 @@ const Input: InputInterface =
                     prefix &&
                     <div className={'prefix-container'}>
                         {
-                            typeof prefix === 'string'
+                            isString(prefix)
                                 ? <span className={'prefix-span'}>{prefix}</span>
                                 : prefix
                         }
@@ -102,7 +103,7 @@ const Input: InputInterface =
                     suffix &&
                     <div className={'suffix-container'}>
                         {
-                            typeof suffix === 'string'
+                            isString(suffix)
                                 ? <span className={'suffix-span'}>{suffix}</span>
                                 : suffix
                         }
@@ -113,7 +114,7 @@ const Input: InputInterface =
                     addonAfter &&
                     <div className={'addon-after-container'}>
                         {
-                            typeof addonAfter === 'string'
+                            isString(addonAfter)
                                 ? <span className={'addon-after-span'}>{addonAfter}</span>
                                 : addonAfter
                         }
@@ -122,6 +123,7 @@ const Input: InputInterface =
             </label>
         );
     };
+
 Input.Search = Search;
 Input.Textarea = Textarea;
 export default Input;

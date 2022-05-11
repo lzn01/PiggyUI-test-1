@@ -17,7 +17,7 @@ interface SwitchProps {
     style?: CSSProperties;
 }
 
-const componentName = 'switch';
+const componentName = 'Switch';
 
 const Switch: FC<SwitchProps> =
     ({

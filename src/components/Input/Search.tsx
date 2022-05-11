@@ -6,6 +6,7 @@ import { classes } from '../../common/methods/classes';
 import './styles/index.scss';
 import type { BaseInputProps } from './Input';
 import type { ChangeEventHandler, FC, ReactNode } from 'react';
+import { isBoolean } from '../../common/methods/is';
 
 export interface SearchProps extends BaseInputProps {
     enterButton?: ReactNode;
@@ -50,7 +51,7 @@ const Search: FC<SearchProps> =
                         onClick={searchHandler}
                     >
                         {
-                            typeof enterButton === 'boolean'
+                            isBoolean(enterButton)
                                 ? <Icon name={'wechat'} size={20} />
                                 : enterButton
                         }
@@ -72,4 +73,5 @@ const Search: FC<SearchProps> =
             />
         );
     };
+
 export default Search;
