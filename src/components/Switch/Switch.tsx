@@ -3,14 +3,17 @@ import { useEffect, useState } from 'react';
 import { classes } from '../../common/methods/classes';
 import './styles/index.scss';
 import type { CSSProperties, FC } from 'react';
+import { isBoolean } from '../../common/methods/is';
+
+type Size = 'small' | 'default';
 
 interface SwitchProps {
     checked?: boolean; // 当前选中状态
     className?: string;
     defaultChecked?: boolean; // 默认选中状态
     disabled?: boolean;
-    onChange?: (checked: boolean, e: React.MouseEvent) => any;
-    size?: 'small' | 'default';
+    onChange?: (checked: boolean, e: React.MouseEvent) => void;
+    size?: Size;
     style?: CSSProperties;
 }
 
@@ -31,16 +34,16 @@ const Switch: FC<SwitchProps> =
         const clickHandler: React.MouseEventHandler = (e) => {
             if (disabled) return;
             if (onChange) {
-                onChange(typeof checked === 'boolean' ? checked : !switchState, e);
+                onChange(isBoolean(checked) ? !!checked : !switchState, e);
             }
-            if (typeof checked !== 'boolean') {
+            if (!isBoolean(checked)) {
                 setSwitchState(!switchState);
             }
         };
 
         useEffect(() => {
-            if (typeof checked === 'boolean') {
-                setSwitchState(checked);
+            if (isBoolean(checked)) {
+                setSwitchState(!!checked);
             }
         }, [checked]);
 
@@ -59,4 +62,5 @@ const Switch: FC<SwitchProps> =
             </div>
         );
     };
+
 export default Switch;

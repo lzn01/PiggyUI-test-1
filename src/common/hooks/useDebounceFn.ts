@@ -31,7 +31,8 @@ const useDebounceFn: <T extends noop>(func: T, opts?: DebounceOptions) => Deboun
                 wait,
                 restOpts,
             ),
-        []);
+        [],
+    );
 
     useUnmount(() => debounced.cancel());
 
