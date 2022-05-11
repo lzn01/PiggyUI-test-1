@@ -75,13 +75,17 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
         },
     );
 
-    useImperativeHandle(ref, () => ({
-        autoPlay: slickRef.current.innerSlider.autoPlay,
-        goTo,
-        innerSlider: slickRef.current.innerSlider,
-        next,
-        prev,
-    }), [slickRef.current]);
+    useImperativeHandle(
+        ref,
+        () => ({
+            autoPlay: slickRef.current.innerSlider.autoPlay,
+            goTo,
+            innerSlider: slickRef.current.innerSlider,
+            next,
+            prev,
+        }),
+        [slickRef.current],
+    );
 
     useEffect(() => {
         const slickDOM = findDOMNode(slickRef.current) as HTMLDivElement;
