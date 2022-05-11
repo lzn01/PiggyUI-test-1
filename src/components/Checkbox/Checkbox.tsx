@@ -64,5 +64,6 @@ const Checkbox: CheckboxInterface =
             </div>
         );
     };
+
 Checkbox.Group = Group;
 export default Checkbox;

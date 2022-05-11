@@ -52,10 +52,10 @@ const CheckboxGroup: FC<CheckboxGroupProps> =
             setCheckboxGroupValue(newCheckboxGroupValue);
         };
 
-        const otherCheckBoxChangeHandler = (param: string) => {
-            const newCheckboxGroupValue = checkboxGroupValue?.indexOf(param) > -1
-                ? checkboxGroupValue?.filter(i => i !== param)
-                : [param, ...checkboxGroupValue];
+        const otherCheckBoxChangeHandler = (arg: string) => {
+            const newCheckboxGroupValue = checkboxGroupValue?.indexOf(arg) > -1
+                ? checkboxGroupValue?.filter(i => i !== arg)
+                : [arg, ...checkboxGroupValue];
             if (onChange) {
                 onChange(newCheckboxGroupValue);
             }
@@ -94,4 +94,5 @@ const CheckboxGroup: FC<CheckboxGroupProps> =
             </div>
         );
     };
+
 export default CheckboxGroup;
