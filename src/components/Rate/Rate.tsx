@@ -4,6 +4,7 @@ import Star from './Star';
 import { classes } from '../../common/methods/classes';
 import './styles/index.scss';
 import type { CSSProperties, FC, ReactNode } from 'react';
+import { isUndefined } from '../../common/methods/is';
 
 interface RateProps {
     allowClear?: boolean;
@@ -84,8 +85,8 @@ const Rate: FC<RateProps> =
         };
 
         useEffect(() => {
-            if (typeof value !== 'undefined') {
-                setSelectedRateValue(value);
+            if (!isUndefined(value)) {
+                setSelectedRateValue(value as number);
             }
         }, [value]);
 
@@ -121,4 +122,5 @@ const Rate: FC<RateProps> =
             </div>
         );
     };
+
 export default Rate;

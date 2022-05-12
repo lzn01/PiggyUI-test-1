@@ -65,4 +65,5 @@ const Star: FC<StarProps> =
             </li>
         );
     };
+
 export default Star;

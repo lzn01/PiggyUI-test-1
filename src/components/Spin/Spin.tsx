@@ -63,4 +63,5 @@ const Spin: FC<SpinProps> =
             </div>
         );
     };
+
 export default Spin;
