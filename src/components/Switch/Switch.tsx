@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
+import { isBoolean } from '../../common/methods/is';
 import { classes } from '../../common/methods/classes';
 import './styles/index.scss';
 import type { CSSProperties, FC } from 'react';
-import { isBoolean } from '../../common/methods/is';
 
 type Size = 'small' | 'default';
 
