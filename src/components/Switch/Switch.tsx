@@ -1,94 +1,66 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
-import './style';
+import { useEffect, useState } from 'react';
+import { isBoolean } from '../../common/methods/is';
 import { classes } from '../../common/methods/classes';
+import './styles/index.scss';
+import type { CSSProperties, FC } from 'react';
 
-export interface SwitchProps {
-    checked?: boolean;
-    defaultChecked?: boolean;
-    size?: 'small' | 'default';
-    onChange?: (checked: boolean, e: React.MouseEvent) => any;
-    disabled?: boolean;
+type Size = 'small' | 'default';
+
+interface SwitchProps {
+    checked?: boolean; // 当前选中状态
     className?: string;
-    style?: React.CSSProperties;
-}
-
-export interface SwitchState {
-    derivedChecked: boolean;
+    defaultChecked?: boolean; // 默认选中状态
+    disabled?: boolean;
+    onChange?: (checked: boolean, e: React.MouseEvent) => void;
+    size?: Size;
+    style?: CSSProperties;
 }
 
 const componentName = 'Switch';
 
-class Switch extends React.Component<SwitchProps, SwitchState> {
-    public static displayName = componentName;
+const Switch: FC<SwitchProps> =
+    ({
+         checked,
+         className,
+         defaultChecked = false,
+         disabled = false,
+         onChange,
+         size,
+         style,
+     }) => {
+        const [switchState, setSwitchState] = useState(defaultChecked); // 开关状态 true开 false关
 
-    public static defaultProps = {
-        size: 'default',
-        defaultChecked: false,
-        disabled: false,
-    };
-
-    public static propTypes = {
-        defaultChecked: PropTypes.bool,
-        onChange: PropTypes.func,
-        size: PropTypes.oneOf(['small', 'default']),
-        disabled: PropTypes.bool,
-        className: PropTypes.string,
-        style: PropTypes.object,
-    };
-
-    public static getDerivedStateFromProps(
-        nextProps: SwitchProps,
-        prevState: SwitchState,
-    ) {
-        const { checked } = nextProps;
-        const { derivedChecked } = prevState;
-        if ('checked' in nextProps && checked !== derivedChecked) {
-            return { derivedChecked: checked };
-        }
-        return null;
-    }
-
-    constructor(props: SwitchProps) {
-        super(props);
-        this.state = {
-            derivedChecked: props.defaultChecked || false,
+        const clickHandler: React.MouseEventHandler = (e) => {
+            if (disabled) return;
+            if (onChange) {
+                onChange(isBoolean(checked) ? !!checked : !switchState, e);
+            }
+            if (!isBoolean(checked)) {
+                setSwitchState(!switchState);
+            }
         };
-    }
 
-    public handleClick: React.MouseEventHandler = e => {
-        const { disabled, onChange } = this.props;
-        if (disabled) {
-            return;
-        }
-        const { derivedChecked } = this.state;
-        this.setState({
-            derivedChecked: !derivedChecked,
-        });
+        useEffect(() => {
+            if (isBoolean(checked)) {
+                setSwitchState(!!checked);
+            }
+        }, [checked]);
 
-        if (onChange) {
-            onChange(!derivedChecked, e);
-        }
-    };
-
-    public render() {
-        const cn = componentName;
-        const { size, disabled, style, className } = this.props;
-        const { derivedChecked } = this.state;
-        const switchClassName = classes(cn, '', [className, size], {
-            checked: derivedChecked,
-            disabled,
-        });
         return (
-            <span
-                className={switchClassName}
-                onClick={this.handleClick}
+            <div
+                className={classes(
+                    componentName,
+                    '',
+                    [className, size ?? 'default'],
+                    { checked: switchState, disabled },
+                )}
+                onClick={clickHandler}
                 style={style}
             >
-        <span className={classes(cn, 'core')} />
-      </span>
+                <span className={classes(componentName, 'core')} />
+            </div>
         );
-    }
-}
+    };
 
 export default Switch;
