@@ -16,52 +16,53 @@ interface SpinProps {
 
 const componentName = 'Spin';
 
-const Spin: FC<SpinProps> =
-    ({
-         children,
-         className,
-         size = 24,
-         spinning = true,
-         style,
-         tip,
-     }) => {
-        const spinRef = useRef<HTMLDivElement | null>(null);
+const Spin: FC<SpinProps> = (
+    {
+        children,
+        className,
+        size = 24,
+        spinning = true,
+        style,
+        tip,
+    },
+) => {
+    const spinRef = useRef<HTMLDivElement | null>(null);
 
-        return (
-            <div
-                className={classes(componentName, '', [className], { 'with-children': !!children })}
-                style={style}
+    return (
+        <div
+            className={classes(componentName, '', [className], { 'with-children': !!children })}
+            style={style}
+        >
+            <div className={classes(componentName, 'mask', { active: !!children, spinning })} />
+            <Transition
+                visible={!!spinning}
+                beforeEnter={{ opacity: 0 }}
+                afterEnter={{ opacity: 1 }}
             >
-                <div className={classes(componentName, 'mask', { active: !!children, spinning })} />
-                <Transition
-                    visible={!!spinning}
-                    beforeEnter={{ opacity: 0 }}
-                    afterEnter={{ opacity: 1 }}
+                <div
+                    className={classes(componentName, 'container', {
+                            'with-tip': !!tip,
+                            'with-children': !!children,
+                        },
+                    )}
+                    ref={spinRef}
                 >
-                    <div
-                        className={classes(componentName, 'container', {
-                                'with-tip': !!tip,
-                                'with-children': !!children,
-                            },
-                        )}
-                        ref={spinRef}
-                    >
-                        <Icon
-                            className={classes(componentName, 'icon')}
-                            name="loading"
-                            size={size}
-                        />
-                        {
-                            tip &&
-                            <span className={classes(componentName, 'tip')}>
+                    <Icon
+                        className={classes(componentName, 'icon')}
+                        name="loading"
+                        size={size}
+                    />
+                    {
+                        tip &&
+                        <span className={classes(componentName, 'tip')}>
                                 {tip}
                             </span>
-                        }
-                    </div>
-                </Transition>
-                {children}
-            </div>
-        );
-    };
+                    }
+                </div>
+            </Transition>
+            {children}
+        </div>
+    );
+};
 
 export default Spin;

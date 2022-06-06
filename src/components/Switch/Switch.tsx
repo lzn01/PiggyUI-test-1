@@ -19,48 +19,49 @@ interface SwitchProps {
 
 const componentName = 'Switch';
 
-const Switch: FC<SwitchProps> =
-    ({
-         checked,
-         className,
-         defaultChecked = false,
-         disabled = false,
-         onChange,
-         size,
-         style,
-     }) => {
-        const [switchState, setSwitchState] = useState(defaultChecked); // 开关状态 true开 false关
+const Switch: FC<SwitchProps> = (
+    {
+        checked,
+        className,
+        defaultChecked = false,
+        disabled = false,
+        onChange,
+        size,
+        style,
+    },
+) => {
+    const [switchState, setSwitchState] = useState(defaultChecked); // 开关状态 true开 false关
 
-        const clickHandler: React.MouseEventHandler = (e) => {
-            if (disabled) return;
-            if (onChange) {
-                onChange(isBoolean(checked) ? !!checked : !switchState, e);
-            }
-            if (!isBoolean(checked)) {
-                setSwitchState(!switchState);
-            }
-        };
-
-        useEffect(() => {
-            if (isBoolean(checked)) {
-                setSwitchState(!!checked);
-            }
-        }, [checked]);
-
-        return (
-            <div
-                className={classes(
-                    componentName,
-                    '',
-                    [className, size ?? 'default'],
-                    { checked: switchState, disabled },
-                )}
-                onClick={clickHandler}
-                style={style}
-            >
-                <span className={classes(componentName, 'core')} />
-            </div>
-        );
+    const clickHandler: React.MouseEventHandler = (e) => {
+        if (disabled) return;
+        if (onChange) {
+            onChange(isBoolean(checked) ? !!checked : !switchState, e);
+        }
+        if (!isBoolean(checked)) {
+            setSwitchState(!switchState);
+        }
     };
+
+    useEffect(() => {
+        if (isBoolean(checked)) {
+            setSwitchState(!!checked);
+        }
+    }, [checked]);
+
+    return (
+        <div
+            className={classes(
+                componentName,
+                '',
+                [className, size ?? 'default'],
+                { checked: switchState, disabled },
+            )}
+            onClick={clickHandler}
+            style={style}
+        >
+            <span className={classes(componentName, 'core')} />
+        </div>
+    );
+};
 
 export default Switch;
