@@ -30,128 +30,130 @@ interface ModalProps {
 
 const componentName = 'Modal';
 
-const Modal: FC<ModalProps> =
-    ({
-         cancelText = '取 消',
-         cancelType = 'default',
-         children,
-         className,
-         closable = true,
-         footer,
-         mask = true,
-         maskClosable = true,
-         maskStyle,
-         okText = '确 定',
-         okType = 'primary',
-         onCancel,
-         onOk,
-         title,
-         visible,
-     }) => {
-        const maskRef = useRef<HTMLDivElement | null>(null);
-        const modalRef = useRef<HTMLDivElement | null>(null);
-        const bodyOverflowRef = useRef(getComputedStyle(document.body).overflow); // 在第一次渲染时取 body 原始的 overflow 值
+const Modal: FC<ModalProps> = (
+    {
+        cancelText = '取 消',
+        cancelType = 'default',
+        children,
+        className,
+        closable = true,
+        footer,
+        mask = true,
+        maskClosable = true,
+        maskStyle,
+        okText = '确 定',
+        okType = 'primary',
+        onCancel,
+        onOk,
+        title,
+        visible,
+    },
+) => {
+    const maskRef = useRef<HTMLDivElement | null>(null);
+    const modalRef = useRef<HTMLDivElement | null>(null);
+    const bodyOverflowRef = useRef(getComputedStyle(document.body).overflow); // 在第一次渲染时取 body 原始的 overflow 值
 
-        // 取消回调
-        const cancelHandler: React.MouseEventHandler = (e) => {
-            if (onCancel) {
-                onCancel(e);
-            }
-        };
-
-        // 确定回调
-        const okHandler: React.MouseEventHandler = (e) => {
-            if (onOk) {
-                onOk(e);
-            }
-        };
-
-        // 蒙层点击事件
-        const maskHandler: React.MouseEventHandler = (e) => {
-            if (maskClosable && onCancel) {
-                onCancel(e);
-            }
-        };
-
-        // modal显示时 阻止页面滚动
-        useEffect(() => {
-            document.body.style.overflow = visible ? 'hidden' : bodyOverflowRef.current;
-        }, [visible]);
-
-        return createPortal(
-            <>
-                <Transition
-                    visible={mask && visible}
-                    beforeEnter={{ opacity: 0 }}
-                    afterEnter={{ opacity: 0.7 }}
-                    style={{ ...maskStyle }}
-                >
-                    <div
-                        className={classes(componentName, 'mask')}
-                        ref={maskRef}
-                        onClick={maskHandler}
-                    />
-                </Transition>
-                <Transition
-                    visible={visible}
-                    beforeEnter={{
-                        top: '50%',
-                        opacity: 0,
-                        transform: 'translateX(-50%) translateY(-50%) scale(0)',
-                    }}
-                    afterEnter={{
-                        top: '30%',
-                        opacity: 1,
-                        transform: 'translateX(-50%) translateY(-50%) scale(1)',
-                    }}
-                >
-                    <div
-                        className={classes(componentName, '', [className])}
-                        ref={modalRef}
-                    >
-                        {
-                            closable &&
-                            <div
-                                className={classes(componentName, 'close')}
-                                onClick={cancelHandler}
-                            >
-                                <Icon name={'close'} size={12} />
-                            </div>
-                        }
-                        <header className={classes(componentName, 'header')}>
-                            {title ?? ''}
-                        </header>
-                        <main className={classes(componentName, 'main')}>
-                            {children}
-                        </main>
-                        {
-                            footer !== null
-                                ? <footer className={classes(componentName, 'footer')}>
-                                    {
-                                        footer ??
-                                        <>
-                                            <Button
-                                                type={cancelType}
-                                                onClick={cancelHandler}
-                                                style={{ marginRight: '8px' }}
-                                            >
-                                                {cancelText}
-                                            </Button>
-                                            <Button
-                                                type={okType}
-                                                onClick={okHandler}
-                                            >
-                                                {okText}
-                                            </Button>
-                                        </>
-                                    }
-                                </footer>
-                                : null
-                        }
-                    </div>
-                </Transition>
-            </>,
-            document.body,
-        );
+    // 取消回调
+    const cancelHandler: React.MouseEventHandler = (e) => {
+        if (onCancel) {
+            onCancel(e);
+        }
     };
+
+    // 确定回调
+    const okHandler: React.MouseEventHandler = (e) => {
+        if (onOk) {
+            onOk(e);
+        }
+    };
+
+    // 蒙层点击事件
+    const maskHandler: React.MouseEventHandler = (e) => {
+        if (maskClosable && onCancel) {
+            onCancel(e);
+        }
+    };
+
+    // modal显示时 阻止页面滚动
+    useEffect(() => {
+        document.body.style.overflow = visible ? 'hidden' : bodyOverflowRef.current;
+    }, [visible]);
+
+    return createPortal(
+        <>
+            <Transition
+                visible={mask && visible}
+                beforeEnter={{ opacity: 0 }}
+                afterEnter={{ opacity: 0.7 }}
+                style={{ ...maskStyle }}
+            >
+                <div
+                    className={classes(componentName, 'mask')}
+                    ref={maskRef}
+                    onClick={maskHandler}
+                />
+            </Transition>
+            <Transition
+                visible={visible}
+                beforeEnter={{
+                    top: '50%',
+                    opacity: 0,
+                    transform: 'translateX(-50%) translateY(-50%) scale(0)',
+                }}
+                afterEnter={{
+                    top: '30%',
+                    opacity: 1,
+                    transform: 'translateX(-50%) translateY(-50%) scale(1)',
+                }}
+            >
+                <div
+                    className={classes(componentName, '', [className])}
+                    ref={modalRef}
+                >
+                    {
+                        closable &&
+                        <div
+                            className={classes(componentName, 'close')}
+                            onClick={cancelHandler}
+                        >
+                            <Icon name={'close'} size={12} />
+                        </div>
+                    }
+                    <header className={classes(componentName, 'header')}>
+                        {title ?? ''}
+                    </header>
+                    <main className={classes(componentName, 'main')}>
+                        {children}
+                    </main>
+                    {
+                        footer !== null
+                            ? <footer className={classes(componentName, 'footer')}>
+                                {
+                                    footer ??
+                                    <>
+                                        <Button
+                                            type={cancelType}
+                                            onClick={cancelHandler}
+                                            style={{ marginRight: '8px' }}
+                                        >
+                                            {cancelText}
+                                        </Button>
+                                        <Button
+                                            type={okType}
+                                            onClick={okHandler}
+                                        >
+                                            {okText}
+                                        </Button>
+                                    </>
+                                }
+                            </footer>
+                            : null
+                    }
+                </div>
+            </Transition>
+        </>,
+        document.body,
+    );
+};
+
 export default Modal;
