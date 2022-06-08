@@ -22,48 +22,49 @@ interface CheckboxInterface extends FC<CheckboxProps> {
     Group: FC<CheckboxGroupProps>;
 }
 
-const Checkbox: CheckboxInterface =
-    ({
-         checked,
-         children,
-         defaultChecked = false,
-         disabled = false,
-         halfChecked = false,
-         onChange,
-     }: CheckboxProps) => {
-        const [checkboxState, setCheckboxState] = useState(defaultChecked);
+const Checkbox: CheckboxInterface = (
+    {
+        checked,
+        children,
+        defaultChecked = false,
+        disabled = false,
+        halfChecked = false,
+        onChange,
+    }: CheckboxProps,
+) => {
+    const [checkboxState, setCheckboxState] = useState(defaultChecked);
 
-        const clickHandler = (e: MouseEvent) => {
-            if (disabled) return;
-            if (onChange) {
-                onChange(isBoolean(checked) ? checked as boolean : !checkboxState, e);
-            }
-            if (!isBoolean(checked)) {
-                setCheckboxState(!checkboxState);
-            }
-        };
-
-        useEffect(() => {
-            if (isBoolean(checked)) {
-                setCheckboxState(checked as boolean);
-            }
-        }, [checked]);
-
-        return (
-            <div
-                className={classes(componentName, '')}
-                onClick={clickHandler}
-            >
-                <div className={classes(componentName, 'core', {
-                        checked: checkboxState,
-                        disabled,
-                        'half-checked': halfChecked,
-                    },
-                )} />
-                {children}
-            </div>
-        );
+    const clickHandler = (e: MouseEvent) => {
+        if (disabled) return;
+        if (onChange) {
+            onChange(isBoolean(checked) ? checked as boolean : !checkboxState, e);
+        }
+        if (!isBoolean(checked)) {
+            setCheckboxState(!checkboxState);
+        }
     };
+
+    useEffect(() => {
+        if (isBoolean(checked)) {
+            setCheckboxState(checked as boolean);
+        }
+    }, [checked]);
+
+    return (
+        <div
+            className={classes(componentName, '')}
+            onClick={clickHandler}
+        >
+            <div className={classes(componentName, 'core', {
+                    checked: checkboxState,
+                    disabled,
+                    'half-checked': halfChecked,
+                },
+            )} />
+            {children}
+        </div>
+    );
+};
 
 Checkbox.Group = Group;
 export default Checkbox;
