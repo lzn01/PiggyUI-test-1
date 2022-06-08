@@ -73,5 +73,6 @@ const Button: ButtonInterface =
             </Wave>
         );
     };
+
 Button.Group = Group;
 export default Button;
