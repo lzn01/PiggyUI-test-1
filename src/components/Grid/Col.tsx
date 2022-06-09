@@ -1,7 +1,8 @@
 import * as React from 'react';
-import type { FC, CSSProperties } from 'react';
 import './styles/index.scss';
 import { classes } from '../../common/methods/classes';
+import { isNumber, isObject } from '../../common/methods/is';
+import type { FC, CSSProperties } from 'react';
 
 export type Option = {
     span: number; // 栅格占位格数
@@ -53,14 +54,15 @@ const Col: FC<ColProps> = (
         }
 
         Object.keys(responseSizes).forEach(key => {
-            if (typeof responseSizes[key] === 'object') {
+            if (isObject(responseSizes[key])) {
                 const { span: sizeSpan, offset: sizeOffset } = responseSizes[key];
                 classNameArray.push(`${key}-col-span-${sizeSpan}`, `${key}-col-offset-${sizeOffset ?? 0}`);
             }
-            if (typeof responseSizes[key] === 'number') {
+            if (isNumber(responseSizes[key])) {
                 classNameArray.push(`${key}-col-span-${responseSizes[key]}`, `${key}-col-offset-0`);
             }
         });
+
         return classNameArray;
     };
 
