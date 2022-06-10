@@ -23,7 +23,8 @@ const Transition: FC<TransitionProps> = (
         visible,
         style,
         ...rest
-    }) => {
+    },
+) => {
     const [rendered, setRendered] = useState(false);
 
     const nodeStyleHandler = (node: HTMLElement, css: any) => {
