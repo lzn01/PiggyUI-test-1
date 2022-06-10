@@ -33,6 +33,7 @@ const Wave: FC = ({ children }) => {
         };
     }, [animationOnStart, animationToEnd, children]);
 
-    return (<>{children}</>);
+    return <>{children}</>;
 };
+
 export default Wave;
