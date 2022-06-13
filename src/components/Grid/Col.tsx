@@ -58,6 +58,7 @@ const Col: FC<ColProps> = (
                 const { span: sizeSpan, offset: sizeOffset } = responseSizes[key];
                 classNameArray.push(`${key}-col-span-${sizeSpan}`, `${key}-col-offset-${sizeOffset ?? 0}`);
             }
+
             if (isNumber(responseSizes[key])) {
                 classNameArray.push(`${key}-col-span-${responseSizes[key]}`, `${key}-col-offset-0`);
             }

@@ -48,6 +48,7 @@ const Input: InputInterface = (
         if (onChange) {
             onChange(e);
         }
+
         setInputValue(e.target.value);
     };
 

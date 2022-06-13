@@ -40,6 +40,7 @@ const CheckboxGroup: FC<CheckboxGroupProps> = (
         if (checkboxGroupValue?.length > 0) {
             return checkboxGroupValue?.length < options.length ? 'half-checked' : 'all';
         }
+
         return 'none';
     };
 
@@ -47,9 +48,11 @@ const CheckboxGroup: FC<CheckboxGroupProps> = (
         const newCheckboxGroupValue = checkBoxStateHandler() === 'all'
             ? []
             : options.reduce((prev, current) => [current.value, ...prev], []);
+
         if (onChange) {
             onChange(newCheckboxGroupValue);
         }
+
         setCheckboxGroupValue(newCheckboxGroupValue);
     };
 
@@ -57,9 +60,11 @@ const CheckboxGroup: FC<CheckboxGroupProps> = (
         const newCheckboxGroupValue = checkboxGroupValue?.indexOf(arg) > -1
             ? checkboxGroupValue?.filter(i => i !== arg)
             : [arg, ...checkboxGroupValue];
+
         if (onChange) {
             onChange(newCheckboxGroupValue);
         }
+
         setCheckboxGroupValue(newCheckboxGroupValue);
     };
 

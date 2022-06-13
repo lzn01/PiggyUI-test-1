@@ -3,7 +3,7 @@ import type { FC, HTMLAttributes } from 'react';
 import './styles/index.scss';
 import { classes } from '../../common/methods/classes';
 
-const componentName = 'Button-group';
+const componentName = 'Button-Group';
 
 const ButtonGroup: FC<HTMLAttributes<HTMLElement>> = (
     {

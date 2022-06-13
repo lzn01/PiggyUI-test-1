@@ -29,21 +29,26 @@ const Textarea: FC<TextareaProps> = (
 
     const changeHandler: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
         const node = textareaRef.current as HTMLTextAreaElement;
+
         if (onChange) {
             onChange(e);
         }
+
         if (autosize) {
             const hiddenHeight = calculateNodeHeight(node);
+
             if (hiddenHeight > originHeight) {
                 node.style.height = `${hiddenHeight}px`;
             }
         }
+
         setTextareaValue(e.target.value);
     };
 
     useEffect(() => {
         const node = textareaRef.current as HTMLTextAreaElement;
         const { top, bottom } = node.getBoundingClientRect();
+
         setOriginHeight(bottom - top);
     }, []);
 
