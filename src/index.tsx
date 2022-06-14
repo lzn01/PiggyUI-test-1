@@ -17,12 +17,6 @@ import CarouselExample from './examples/Carousel';
 ReactDOM.render(
     <Router>
         <div>
-            {/*<header>*/}
-            {/*    <div className="logo">*/}
-            {/*        FUI*/}
-            {/*    </div>*/}
-
-            {/*</header>*/}
             <div>
                 <aside>
                     <h2>组件</h2>
