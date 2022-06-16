@@ -30,7 +30,7 @@ const componentName = 'Carousel';
 
 const Arrow = (props: CustomArrowProps) => {
     const { className, onClick } = props;
-    return <div className={className} onClick={onClick} />;
+    return <div className={className} onClick={onClick}/>;
 };
 
 const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
@@ -137,8 +137,8 @@ const InternalCarousel: ForwardRefRenderFunction<CarouselRef, CarouselProps> = (
                     },
                 )}
                 fade={effect === 'fade'}
-                nextArrow={nextArrow ?? <Arrow className="slick-next" onClick={next} />}
-                prevArrow={prevArrow ?? <Arrow className="slick-prev" onClick={prev} />}
+                nextArrow={nextArrow ?? <Arrow className="slick-next" onClick={next}/>}
+                prevArrow={prevArrow ?? <Arrow className="slick-prev" onClick={prev}/>}
                 slidesToShow={slidesToShow}
                 vertical={dotsPosition === 'left' || dotsPosition === 'right'}
             />

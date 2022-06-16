@@ -52,8 +52,8 @@ const Button: ButtonInterface = (
     const iconRenderHandler = () => {
         const iconClassName = classes(componentName, 'icon', [size ?? 'medium'], { loading });
         return loading
-            ? <Icon name={'wechat'} className={iconClassName} />
-            : icon && <Icon name={icon} className={iconClassName} />;
+            ? <Icon name={'wechat'} className={iconClassName}/>
+            : icon && <Icon name={icon} className={iconClassName}/>;
     };
 
     return (
@@ -67,8 +67,8 @@ const Button: ButtonInterface = (
                 {iconRenderHandler()}
                 <span className={classes(componentName, 'text')}>
                         {children}
-                    </span>
-                {!disabled && <span className={classes(componentName, 'ripple')} />}
+                </span>
+                {!disabled && <span className={classes(componentName, 'ripple')}/>}
             </button>
         </Wave>
     );
